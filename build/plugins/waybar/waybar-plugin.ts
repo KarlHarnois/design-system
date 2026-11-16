@@ -1,6 +1,7 @@
 import type { BuildHookOptions, Plugin } from "@terrazzo/parser";
 import { ResolvedTheme } from "../shared/resolved-theme.ts";
 import { GtkColorPalette } from "./gtk-color-palette.ts";
+import { WaybarConfig } from "./waybar-config.ts";
 import { WaybarStylesheet } from "./waybar-stylesheet.ts";
 
 export class WaybarPlugin implements Plugin {
@@ -16,6 +17,9 @@ export class WaybarPlugin implements Plugin {
       const resolved = new ResolvedTheme({ theme }, resolver);
       outputFile(`waybar/${theme}/colors.css`, new GtkColorPalette(resolved).stylesheet());
       outputFile(`waybar/${theme}/style.css`, new WaybarStylesheet(resolved).render());
+      const config = new WaybarConfig(resolved);
+      outputFile(`waybar/${theme}/config.jsonc`, config.render());
+      outputFile(`waybar/${theme}/settings.json`, `${JSON.stringify(config.toJSON(), null, 2)}\n`);
     }
   }
 }

@@ -36,6 +36,7 @@ Layout follows a Swiss grid that [knave-grid](https://github.com/KarlHarnois/kna
 - Pictures and swatches span fields that run from the cap height of their first line to the descender of their last.
 - Text is flush left, ragged right. No centered paragraphs, no justified text.
 - Hierarchy comes from size, weight, and position.
+- Space inside a group is smaller than space between groups, so groups read as groups.
 
 ## 4. Typography
 

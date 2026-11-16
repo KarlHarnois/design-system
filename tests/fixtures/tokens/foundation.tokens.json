@@ -14,6 +14,13 @@
           "Fixture Sans",
           "sans-serif"
         ]
+      },
+      "small": {
+        "$type": "fontFamily",
+        "$value": [
+          "Fixture Wide",
+          "monospace"
+        ]
       }
     },
     "size": {
@@ -101,6 +108,21 @@
         },
         "fontWeight": 400,
         "lineHeight": 1.5,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "ui-small": {
+      "$value": {
+        "fontFamily": "{font.family.small}",
+        "fontSize": {
+          "value": 8,
+          "unit": "px"
+        },
+        "fontWeight": 400,
+        "lineHeight": 3.75,
         "letterSpacing": {
           "value": 0,
           "unit": "px"

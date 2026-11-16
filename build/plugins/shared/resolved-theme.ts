@@ -59,9 +59,11 @@ export class ResolvedTheme {
   }
 
   fontFamily(id: string): string {
-    return this.fontFamilyNames(id)
-      .map((family) => ResolvedTheme.quoteFontFamily(family))
-      .join(", ");
+    return ResolvedTheme.cssFontFamily(this.fontFamilyNames(id));
+  }
+
+  static cssFontFamily(names: string[]): string {
+    return names.map((family) => ResolvedTheme.quoteFontFamily(family)).join(", ");
   }
 
   fontFamilyNames(id: string): string[] {

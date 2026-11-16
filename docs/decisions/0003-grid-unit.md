@@ -1,7 +1,7 @@
 # 0003. Use the Iosevka character cell as the grid unit
 
 ## Status
-Accepted
+Accepted. Refined by 0005 and 0008.
 
 ## Context
 A Swiss grid needs one unit that every element snaps to. Iosevka glyphs are exactly
@@ -13,5 +13,6 @@ A Swiss grid needs one unit that every element snaps to. Iosevka glyphs are exac
 - All spacing is a multiple of 7px. Type sizes pick line heights that are multiples of 21px.
 
 ## Consequences
-Monospace text, borders, and spacing line up without rounding. Sizes that break the
-7px column, like 12px small text, are allowed only where they do not sit in a grid column.
+The grid controls where text starts and how far apart its lines are. Characters line up
+with the cell only within one text size, so a different size keeps its start position and
+its lines but not the cell.

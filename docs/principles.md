@@ -1,6 +1,6 @@
 # Principles
 
-These rules apply to every target: web, Waybar, Quickshell, and Knave desktop apps.
+These rules apply to every target: web, Waybar, Hyprland, Quickshell, and Knave desktop apps.
 When a target cannot follow a rule, record why in `docs/decisions/`.
 
 ## 1. Keyboard first, mouse second
@@ -30,7 +30,8 @@ down, `dd` removes the item, `yy` copies it, `p` pastes it after the current one
 Layout follows a Swiss grid that [knave-grid](https://github.com/KarlHarnois/knave-grid) generates from the tokens.
 
 - The unit is the square: one leading tall and one leading wide, 21px at 14px type. That is three Iosevka characters.
-- Every vertical space is a whole number of lines, so all text sits on the baseline grid.
+- Vertical space around text is a whole number of lines, so all text sits on the baseline grid.
+  Desktop spacing uses cells instead. See `docs/decisions/0008-desktop-spacing.md`.
 - Type areas, columns, gutters and margins are whole squares. See `grid.type-area.*` tokens.
 - Pictures and swatches span fields that run from the cap height of their first line to the descender of their last.
 - Text is flush left, ragged right. No centered paragraphs, no justified text.

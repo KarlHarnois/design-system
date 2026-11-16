@@ -6,7 +6,7 @@ Accepted
 ## Context
 Small text is 12px. At that size, Iosevka's narrow 0.5em letters are hard to read.
 Iosevka Extended has 0.6em letters and ships in the same `iosevka-bin` package.
-ADR 0003 already lets 12px text break the 7px column where it does not sit in a grid column.
+ADR 0003 keeps the cell only within one text size, so 12px text only has to start on the grid.
 
 ## Decision
 - `type.ui-small` uses `font.family.mono-wide`, Iosevka Extended at 12px with a 21px line.

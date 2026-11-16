@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Token Specimen</title>
+    <link rel="stylesheet" href="../dist/css/tokens.css" />
+    <link rel="stylesheet" href="specimen.css" />
+  </head>
+  <body>
+    <main class="grid">
+      <header class="masthead">
+        <h1>Specimen</h1>
+        <p class="prose">
+          Every token on one page. Move with <kbd>j</kbd> <kbd>k</kbd>, jump with <kbd>gg</kbd> <kbd>G</kbd>,
+          filter with <kbd>/</kbd>. <kbd>&lt;Space&gt;g</kbd> toggles the grid, <kbd>&lt;Space&gt;t</kbd> the theme.
+        </p>
+      </header>
+
+      <section class="group" aria-label="Type scale">
+        <h2 class="group-title">Type</h2>
+        <p class="item" tabindex="-1" data-name="type h1" style="font: var(--type-h1)">h1 48/72 Iosevka bold</p>
+        <p class="item" tabindex="-1" data-name="type h2" style="font: var(--type-h2)">h2 32/48 Iosevka bold</p>
+        <p class="item" tabindex="-1" data-name="type h3" style="font: var(--type-h3)">h3 20/24 Iosevka bold</p>
+        <p class="item" tabindex="-1" data-name="type ui body" style="font: var(--type-ui)">ui 16/24 Iosevka regular</p>
+        <p class="item" tabindex="-1" data-name="type label" style="font: var(--type-label)">label 16/24 Iosevka bold</p>
+        <p class="item" tabindex="-1" data-name="type ui small" style="font: var(--type-ui-small)">ui-small 14/24 Iosevka regular</p>
+        <p class="item prose" tabindex="-1" data-name="type prose aile reading">
+          prose 16/24 Iosevka Aile. Long reading text uses the proportional sibling of Iosevka and stops at the
+          reading measure, so lines stay near seventy two characters.
+        </p>
+      </section>
+
+      <section class="group" aria-label="Color">
+        <h2 class="group-title">Color</h2>
+        <ul class="swatches">
+          <li class="item swatch" tabindex="-1" data-name="color surface base" style="--swatch: var(--color-surface-base)">surface.base</li>
+          <li class="item swatch" tabindex="-1" data-name="color surface raised" style="--swatch: var(--color-surface-raised)">surface.raised</li>
+          <li class="item swatch" tabindex="-1" data-name="color surface sunken" style="--swatch: var(--color-surface-sunken)">surface.sunken</li>
+          <li class="item swatch" tabindex="-1" data-name="color text primary" style="--swatch: var(--color-text-primary)">text.primary</li>
+          <li class="item swatch" tabindex="-1" data-name="color text secondary" style="--swatch: var(--color-text-secondary)">text.secondary</li>
+          <li class="item swatch" tabindex="-1" data-name="color border default" style="--swatch: var(--color-border-default)">border.default</li>
+          <li class="item swatch" tabindex="-1" data-name="color accent focus" style="--swatch: var(--color-accent)">accent / focus</li>
+        </ul>
+      </section>
+
+      <section class="group" aria-label="Modes">
+        <h2 class="group-title">Modes</h2>
+        <ul class="swatches">
+          <li class="item swatch" tabindex="-1" data-name="mode normal" style="--swatch: var(--mode-normal)">mode.normal</li>
+          <li class="item swatch" tabindex="-1" data-name="mode insert" style="--swatch: var(--mode-insert)">mode.insert</li>
+          <li class="item swatch" tabindex="-1" data-name="mode visual" style="--swatch: var(--mode-visual)">mode.visual</li>
+          <li class="item swatch" tabindex="-1" data-name="mode command" style="--swatch: var(--mode-command)">mode.command</li>
+        </ul>
+      </section>
+
+      <section class="group" aria-label="Space">
+        <h2 class="group-title">Space</h2>
+        <div class="item bar" tabindex="-1" data-name="space cell" style="--bar: var(--space-cell)">cell 8</div>
+        <div class="item bar" tabindex="-1" data-name="space gutter" style="--bar: var(--space-gutter)">gutter 16</div>
+        <div class="item bar" tabindex="-1" data-name="space line" style="--bar: var(--space-line)">line 24</div>
+        <div class="item bar" tabindex="-1" data-name="space block" style="--bar: var(--space-block)">block 48</div>
+        <div class="item bar" tabindex="-1" data-name="space section" style="--bar: var(--space-section)">section 96</div>
+      </section>
+    </main>
+
+    <footer class="mode-line" data-mode="normal">
+      <span class="mode-name">NORMAL</span>
+      <label class="filter">
+        <span aria-hidden="true">/</span>
+        <input type="search" aria-label="Filter tokens" tabindex="-1" />
+      </label>
+      <span class="pending-keys" aria-live="polite"></span>
+    </footer>
+
+    <script src="specimen.js"></script>
+  </body>
+</html>

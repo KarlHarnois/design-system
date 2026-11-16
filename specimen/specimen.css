@@ -162,7 +162,7 @@ kbd {
   font-family: var(--type-ui-small-font-family);
   font-size: var(--type-ui-small-font-size);
   font-weight: var(--type-ui-small-font-weight);
-  line-height: var(--bar-height);
+  line-height: var(--bar-line);
   background-color: var(--color-surface-base);
   color: var(--color-text-secondary);
   border: var(--border-width-default) solid var(--color-border-default);

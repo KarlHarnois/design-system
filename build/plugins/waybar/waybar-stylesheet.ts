@@ -46,7 +46,7 @@ export class WaybarStylesheet {
 
 label,
 button {
-  min-height: ${this.lineHeight()};
+  min-height: ${this.theme.dimension("bar.line")};
 }`;
   }
 
@@ -98,11 +98,6 @@ window#waybar > box {
   background: ${color("color.focus")};
   color: ${color("color.text.inverse")};
 }`;
-  }
-
-  private lineHeight(): string {
-    const { fontSize, lineHeight } = this.theme.typography(BAR_TYPE_STYLE);
-    return `${Math.round(fontSize.value * Number(lineHeight))}${fontSize.unit}`;
   }
 
   private cell(): string {

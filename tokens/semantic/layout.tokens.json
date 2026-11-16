@@ -118,11 +118,6 @@
     }
   },
   "bar": {
-    "height": {
-      "$type": "dimension",
-      "$description": "One baseline tall, for Waybar and Quickshell.",
-      "$value": "{dimension.3}"
-    },
     "line": {
       "$type": "dimension",
       "$description": "Text line of the desktop bar. 16px because GTK's Pango box for 12px Iosevka is 16px tall, not because of the grid. The bar is desktop chrome, so it does not sit on the 21px page line.",

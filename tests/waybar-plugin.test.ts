@@ -28,8 +28,8 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toContain("font-size: 8px;");
   });
 
-  it("makes each label one small type line tall", () => {
-    expect(stylesheet()).toMatch(/label,\nbutton \{\n {2}min-height: 30px;/);
+  it("makes each label one bar line tall", () => {
+    expect(stylesheet()).toMatch(/label,\nbutton \{\n {2}min-height: 18px;/);
   });
 
   it("outlines the bar in the default border color", () => {
@@ -66,8 +66,8 @@ describe("WaybarPlugin", () => {
     expect(fixtureBuild.file("waybar/dark/config.jsonc")).toContain('"modules-right": [\n    "battery",\n    "clock#time"\n  ]');
   });
 
-  it("makes the bar one line tall plus its inset and outline", () => {
-    expect(config().height).toBe(40);
+  it("makes the bar one bar line tall plus its inset and outline", () => {
+    expect(config().height).toBe(28);
   });
 
   it("floats the bar inside the frame on the top, left and right", () => {

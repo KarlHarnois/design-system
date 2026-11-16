@@ -64,10 +64,10 @@
     }
   },
   "bar": {
-    "height": {
+    "line": {
       "$type": "dimension",
       "$value": {
-        "value": 30,
+        "value": 18,
         "unit": "px"
       }
     }

@@ -43,6 +43,6 @@ export class WaybarConfig {
   private outerHeight(): number {
     const inset = this.theme.pixels("space.inset");
     const outline = this.theme.pixels("border.width.default");
-    return this.theme.pixels("bar.height") + 2 * inset + 2 * outline;
+    return this.theme.pixels("bar.line") + 2 * inset + 2 * outline;
   }
 }

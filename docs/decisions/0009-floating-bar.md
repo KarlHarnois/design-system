@@ -9,7 +9,7 @@ underlined workspace. It did not follow the desktop spacing in 0008, and its
 modules changed width as their values changed.
 
 ## Decision
-- Position: the bar floats. The frame (`space.frame`, 14px) sits on its top, left and
+- Position: the bar floats. The frame (`space.frame`, 7px) sits on its top, left and
   right. One gutter (`space.cell`, 7px) sits between the bar and the windows.
 - Outline: 1px in `color.border.default`, with the `radius.container` corner. The bar
   never takes keyboard focus, so it never gets the `color.focus` outline.

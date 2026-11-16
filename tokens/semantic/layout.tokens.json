@@ -31,8 +31,8 @@
       "$value": "{dimension.2}"
     },
     "frame": {
-      "$description": "Space between the screen edge and the windows on the desktop. Two cells, the same on every monitor.",
-      "$value": "{dimension.2}"
+      "$description": "Space between the screen edge and the windows and bar on the desktop. One cell, the same as the gutter, so the frame, the bar and the windows share one rhythm. The same on every monitor.",
+      "$value": "{dimension.1}"
     },
     "line": {
       "$value": "{dimension.3}"

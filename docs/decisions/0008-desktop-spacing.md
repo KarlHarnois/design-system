@@ -11,7 +11,10 @@ the outer frame and insets hold no text, so they need their own rule.
 ## Decision
 - Text inside containers follows the baseline grid.
 - Desktop spacing uses cells in both directions: window gaps, the outer frame and insets.
-- The gutter between windows is 1 cell (7px). The outer frame is 2 cells (14px).
+- The gutter between windows is 1 cell (7px). The outer frame is 1 cell (7px) too.
+- The frame was 2 cells (14px) at first. On a laptop screen one cell for everything reads as
+  one tidy grid and gives back width. The window outlines already separate the windows,
+  so the frame does not need to be larger than the gutters.
 - The frame and gutters are the same on every monitor. Window contents absorb leftover pixels.
 - Window borders are 1px (`dimension.hairline`). The focused window's border is
   `color.focus`, the others use `color.border.default`. So exactly one full contrast
@@ -28,6 +31,7 @@ the outer frame and insets hold no text, so they need their own rule.
   target sets 3px on the top and left and 4px on the bottom and right, so every gutter
   is exactly 7px. `gaps_out` is the frame on the right, bottom and left. Its top is
   one gutter, because the floating bar already holds the frame above it. See 0009.
+  With a one-cell frame, all four sides are 7px.
 - Hyprland measures animation speed in tenths of a second, so `duration.quick` is speed 1.
 - The `border` animation is off too, so the focus outline moves without a fade.
 - `windowsIn`, `windowsOut`, `fadeIn` and `fadeOut` are turned off by name, after `fade`.

@@ -25,8 +25,8 @@ the outer frame and insets hold no text, so they need their own rule.
   `settings.json` for Home Manager's Lua settings.
 - Hyprland applies `gaps_in` to each window, so two neighbours add their gaps. The
   target sets 3px on the top and left and 4px on the bottom and right, so every gutter
-  is exactly 7px. `gaps_out` is the frame on all sides. Its top value changes when
-  Waybar floats.
+  is exactly 7px. `gaps_out` is the frame on the right, bottom and left. Its top is
+  one gutter, because the floating bar already holds the frame above it. See 0009.
 - Hyprland measures animation speed in tenths of a second, so `duration.quick` is speed 1.
 - The `border` animation is off too, so the focus outline moves without a fade.
 - `fadeIn` and `fadeOut` sit under `fade`, so a window still fades in over 100ms as it opens.

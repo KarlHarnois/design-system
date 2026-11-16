@@ -28,4 +28,4 @@ designSystem.enable = true;
 designSystem.theme = "light";
 ```
 
-The module installs Iosevka, styles Waybar and writes a Hyprland theme.
+The module installs Iosevka, writes a Waybar config and stylesheet, and writes a Hyprland theme.

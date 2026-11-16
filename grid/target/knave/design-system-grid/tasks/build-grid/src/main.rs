@@ -164,7 +164,7 @@ mod design_grid {
         crate::knave_grid::check::problems::GridError,
     > {
         let mono = crate::knave_grid::font::family::read_declared_family(
-            "/nix/store/qdscfx7abz0hmlb3kbfi3nmcf693ayrl-design-system-web-fonts",
+            "/nix/store/g6vxg8lxzs76v349vc0azw7v4lqg7dkq-design-system-web-fonts",
             "Iosevka",
             vec![
                 crate::knave_grid::font::family::make_declared_file(
@@ -181,7 +181,7 @@ mod design_grid {
             crate::knave_grid::check::problems::GridError::UnusableFont { error: error }
         })?;
         let prose = crate::knave_grid::font::family::read_declared_family(
-            "/nix/store/qdscfx7abz0hmlb3kbfi3nmcf693ayrl-design-system-web-fonts",
+            "/nix/store/g6vxg8lxzs76v349vc0azw7v4lqg7dkq-design-system-web-fonts",
             "Iosevka Aile",
             vec![crate::knave_grid::font::family::make_declared_file(
                 "regular".to_string(),
@@ -194,7 +194,7 @@ mod design_grid {
         crate::knave_grid::check::grid::check_grid(crate::knave_grid::spec::grid_spec::GridSpec {
             body_type: crate::knave_grid::spec::body_type::BodyType {
                 font_family: mono,
-                size: 16.0,
+                size: 14.0,
                 line_height: 1.5,
                 weight: "regular".to_string(),
             },
@@ -259,7 +259,7 @@ mod design_grid {
                     name: "h3".to_string(),
                     lines: 1,
                     weight: Some("bold".to_string()),
-                    size: Some(20.0),
+                    size: Some(18.0),
                     baseline_line: Some(1),
                     font_family: None,
                     selector: None,
@@ -286,7 +286,7 @@ mod design_grid {
                     name: "ui-small".to_string(),
                     lines: 1,
                     weight: Some("regular".to_string()),
-                    size: Some(14.0),
+                    size: Some(12.0),
                     baseline_line: Some(1),
                     font_family: None,
                     selector: None,

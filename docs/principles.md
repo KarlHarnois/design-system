@@ -29,7 +29,7 @@ down, `dd` removes the item, `yy` copies it, `p` pastes it after the current one
 
 Layout follows a Swiss grid that [knave-grid](https://github.com/KarlHarnois/knave-grid) generates from the tokens.
 
-- The unit is the square: one leading tall and one leading wide, 24px at 16px type.
+- The unit is the square: one leading tall and one leading wide, 21px at 14px type. That is three Iosevka characters.
 - Every vertical space is a whole number of lines, so all text sits on the baseline grid.
 - Type areas, columns, gutters and margins are whole squares. See `grid.type-area.*` tokens.
 - Pictures and swatches span fields that run from the cap height of their first line to the descender of their last.

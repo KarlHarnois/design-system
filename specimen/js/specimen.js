@@ -134,4 +134,5 @@ class Specimen {
   }
 }
 
+new BarPreview(window.BAR_SPEC).render(document);
 new Specimen(document).start();

@@ -181,8 +181,17 @@ kbd {
   min-width: 0;
 }
 
-.waybar :is(.workspace, .submap, .window, .pulseaudio, .battery, .clock-date, .clock-time) {
+.waybar :is(.workspace, .pulseaudio, .battery, .clock-date, .clock-time) {
   white-space: pre;
+}
+
+.waybar .module-fixed {
+  box-sizing: content-box;
+  min-width: calc(var(--module-width) * 1ch);
+}
+
+.waybar .module-align-right {
+  text-align: right;
 }
 
 .waybar .workspace {
@@ -193,20 +202,6 @@ kbd {
 .waybar .workspace.active {
   background: var(--color-focus);
   color: var(--color-text-inverse);
-}
-
-.waybar .submap {
-  padding: 0 var(--space-cell);
-  background: var(--color-focus);
-  color: var(--color-text-inverse);
-}
-
-.waybar .window {
-  display: block;
-  margin: 0 calc(2 * var(--space-cell));
-  padding: 0 var(--space-cell);
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .waybar .pulseaudio,

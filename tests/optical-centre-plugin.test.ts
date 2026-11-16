@@ -39,15 +39,19 @@ describe("OpticalCentrePlugin", () => {
   const shifts = () => JSON.parse(fixtureBuild.file("optical-centre.json"));
 
   it("centres between the cap height and the x-height with the browser's font box", () => {
-    expect(shifts().web["type.ui"]).toEqual({ exact: -0.613, pixels: -1 });
+    expect(shifts().page.web["type.ui"]).toEqual({ exact: -0.613, pixels: -1 });
   });
 
   it("centres with Pango's rounded typo metrics for GTK", () => {
-    expect(shifts().gtk["type.ui"]).toEqual({ exact: -0.363, pixels: 0 });
+    expect(shifts().page.gtk["type.ui"]).toEqual({ exact: -0.363, pixels: 0 });
   });
 
   it("covers only type styles that are one line tall", () => {
-    expect(Object.keys(shifts().web)).toEqual(["type.note", "type.ui"]);
+    expect(Object.keys(shifts().page.web)).toEqual(["type.note", "type.ui"]);
+  });
+
+  it("centres the small type style on the desktop bar line", () => {
+    expect(shifts().bar.gtk["type.ui-small"]).toEqual({ exact: 0.51, pixels: 1 });
   });
 
   it("reads the font file each style ships with", () => {

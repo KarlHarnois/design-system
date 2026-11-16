@@ -4,7 +4,7 @@
   "title": "Keymap",
   "description": "Vim grammar shared by every target: modes, operators, motions, text objects and actions.",
   "type": "object",
-  "required": ["leader", "modes", "operators", "motions", "textObjects", "actions"],
+  "required": ["leader", "modes", "operators", "motions", "textObjects", "actions", "lineEditing"],
   "additionalProperties": false,
   "properties": {
     "$schema": { "type": "string" },
@@ -23,7 +23,11 @@
     "operators": { "$ref": "#/$defs/bindings" },
     "motions": { "$ref": "#/$defs/bindings" },
     "textObjects": { "$ref": "#/$defs/bindings" },
-    "actions": { "$ref": "#/$defs/bindings" }
+    "actions": { "$ref": "#/$defs/bindings" },
+    "lineEditing": {
+      "description": "Terminal style editing keys that every text field accepts in insert and command mode.",
+      "$ref": "#/$defs/bindings"
+    }
   },
   "$defs": {
     "key": {

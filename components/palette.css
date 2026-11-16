@@ -1,0 +1,41 @@
+.palette {
+  position: fixed;
+  inset: auto auto var(--component-status-bar-height) 0;
+  width: min(100%, var(--measure));
+  background: var(--component-palette-background);
+  color: var(--component-palette-text);
+}
+
+.palette[hidden] {
+  display: none;
+}
+
+.palette-list {
+  max-height: calc(var(--component-palette-visible-rows) * var(--leading));
+  overflow-y: auto;
+}
+
+.palette-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.palette-row kbd {
+  font: inherit;
+  color: var(--component-palette-key-text);
+}
+
+.palette-prompt {
+  display: flex;
+  gap: var(--component-palette-padding-inline);
+  padding: 0 var(--component-palette-padding-inline);
+}
+
+.palette-input {
+  flex: 1;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+}

@@ -1,0 +1,25 @@
+{
+  "component": {
+    "which-key": {
+      "$description": "Popup that lists the keys that can follow a pending prefix.",
+      "padding-inline": {
+        "$type": "dimension",
+        "$value": "{space.cell}"
+      },
+      "column-gap": {
+        "$type": "dimension",
+        "$value": "{space.gutter}"
+      },
+      "$type": "color",
+      "background": {
+        "$value": "{color.surface.raised}"
+      },
+      "text": {
+        "$value": "{color.text.secondary}"
+      },
+      "key-text": {
+        "$value": "{color.accent}"
+      }
+    }
+  }
+}

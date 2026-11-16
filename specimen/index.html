@@ -16,7 +16,7 @@
         <h1 class="type-h1">Specimen</h1>
         <p class="type-prose">
           Every token on one page. Move with <kbd>j</kbd> <kbd>k</kbd>, jump with <kbd>gg</kbd> <kbd>G</kbd> and <kbd>H</kbd> <kbd>M</kbd> <kbd>L</kbd>,
-          filter with <kbd>/</kbd>, press with <kbd>&lt;CR&gt;</kbd>. <kbd>&lt;Space&gt;g</kbd> toggles the baselines, <kbd>&lt;Space&gt;G</kbd> the full grid, <kbd>&lt;Space&gt;t</kbd> the theme, <kbd>&lt;Space&gt;a</kbd> the accent.
+          filter with <kbd>/</kbd>, press with <kbd>&lt;CR&gt;</kbd>, run commands with <kbd>:</kbd>. <kbd>&lt;Space&gt;g</kbd> toggles the baselines, <kbd>&lt;Space&gt;G</kbd> the full grid, <kbd>&lt;Space&gt;t</kbd> the theme, <kbd>&lt;Space&gt;a</kbd> the accent.
         </p>
       </header>
 
@@ -110,6 +110,25 @@
       <span class="status-bar-segment pending-keys" aria-live="polite"></span>
     </footer>
 
-    <script src="specimen.js"></script>
+    <div class="palette" hidden>
+      <ul class="palette-list list" aria-label="Commands"></ul>
+      <label class="palette-prompt">
+        <span aria-hidden="true">:</span>
+        <input class="palette-input" type="text" aria-label="Command" tabindex="-1" />
+      </label>
+    </div>
+
+    <div class="which-key" hidden>
+      <ul class="which-key-list"></ul>
+    </div>
+
+    <script src="js/focus-list.js"></script>
+    <script src="js/status-line.js"></script>
+    <script src="js/command.js"></script>
+    <script src="js/key-sequence.js"></script>
+    <script src="js/line-editor.js"></script>
+    <script src="js/which-key.js"></script>
+    <script src="js/command-palette.js"></script>
+    <script src="js/specimen.js"></script>
   </body>
 </html>

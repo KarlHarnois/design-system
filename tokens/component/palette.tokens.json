@@ -1,0 +1,25 @@
+{
+  "component": {
+    "palette": {
+      "$description": "Command palette that opens above the status bar.",
+      "visible-rows": {
+        "$type": "number",
+        "$value": 8
+      },
+      "padding-inline": {
+        "$type": "dimension",
+        "$value": "{space.cell}"
+      },
+      "$type": "color",
+      "background": {
+        "$value": "{color.surface.raised}"
+      },
+      "text": {
+        "$value": "{color.text.primary}"
+      },
+      "key-text": {
+        "$value": "{color.text.secondary}"
+      }
+    }
+  }
+}

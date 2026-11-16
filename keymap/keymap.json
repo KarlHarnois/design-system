@@ -47,5 +47,15 @@
     "/": { "name": "search", "description": "Search forward." },
     "<CR>": { "name": "activate", "description": "Open or run the focused item." },
     "q": { "name": "quit", "description": "Close the focused view." }
+  },
+  "lineEditing": {
+    "<C-w>": { "name": "delete-word", "description": "Delete the word before the cursor." },
+    "<C-u>": { "name": "delete-to-start", "description": "Delete from the cursor to the start of the line." },
+    "<C-k>": { "name": "delete-to-end", "description": "Delete from the cursor to the end of the line." },
+    "<C-h>": { "name": "delete-character", "description": "Delete the character before the cursor." },
+    "<C-a>": { "name": "line-start", "description": "Move the cursor to the start of the line." },
+    "<C-e>": { "name": "line-end", "description": "Move the cursor to the end of the line." },
+    "<C-n>": { "name": "next-suggestion", "description": "Select the next suggestion." },
+    "<C-p>": { "name": "previous-suggestion", "description": "Select the previous suggestion." }
   }
 }

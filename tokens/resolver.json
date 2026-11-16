@@ -33,6 +33,12 @@
         },
         {
           "$ref": "component/status-bar.tokens.json"
+        },
+        {
+          "$ref": "component/palette.tokens.json"
+        },
+        {
+          "$ref": "component/which-key.tokens.json"
         }
       ]
     }

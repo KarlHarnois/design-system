@@ -3,7 +3,7 @@
     "status-bar": {
       "height": {
         "$type": "dimension",
-        "$value": "{bar.height}"
+        "$value": "{space.line}"
       },
       "padding-inline": {
         "$type": "dimension",

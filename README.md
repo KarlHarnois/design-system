@@ -25,6 +25,7 @@ inputs.design-system.url = "github:KarlHarnois/design-system";
 
 imports = [ inputs.design-system.homeManagerModules.default ];
 designSystem.enable = true;
+designSystem.accent = "teal";
 ```
 
 The module installs Iosevka and styles Waybar.

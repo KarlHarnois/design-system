@@ -12,7 +12,7 @@ export class Base16Plugin implements Plugin {
 
   build({ resolver, outputFile }: BuildHookOptions): void {
     for (const themeName of this.themeNames) {
-      const scheme = new Base16Scheme(new ResolvedTheme(themeName, resolver));
+      const scheme = new Base16Scheme(new ResolvedTheme({ theme: themeName }, resolver));
       outputFile(`base16/${themeName}.yaml`, scheme.render());
     }
   }

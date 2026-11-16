@@ -43,6 +43,6 @@ Layout follows a strict grid built on the character cell of Iosevka.
 
 ## 5. Restraint in color
 
-- Neutral surfaces, one accent.
+- Neutral surfaces, one accent. The accent comes from a fixed menu of tuned ramps, never a free color pick.
 - Mode colors exist to tell modes apart, not to decorate.
 - Every text and surface pair meets WCAG AA contrast.

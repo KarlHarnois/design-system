@@ -1,0 +1,12 @@
+{
+  "accent": {
+    "$type": "color",
+    "$description": "The red accent ramp. Themes pick the shade.",
+    "400": {
+      "$value": "{color.red.400}"
+    },
+    "500": {
+      "$value": "{color.red.500}"
+    }
+  }
+}

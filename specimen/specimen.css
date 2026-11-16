@@ -83,6 +83,14 @@ kbd {
   border: var(--border-width-default) solid var(--color-border-default);
 }
 
+.accent-option {
+  --swatch: var(--accent-400);
+}
+
+[data-theme="light"] .accent-option {
+  --swatch: var(--accent-500);
+}
+
 .bar::before {
   content: "";
   display: inline-block;

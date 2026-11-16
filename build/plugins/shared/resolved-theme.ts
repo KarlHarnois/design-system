@@ -1,4 +1,4 @@
-import type { Resolver, TokenNormalized, TokenNormalizedSet } from "@terrazzo/parser";
+import type { Resolver, ResolverInput, TokenNormalized, TokenNormalizedSet } from "@terrazzo/parser";
 import { tokenToColor } from "@terrazzo/token-tools";
 import Color from "colorjs.io";
 
@@ -6,11 +6,13 @@ const GENERIC_FONT_FAMILIES = new Set(["serif", "sans-serif", "monospace", "curs
 
 export class ResolvedTheme {
   readonly name: string;
+  private readonly input: ResolverInput;
   private readonly tokens: TokenNormalizedSet;
 
-  constructor(name: string, resolver: Resolver) {
-    this.name = name;
-    this.tokens = resolver.apply({ theme: name });
+  constructor(input: ResolverInput, resolver: Resolver) {
+    this.input = input;
+    this.name = input.theme;
+    this.tokens = resolver.apply(input);
   }
 
   colorIds(): string[] {
@@ -42,7 +44,7 @@ export class ResolvedTheme {
   private tokenOfType<T extends TokenNormalized["$type"]>(id: string, type: T): Extract<TokenNormalized, { $type: T }> {
     const token = this.tokens[id];
     if (token?.$type !== type) {
-      throw new Error(`Theme "${this.name}" has no ${type} token "${id}"`);
+      throw new Error(`Tokens for ${JSON.stringify(this.input)} have no ${type} token "${id}"`);
     }
     return token as Extract<TokenNormalized, { $type: T }>;
   }

@@ -1,17 +1,75 @@
 {
   "color": {
     "$type": "color",
-    "surface": { "base": { "$value": { "colorSpace": "srgb", "components": [0, 0, 0] } } },
-    "text": {
-      "primary": { "$value": { "colorSpace": "srgb", "components": [1, 1, 1] } },
-      "secondary": { "$value": { "colorSpace": "srgb", "components": [0.5, 0.5, 0.5] } },
-      "inverse": { "$value": { "colorSpace": "srgb", "components": [0, 0, 0] } }
+    "surface": {
+      "base": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
     },
-    "accent": { "$value": { "colorSpace": "srgb", "components": [1, 0, 0] } },
-    "focus": { "$value": { "colorSpace": "srgb", "components": [1, 0, 0] } }
+    "text": {
+      "primary": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "secondary": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        }
+      },
+      "inverse": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "accent": {
+      "$value": "{accent.400}"
+    },
+    "focus": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0,
+          0
+        ]
+      }
+    }
   },
   "mode": {
     "$type": "color",
-    "command": { "$value": { "colorSpace": "srgb", "components": [1, 1, 0] } }
+    "command": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          0
+        ]
+      }
+    }
   }
 }

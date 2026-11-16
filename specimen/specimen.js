@@ -95,6 +95,7 @@ class Specimen {
     this.root = root;
     this.grid = root.querySelector(".grid");
     this.filterInput = root.querySelector(".filter input");
+    this.accents = [...root.querySelectorAll(".accent-option")].map((option) => option.dataset.accent);
     this.focusList = new FocusList([...root.querySelectorAll(".item")]);
     this.modeLine = new ModeLine(root.querySelector(".mode-line"));
     this.keys = new KeySequence(this.normalBindings(), this.modeLine);
@@ -116,6 +117,7 @@ class Specimen {
       "<Esc>": () => this.clearFilter(),
       "<Space>g": () => this.grid.classList.toggle("show-grid"),
       "<Space>t": () => this.toggleTheme(),
+      "<Space>a": () => this.cycleAccent(),
     };
   }
 
@@ -155,6 +157,12 @@ class Specimen {
     this.filterInput.value = "";
     this.focusList.filter("");
     this.focusList.focusCurrent();
+  }
+
+  cycleAccent() {
+    const html = document.documentElement;
+    const nextIndex = (this.accents.indexOf(html.dataset.accent) + 1) % this.accents.length;
+    html.dataset.accent = this.accents[nextIndex];
   }
 
   toggleTheme() {

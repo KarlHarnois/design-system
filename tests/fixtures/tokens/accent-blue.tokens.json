@@ -1,0 +1,25 @@
+{
+  "accent": {
+    "$type": "color",
+    "400": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    "500": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      }
+    }
+  }
+}

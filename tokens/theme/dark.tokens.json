@@ -2,28 +2,56 @@
   "color": {
     "$type": "color",
     "surface": {
-      "base": { "$value": "{color.gray.950}" },
-      "raised": { "$value": "{color.gray.900}" },
-      "sunken": { "$value": "{color.gray.1000}" }
+      "base": {
+        "$value": "{color.gray.950}"
+      },
+      "raised": {
+        "$value": "{color.gray.900}"
+      },
+      "sunken": {
+        "$value": "{color.gray.1000}"
+      }
     },
     "text": {
-      "primary": { "$value": "{color.gray.50}" },
-      "secondary": { "$value": "{color.gray.400}" },
-      "inverse": { "$value": "{color.gray.950}" }
+      "primary": {
+        "$value": "{color.gray.50}"
+      },
+      "secondary": {
+        "$value": "{color.gray.400}"
+      },
+      "inverse": {
+        "$value": "{color.gray.950}"
+      }
     },
     "border": {
-      "default": { "$value": "{color.gray.700}" },
-      "strong": { "$value": "{color.gray.50}" }
+      "default": {
+        "$value": "{color.gray.700}"
+      },
+      "strong": {
+        "$value": "{color.gray.50}"
+      }
     },
-    "accent": { "$value": "{color.red.400}" },
-    "focus": { "$value": "{color.red.400}" }
+    "accent": {
+      "$value": "{accent.400}"
+    },
+    "focus": {
+      "$value": "{accent.400}"
+    }
   },
   "mode": {
     "$type": "color",
     "$description": "One color per vim mode, used by mode indicators and focus rings.",
-    "normal": { "$value": "{color.red.400}" },
-    "insert": { "$value": "{color.green.400}" },
-    "visual": { "$value": "{color.blue.400}" },
-    "command": { "$value": "{color.yellow.400}" }
+    "normal": {
+      "$value": "{color.red.400}"
+    },
+    "insert": {
+      "$value": "{color.green.400}"
+    },
+    "visual": {
+      "$value": "{color.blue.400}"
+    },
+    "command": {
+      "$value": "{color.yellow.400}"
+    }
   }
 }

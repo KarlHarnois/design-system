@@ -14,6 +14,21 @@
     }
   },
   "modifiers": {
+    "accent": {
+      "contexts": {
+        "red": [
+          {
+            "$ref": "accent-red.tokens.json"
+          }
+        ],
+        "blue": [
+          {
+            "$ref": "accent-blue.tokens.json"
+          }
+        ]
+      },
+      "default": "red"
+    },
     "theme": {
       "contexts": {
         "dark": [
@@ -33,6 +48,9 @@
   "resolutionOrder": [
     {
       "$ref": "#/sets/foundation"
+    },
+    {
+      "$ref": "#/modifiers/accent"
     },
     {
       "$ref": "#/modifiers/theme"

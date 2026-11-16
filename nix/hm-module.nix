@@ -9,7 +9,8 @@ self:
 let
   cfg = config.designSystem;
   system = pkgs.stdenv.hostPlatform.system;
-  themeDirectory = "${cfg.package}/waybar/${cfg.theme}";
+  modifiers = (builtins.fromJSON (builtins.readFile ../tokens/resolver.json)).modifiers;
+  themeDirectory = "${cfg.package}/waybar/${cfg.theme}/${cfg.accent}";
 in
 {
   options.designSystem = {
@@ -22,12 +23,15 @@ in
     };
 
     theme = lib.mkOption {
-      type = lib.types.enum [
-        "dark"
-        "light"
-      ];
-      default = "dark";
+      type = lib.types.enum (builtins.attrNames modifiers.theme.contexts);
+      default = modifiers.theme.default;
       description = "Theme to apply to every styled target.";
+    };
+
+    accent = lib.mkOption {
+      type = lib.types.enum (builtins.attrNames modifiers.accent.contexts);
+      default = modifiers.accent.default;
+      description = "Accent color, chosen from the fixed accent menu.";
     };
 
     waybar.enable = lib.mkOption {

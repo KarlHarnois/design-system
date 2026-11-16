@@ -22,7 +22,7 @@ modules changed width as their values changed.
   specimen status line stays on the page line, `space.line`.
 - Layout: workspaces sit left. Volume, battery, date and time sit right, with the time
   last. Each module has one cell of padding. `bar/bar.json` holds the modules (0011).
-  There is no submap and no window title, which 0011 records as a conflict with principle 1.
+  There is no window title, and no submap since the desktop uses none (0011).
 - One size: the whole bar is `type.ui-small`.
 - Contrast: the current workspace is inverted, `color.text.inverse`
   on `color.focus`, at the full line height. The time is `color.text.primary`.

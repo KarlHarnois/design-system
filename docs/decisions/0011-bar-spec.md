@@ -20,11 +20,8 @@ The preview dropped the submap and the window title, the config still had them.
   right-aligned text. Muted volume, `vol ---`, and charging, `chg 82%`, follow the same rule.
 - The bar has no submap and no window title, as in the preview.
 
-## The mode conflict
-Principle 1 says the current mode is always visible, named in the status bar. Without
-the submap module, the bar no longer names Hyprland's submap. Options:
-- Add the submap back to the spec. Waybar hides it outside a submap, so the bar stays
-  quiet most of the time.
-- Show the mode somewhere else, such as a Hyprland border colour per submap.
-- Narrow principle 1 to apps, and accept that the desktop shows no mode.
-Until one is chosen, the desktop breaks principle 1 while a submap is active.
+## The mode rule
+Principle 1 says the current mode is always visible, named in the status bar. The desktop
+uses no Hyprland submaps, so it has no mode to name, and the bar needs no submap module.
+If a submap is ever added, the `hyprland/submap` module goes back in the spec, inverted
+like the current workspace.

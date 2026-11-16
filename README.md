@@ -47,7 +47,7 @@ The key list is at the top of the page.
 1. Add the repository as a flake input:
 
    ```nix
-   inputs.design-system.url = "git+ssh://git@github.com/<owner>/design-system";
+   inputs.design-system.url = "github:KarlHarnois/design-system";
    ```
 
    For a local checkout, use `path:/absolute/path/to/design-system` instead.

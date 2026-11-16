@@ -1,7 +1,7 @@
 .which-key {
   position: fixed;
   inset: auto 0 var(--component-status-bar-height) auto;
-  padding: 0 var(--component-which-key-padding-inline);
+  padding: var(--space-inset);
   background: var(--component-which-key-background);
   color: var(--component-which-key-text);
 }
@@ -13,7 +13,7 @@
 .which-key-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 var(--component-which-key-padding-inline);
   display: grid;
   grid-template-columns: repeat(2, auto);
   column-gap: var(--component-which-key-column-gap);

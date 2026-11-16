@@ -3,6 +3,7 @@ import { defineConfig } from "@terrazzo/cli";
 import css from "@terrazzo/plugin-css";
 import { KnaveGridPlugin } from "./build/plugins/knave-grid/knave-grid-plugin.ts";
 import { Base16Plugin } from "./build/plugins/base16/base16-plugin.ts";
+import { HyprlandPlugin } from "./build/plugins/hyprland/hyprland-plugin.ts";
 import { WaybarPlugin } from "./build/plugins/waybar/waybar-plugin.ts";
 
 const RESOLVER_PATH = "./tokens/resolver.json";
@@ -31,6 +32,7 @@ export default defineConfig({
     }),
     new WaybarPlugin(THEMES),
     new Base16Plugin(THEMES),
+    new HyprlandPlugin(THEMES),
     new KnaveGridPlugin(GRID_SPEC_PATH, webFontDirectory()),
   ],
 });

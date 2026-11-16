@@ -33,6 +33,13 @@
         "value": 5,
         "unit": "px"
       }
+    },
+    "frame": {
+      "$type": "dimension",
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      }
     }
   },
   "bar": {
@@ -128,6 +135,35 @@
         "margin": {
           "$value": 1
         }
+      }
+    }
+  },
+  "radius": {
+    "container": {
+      "$type": "dimension",
+      "$value": {
+        "value": 6,
+        "unit": "px"
+      }
+    }
+  },
+  "border": {
+    "width": {
+      "default": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        }
+      }
+    }
+  },
+  "duration": {
+    "quick": {
+      "$type": "duration",
+      "$value": {
+        "value": 0.25,
+        "unit": "s"
       }
     }
   }

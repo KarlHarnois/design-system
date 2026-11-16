@@ -8,6 +8,7 @@ import type {
 import { tokenToColor } from "@terrazzo/token-tools";
 import Color from "colorjs.io";
 
+const MILLISECONDS_PER_SECOND = 1000;
 const GENERIC_FONT_FAMILIES = new Set(["serif", "sans-serif", "monospace", "cursive", "fantasy", "system-ui"]);
 
 export class ResolvedTheme {
@@ -44,6 +45,17 @@ export class ResolvedTheme {
   dimension(id: string): string {
     const { value, unit } = this.tokenOfType(id, "dimension").$value;
     return `${value}${unit}`;
+  }
+
+  pixels(id: string): number {
+    const { value, unit } = this.tokenOfType(id, "dimension").$value;
+    if (unit !== "px") throw new Error(`Token "${id}" is ${value}${unit}, but this target needs pixels`);
+    return value;
+  }
+
+  milliseconds(id: string): number {
+    const { value, unit } = this.tokenOfType(id, "duration").$value;
+    return unit === "s" ? value * MILLISECONDS_PER_SECOND : value;
   }
 
   fontFamily(id: string): string {

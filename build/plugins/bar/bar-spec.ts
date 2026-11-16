@@ -6,6 +6,7 @@ export type BarModule = {
   name: string;
   waybar: string;
   format: string;
+  icons?: { [name: string]: string };
   width?: number;
   align?: "left" | "right";
   variants?: { [variant: string]: string };

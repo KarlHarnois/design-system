@@ -7,8 +7,9 @@
         {
           "name": "workspaces",
           "waybar": "hyprland/workspaces",
-          "format": "{name}",
-          "sample": { "items": ["1", "2", "3"], "active": "1" }
+          "format": "{icon}",
+          "icons": { "10": "0" },
+          "sample": { "items": ["1", "2", "3", "10"], "active": "1" }
         }
       ]
     }

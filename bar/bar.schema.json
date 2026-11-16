@@ -50,6 +50,13 @@
           "description": "Waybar format string.",
           "type": "string"
         },
+        "icons": {
+          "description": "Waybar format icons: text shown for `{icon}` by name. Names without an icon show as themselves, such as workspace 10 as `0`.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "width": {
           "description": "Fixed width in characters.",
           "type": "integer",

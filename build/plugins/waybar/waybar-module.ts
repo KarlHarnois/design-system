@@ -20,9 +20,10 @@ export class WaybarModule {
   }
 
   settings(): { [key: string]: unknown } {
-    const { format, width, align } = this.module;
+    const { format, icons, width, align } = this.module;
     return {
       format,
+      ...(icons === undefined ? {} : { "format-icons": icons }),
       ...this.variantFormats(),
       ...(width === undefined ? {} : { "min-length": width }),
       ...(align === undefined ? {} : { align: WAYBAR_ALIGN[align] }),

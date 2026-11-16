@@ -106,6 +106,10 @@ describe("WaybarPlugin", () => {
     expect(config()["group/status"]).toEqual({ orientation: "inherit", modules: ["pulseaudio", "battery"] });
   });
 
+  it("writes the spec's icons as Waybar format icons", () => {
+    expect(config()["hyprland/workspaces"]).toEqual({ format: "{icon}", "format-icons": { "10": "0" } });
+  });
+
   it("writes a state's own format", () => {
     expect(config().battery["format-critical"]).toBe("power {capacity:02}%");
   });

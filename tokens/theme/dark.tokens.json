@@ -36,6 +36,21 @@
     },
     "selection": {
       "$value": "{color.gray.800}"
+    },
+    "fill": {
+      "$description": "Interaction fills for controls. Strong fills sit under inverted controls, subtle fills under outlined and plain ones.",
+      "strong-hover": {
+        "$value": "{color.gray.200}"
+      },
+      "strong-pressed": {
+        "$value": "{color.gray.300}"
+      },
+      "subtle-hover": {
+        "$value": "{color.surface.raised}"
+      },
+      "subtle-pressed": {
+        "$value": "{color.selection}"
+      }
     }
   }
 }

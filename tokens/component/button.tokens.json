@@ -1,7 +1,7 @@
 {
   "component": {
     "button": {
-      "$description": "One line tall, so a button sits on the baseline grid.",
+      "$description": "A one-line control. Every variant has the same shape, so changing variant or state never moves it.",
       "height": {
         "$type": "dimension",
         "$value": "{space.line}"
@@ -10,10 +10,32 @@
         "$type": "dimension",
         "$value": "{space.control}"
       },
+      "outline-width": {
+        "$type": "dimension",
+        "$value": "{border.width.default}"
+      },
+      "small": {
+        "$description": "For dense places such as toolbars and table rows. Set in type.ui-small on the 16px bar line.",
+        "height": {
+          "$type": "dimension",
+          "$value": "{bar.line}"
+        },
+        "padding-inline": {
+          "$type": "dimension",
+          "$value": "{space.marker}"
+        }
+      },
       "primary": {
         "$type": "color",
+        "$description": "Inverted. The one main action in a view.",
         "background": {
           "$value": "{color.text.primary}"
+        },
+        "background-hover": {
+          "$value": "{color.fill.strong-hover}"
+        },
+        "background-pressed": {
+          "$value": "{color.fill.strong-pressed}"
         },
         "text": {
           "$value": "{color.text.inverse}"
@@ -21,11 +43,41 @@
       },
       "secondary": {
         "$type": "color",
-        "background": {
-          "$value": "{color.surface.raised}"
+        "$description": "A 1px outline drawn inside the button. Other actions next to a primary one.",
+        "background-hover": {
+          "$value": "{color.fill.subtle-hover}"
+        },
+        "background-pressed": {
+          "$value": "{color.fill.subtle-pressed}"
+        },
+        "outline": {
+          "$value": "{color.border.default}"
         },
         "text": {
           "$value": "{color.text.primary}"
+        }
+      },
+      "plain": {
+        "$type": "color",
+        "$description": "Text only, for toolbars and dense rows.",
+        "background-hover": {
+          "$value": "{color.fill.subtle-hover}"
+        },
+        "background-pressed": {
+          "$value": "{color.fill.subtle-pressed}"
+        },
+        "text": {
+          "$value": "{color.text.primary}"
+        }
+      },
+      "disabled": {
+        "$type": "color",
+        "$description": "Still focusable, so keyboard users can find it. Primary loses its fill, secondary keeps its outline.",
+        "text": {
+          "$value": "{color.text.secondary}"
+        },
+        "background": {
+          "$value": "{color.surface.raised}"
         }
       }
     }

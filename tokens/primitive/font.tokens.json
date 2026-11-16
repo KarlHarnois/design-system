@@ -9,6 +9,14 @@
           "monospace"
         ]
       },
+      "mono-wide": {
+        "$value": [
+          "Iosevka Extended",
+          "Iosevka",
+          "Iosevka Term",
+          "monospace"
+        ]
+      },
       "prose": {
         "$value": [
           "Iosevka Aile",

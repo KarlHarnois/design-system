@@ -27,8 +27,9 @@
       }
     },
     "ui-small": {
+      "$description": "Iosevka Extended, because wider letters read better at small sizes. Its letters drift from the 7px cell inside a line, but each line still starts on the grid.",
       "$value": {
-        "fontFamily": "{font.family.mono}",
+        "fontFamily": "{font.family.mono-wide}",
         "fontSize": "{font.size.small}",
         "fontWeight": "{font.weight.regular}",
         "lineHeight": "{font.line-height.small}",

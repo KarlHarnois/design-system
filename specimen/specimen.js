@@ -93,7 +93,6 @@ class KeySequence {
 class Specimen {
   constructor(root) {
     this.root = root;
-    this.grid = root.querySelector(".grid");
     this.filterInput = root.querySelector(".filter input");
     this.accents = [...root.querySelectorAll(".accent-option")].map((option) => option.dataset.accent);
     this.focusList = new FocusList([...root.querySelectorAll(".item")]);
@@ -115,7 +114,7 @@ class Specimen {
       G: () => this.focusList.last(),
       "/": () => this.enterCommand(),
       "<Esc>": () => this.clearFilter(),
-      "<Space>g": () => this.grid.classList.toggle("show-grid"),
+      "<Space>g": () => document.documentElement.classList.toggle("grid-overlay"),
       "<Space>t": () => this.toggleTheme(),
       "<Space>a": () => this.cycleAccent(),
     };

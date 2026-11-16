@@ -1,34 +1,84 @@
 {
   "space": {
     "$type": "dimension",
-    "none": { "$value": "{dimension.0}" },
-    "cell": { "$value": "{dimension.1}" },
-    "gutter": { "$value": "{dimension.2}" },
-    "line": { "$value": "{dimension.3}" },
-    "block": { "$value": "{dimension.6}" },
-    "section": { "$value": "{dimension.12}" }
+    "none": {
+      "$value": "{dimension.0}"
+    },
+    "cell": {
+      "$value": "{dimension.1}"
+    },
+    "gutter": {
+      "$value": "{dimension.2}"
+    },
+    "line": {
+      "$value": "{dimension.3}"
+    },
+    "block": {
+      "$value": "{dimension.6}"
+    },
+    "section": {
+      "$value": "{dimension.12}"
+    }
   },
   "grid": {
-    "columns": { "$type": "number", "$value": 12 },
-    "gutter": { "$type": "dimension", "$value": "{dimension.2}" },
-    "margin": { "$type": "dimension", "$value": "{dimension.3}" },
-    "baseline": { "$type": "dimension", "$value": "{dimension.3}" },
-    "measure": {
-      "$type": "dimension",
-      "$description": "Maximum line length for reading text, 72 Iosevka cells at 16px.",
-      "$value": { "value": 36, "unit": "rem" }
+    "$type": "number",
+    "$description": "Type areas for knave-grid, measured in squares. A square is one leading wide and tall. Each type area fits its columns when column-count divides width + 1.",
+    "type-area": {
+      "narrow": {
+        "width": {
+          "$value": 23
+        },
+        "column-count": {
+          "$value": 4
+        },
+        "margin": {
+          "$value": 1
+        }
+      },
+      "medium": {
+        "width": {
+          "$value": 31
+        },
+        "column-count": {
+          "$value": 8
+        },
+        "margin": {
+          "$value": 1
+        }
+      },
+      "wide": {
+        "width": {
+          "$value": 47
+        },
+        "column-count": {
+          "$value": 12
+        },
+        "margin": {
+          "$value": 2
+        }
+      }
     }
   },
   "border": {
     "width": {
       "$type": "dimension",
-      "default": { "$value": "{dimension.hairline}" },
-      "strong": { "$value": "{dimension.rule}" }
+      "default": {
+        "$value": "{dimension.hairline}"
+      },
+      "strong": {
+        "$value": "{dimension.rule}"
+      }
     }
   },
   "focus": {
-    "width": { "$type": "dimension", "$value": "{dimension.rule}" },
-    "offset": { "$type": "dimension", "$value": "{dimension.rule}" }
+    "width": {
+      "$type": "dimension",
+      "$value": "{dimension.rule}"
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{dimension.rule}"
+    }
   },
   "target": {
     "min-size": {

@@ -1,10 +1,17 @@
 {
   description = "Keyboard first design system: DTCG tokens, vim keymap, and builds for web and the Linux desktop";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    knave.url = "github:knave-lang/knave/v0.15.0";
+  };
 
   outputs =
-    { self, nixpkgs }:
+    {
+      self,
+      nixpkgs,
+      knave,
+    }:
     let
       systems = [
         "x86_64-linux"
@@ -15,6 +22,7 @@
     {
       packages = forEachSystem (pkgs: {
         default = pkgs.callPackage ./nix/package.nix { };
+        web-fonts = pkgs.callPackage ./nix/web-fonts.nix { };
       });
 
       checks = forEachSystem (pkgs: {
@@ -26,7 +34,10 @@
           packages = [
             pkgs.nodejs_24
             pkgs.pnpm_12
+            knave.packages.${pkgs.stdenv.hostPlatform.system}.default
+            pkgs.cargo
           ];
+          DESIGN_SYSTEM_WEB_FONTS = self.packages.${pkgs.stdenv.hostPlatform.system}.web-fonts;
         };
       });
 

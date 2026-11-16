@@ -4,7 +4,7 @@ A keyboard first design system with vim bindings and a Swiss grid.
 Tokens are in the [DTCG format](https://www.designtokens.org/tr/2025.10/format/).
 See [`docs/principles.md`](docs/principles.md) for the rules.
 
-`pnpm build` writes CSS variables, Waybar styles and base16 schemes to `dist/`.
+`pnpm build` writes CSS variables, a [knave-grid](https://github.com/KarlHarnois/knave-grid) baseline grid, Waybar styles and base16 schemes to `dist/`.
 
 ## Develop
 

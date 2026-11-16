@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { defineConfig } from "@terrazzo/cli";
 import css from "@terrazzo/plugin-css";
+import { KnaveGridPlugin } from "./build/plugins/knave-grid/knave-grid-plugin.ts";
 import { Base16Plugin } from "./build/plugins/base16/base16-plugin.ts";
 import { WaybarPlugin } from "./build/plugins/waybar/waybar-plugin.ts";
 
@@ -8,6 +9,15 @@ const RESOLVER_PATH = "./tokens/resolver.json";
 const { modifiers } = JSON.parse(readFileSync(RESOLVER_PATH, "utf8"));
 const THEMES = Object.keys(modifiers.theme.contexts);
 const ACCENTS = Object.keys(modifiers.accent.contexts);
+const GRID_SPEC_PATH = "./grid/src/design-grid.knv";
+
+const webFontDirectory = (): string => {
+  const directory = process.env.DESIGN_SYSTEM_WEB_FONTS;
+  if (directory === undefined) {
+    throw new Error("DESIGN_SYSTEM_WEB_FONTS is not set. Run the build inside the Nix dev shell.");
+  }
+  return directory;
+};
 
 const accentPermutation = (accent: string) => ({
   input: { accent },
@@ -29,5 +39,6 @@ export default defineConfig({
     }),
     new WaybarPlugin(THEMES, ACCENTS),
     new Base16Plugin(THEMES),
+    new KnaveGridPlugin(GRID_SPEC_PATH, webFontDirectory()),
   ],
 });

@@ -3,3 +3,4 @@ dist/
 result
 result-*
 .direnv/
+grid/src/design-grid.knv

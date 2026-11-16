@@ -1,0 +1,21 @@
+(use design-grid design-grid)
+(use knave-grid overlay-css write-grid)
+
+(def output-directory "../dist/grid")
+
+(def write-file
+  (rust "std::fs::write({0}, {1}).map_err(|error| error.to_string())"
+    (fn ((ref str) (ref str))
+      (result unit string))))
+
+(deftask build-grid ()
+  "Writes the grid stylesheet, its fonts and the overlay into dist/grid/."
+  (let (grid (try (map-err (design-grid) error-text)))
+    (try (map-err (write-grid (ref grid) (as-str (output-path "grid.css")))
+                  error-text))
+    (write-file (as-str (output-path "grid-overlay.css")) overlay-css)))
+
+(defn output-path (file-name)
+  (str output-directory "/" file-name))
+
+(defn error-text (error) (str error))

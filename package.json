@@ -6,11 +6,11 @@
   "type": "module",
   "packageManager": "pnpm@12.9.0",
   "scripts": {
-    "build": "tz build",
+    "build": "tz build && rm -rf dist/grid && cd grid && knave task build-grid",
     "lint": "tz check",
     "test": "vitest run --dir tests",
     "typecheck": "tsc --noEmit",
-    "specimen": "tz build && chromium --user-data-dir=\"${XDG_CACHE_HOME:-$HOME/.cache}/design-system-specimen\" --app=\"file://$PWD/specimen/index.html\""
+    "specimen": "pnpm build && chromium --user-data-dir=\"${XDG_CACHE_HOME:-$HOME/.cache}/design-system-specimen\" --app=\"file://$PWD/specimen/index.html\""
   },
   "devDependencies": {
     "@terrazzo/cli": "2.10.0",

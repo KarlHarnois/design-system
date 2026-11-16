@@ -27,11 +27,12 @@ down, `dd` removes the item, `yy` copies it, `p` pastes it after the current one
 
 ## 3. Swiss grid
 
-Layout follows a strict grid built on the character cell of Iosevka.
+Layout follows a Swiss grid that [knave-grid](https://github.com/KarlHarnois/knave-grid) generates from the tokens.
 
-- One horizontal unit is `1ch`. Iosevka is 0.5em wide, so at 16px a unit is 8px.
-- One vertical unit is the line height, 24px at 16px. Spacing comes in steps of 8px.
-- Web layouts use 12 columns. Bars and terminals use the cell directly.
+- The unit is the square: one leading tall and one leading wide, 24px at 16px type.
+- Every vertical space is a whole number of lines, so all text sits on the baseline grid.
+- Type areas, columns, gutters and margins are whole squares. See `grid.type-area.*` tokens.
+- Pictures and swatches span fields that run from the cap height of their first line to the descender of their last.
 - Text is flush left, ragged right. No centered paragraphs, no justified text.
 - Hierarchy comes from size, weight, and position. Color is reserved for state.
 

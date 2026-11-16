@@ -5,6 +5,7 @@
   pnpm_12,
   pnpmConfigHook,
   fetchPnpmDeps,
+  callPackage,
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
@@ -32,6 +33,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     hash = "sha256-VpNtOf13H2vMSMS0qGd1XTELrJi4upXE0sS/iZEU7i8=";
   };
 
+  env.DESIGN_SYSTEM_WEB_FONTS = callPackage ./web-fonts.nix { };
+
   nativeBuildInputs = [
     nodejs_24
     pnpm_12
@@ -40,7 +43,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   buildPhase = ''
     runHook preBuild
-    pnpm build
+    pnpm exec tz build
     runHook postBuild
   '';
 

@@ -1,4 +1,10 @@
-import type { Resolver, ResolverInput, TokenNormalized, TokenNormalizedSet } from "@terrazzo/parser";
+import type {
+  Resolver,
+  ResolverInput,
+  TokenNormalized,
+  TokenNormalizedSet,
+  TypographyValueNormalized,
+} from "@terrazzo/parser";
 import { tokenToColor } from "@terrazzo/token-tools";
 import Color from "colorjs.io";
 
@@ -11,8 +17,12 @@ export class ResolvedTheme {
 
   constructor(input: ResolverInput, resolver: Resolver) {
     this.input = input;
-    this.name = input.theme;
+    this.name = input.theme ?? resolver.inputDefault.theme;
     this.tokens = resolver.apply(input);
+  }
+
+  idsUnder(group: string): string[] {
+    return Object.keys(this.tokens).filter((id) => id.startsWith(`${group}.`));
   }
 
   colorIds(): string[] {
@@ -33,8 +43,21 @@ export class ResolvedTheme {
   }
 
   fontFamily(id: string): string {
-    const families = this.tokenOfType(id, "fontFamily").$value;
-    return families.map((family) => ResolvedTheme.quoteFontFamily(family)).join(", ");
+    return this.fontFamilyNames(id)
+      .map((family) => ResolvedTheme.quoteFontFamily(family))
+      .join(", ");
+  }
+
+  fontFamilyNames(id: string): string[] {
+    return this.tokenOfType(id, "fontFamily").$value;
+  }
+
+  number(id: string): number {
+    return this.tokenOfType(id, "number").$value;
+  }
+
+  typography(id: string): TypographyValueNormalized {
+    return this.tokenOfType(id, "typography").$value;
   }
 
   private static quoteFontFamily(family: string): string {

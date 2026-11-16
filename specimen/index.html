@@ -5,72 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Token Specimen</title>
     <link rel="stylesheet" href="../dist/css/tokens.css" />
+    <link rel="stylesheet" href="../dist/grid/grid.css" />
+    <link rel="stylesheet" href="../dist/grid/grid-overlay.css" />
     <link rel="stylesheet" href="specimen.css" />
   </head>
   <body>
-    <main class="grid">
+    <main class="type-area">
       <header class="masthead">
-        <h1>Specimen</h1>
-        <p class="prose">
+        <h1 class="type-h1">Specimen</h1>
+        <p class="type-prose">
           Every token on one page. Move with <kbd>j</kbd> <kbd>k</kbd>, jump with <kbd>gg</kbd> <kbd>G</kbd>,
           filter with <kbd>/</kbd>. <kbd>&lt;Space&gt;g</kbd> toggles the grid, <kbd>&lt;Space&gt;t</kbd> the theme, <kbd>&lt;Space&gt;a</kbd> the accent.
         </p>
       </header>
 
       <section class="group" aria-label="Type scale">
-        <h2 class="group-title">Type</h2>
-        <p class="item" tabindex="-1" data-name="type h1" style="font: var(--type-h1)">h1 48/72 Iosevka bold</p>
-        <p class="item" tabindex="-1" data-name="type h2" style="font: var(--type-h2)">h2 32/48 Iosevka bold</p>
-        <p class="item" tabindex="-1" data-name="type h3" style="font: var(--type-h3)">h3 20/24 Iosevka bold</p>
-        <p class="item" tabindex="-1" data-name="type ui body" style="font: var(--type-ui)">ui 16/24 Iosevka regular</p>
-        <p class="item" tabindex="-1" data-name="type label" style="font: var(--type-label)">label 16/24 Iosevka bold</p>
-        <p class="item" tabindex="-1" data-name="type ui small" style="font: var(--type-ui-small)">ui-small 14/24 Iosevka regular</p>
-        <p class="item prose" tabindex="-1" data-name="type prose aile reading">
+        <h2 class="group-title type-label">Type</h2>
+        <p class="item type-h1" tabindex="-1" data-name="type h1">h1 48/72 Iosevka bold</p>
+        <p class="item type-h2" tabindex="-1" data-name="type h2">h2 32/48 Iosevka bold</p>
+        <p class="item type-h3" tabindex="-1" data-name="type h3">h3 20/24 Iosevka bold</p>
+        <p class="item" tabindex="-1" data-name="type ui body">ui 16/24 Iosevka regular</p>
+        <p class="item type-label" tabindex="-1" data-name="type label">label 16/24 Iosevka bold</p>
+        <p class="item type-ui-small" tabindex="-1" data-name="type ui small">ui-small 14/24 Iosevka regular</p>
+        <p class="item type-prose" tabindex="-1" data-name="type prose aile reading">
           prose 16/24 Iosevka Aile. Long reading text uses the proportional sibling of Iosevka and stops at the
           reading measure, so lines stay near seventy two characters.
         </p>
       </section>
 
       <section class="group" aria-label="Color">
-        <h2 class="group-title">Color</h2>
-        <ul class="swatches">
-          <li class="item swatch" tabindex="-1" data-name="color surface base" style="--swatch: var(--color-surface-base)">surface.base</li>
-          <li class="item swatch" tabindex="-1" data-name="color surface raised" style="--swatch: var(--color-surface-raised)">surface.raised</li>
-          <li class="item swatch" tabindex="-1" data-name="color surface sunken" style="--swatch: var(--color-surface-sunken)">surface.sunken</li>
-          <li class="item swatch" tabindex="-1" data-name="color text primary" style="--swatch: var(--color-text-primary)">text.primary</li>
-          <li class="item swatch" tabindex="-1" data-name="color text secondary" style="--swatch: var(--color-text-secondary)">text.secondary</li>
-          <li class="item swatch" tabindex="-1" data-name="color border default" style="--swatch: var(--color-border-default)">border.default</li>
-          <li class="item swatch" tabindex="-1" data-name="color accent focus" style="--swatch: var(--color-accent)">accent / focus</li>
+        <h2 class="group-title type-label">Color</h2>
+        <ul class="swatches grid">
+          <li class="item swatch" tabindex="-1" data-name="color surface base" style="--swatch: var(--color-surface-base)"><div class="field"><div class="chip"></div></div>surface.base</li>
+          <li class="item swatch" tabindex="-1" data-name="color surface raised" style="--swatch: var(--color-surface-raised)"><div class="field"><div class="chip"></div></div>surface.raised</li>
+          <li class="item swatch" tabindex="-1" data-name="color surface sunken" style="--swatch: var(--color-surface-sunken)"><div class="field"><div class="chip"></div></div>surface.sunken</li>
+          <li class="item swatch" tabindex="-1" data-name="color text primary" style="--swatch: var(--color-text-primary)"><div class="field"><div class="chip"></div></div>text.primary</li>
+          <li class="item swatch" tabindex="-1" data-name="color text secondary" style="--swatch: var(--color-text-secondary)"><div class="field"><div class="chip"></div></div>text.secondary</li>
+          <li class="item swatch" tabindex="-1" data-name="color border default" style="--swatch: var(--color-border-default)"><div class="field"><div class="chip"></div></div>border.default</li>
+          <li class="item swatch" tabindex="-1" data-name="color accent focus" style="--swatch: var(--color-accent)"><div class="field"><div class="chip"></div></div>accent / focus</li>
         </ul>
       </section>
 
       <section class="group" aria-label="Accents">
-        <h2 class="group-title">Accents</h2>
-        <ul class="swatches">
-          <li class="item swatch accent-option" tabindex="-1" data-name="accent red" data-accent="red">red</li>
-          <li class="item swatch accent-option" tabindex="-1" data-name="accent orange" data-accent="orange">orange</li>
-          <li class="item swatch accent-option" tabindex="-1" data-name="accent yellow" data-accent="yellow">yellow</li>
-          <li class="item swatch accent-option" tabindex="-1" data-name="accent green" data-accent="green">green</li>
-          <li class="item swatch accent-option" tabindex="-1" data-name="accent teal" data-accent="teal">teal</li>
-          <li class="item swatch accent-option" tabindex="-1" data-name="accent blue" data-accent="blue">blue</li>
-          <li class="item swatch accent-option" tabindex="-1" data-name="accent purple" data-accent="purple">purple</li>
-          <li class="item swatch accent-option" tabindex="-1" data-name="accent pink" data-accent="pink">pink</li>
-          <li class="item swatch accent-option" tabindex="-1" data-name="accent slate" data-accent="slate">slate</li>
+        <h2 class="group-title type-label">Accents</h2>
+        <ul class="swatches grid">
+          <li class="item swatch accent-option" tabindex="-1" data-name="accent red" data-accent="red"><div class="field"><div class="chip"></div></div>red</li>
+          <li class="item swatch accent-option" tabindex="-1" data-name="accent orange" data-accent="orange"><div class="field"><div class="chip"></div></div>orange</li>
+          <li class="item swatch accent-option" tabindex="-1" data-name="accent yellow" data-accent="yellow"><div class="field"><div class="chip"></div></div>yellow</li>
+          <li class="item swatch accent-option" tabindex="-1" data-name="accent green" data-accent="green"><div class="field"><div class="chip"></div></div>green</li>
+          <li class="item swatch accent-option" tabindex="-1" data-name="accent teal" data-accent="teal"><div class="field"><div class="chip"></div></div>teal</li>
+          <li class="item swatch accent-option" tabindex="-1" data-name="accent blue" data-accent="blue"><div class="field"><div class="chip"></div></div>blue</li>
+          <li class="item swatch accent-option" tabindex="-1" data-name="accent purple" data-accent="purple"><div class="field"><div class="chip"></div></div>purple</li>
+          <li class="item swatch accent-option" tabindex="-1" data-name="accent pink" data-accent="pink"><div class="field"><div class="chip"></div></div>pink</li>
+          <li class="item swatch accent-option" tabindex="-1" data-name="accent slate" data-accent="slate"><div class="field"><div class="chip"></div></div>slate</li>
         </ul>
       </section>
 
       <section class="group" aria-label="Modes">
-        <h2 class="group-title">Modes</h2>
-        <ul class="swatches">
-          <li class="item swatch" tabindex="-1" data-name="mode normal" style="--swatch: var(--mode-normal)">mode.normal</li>
-          <li class="item swatch" tabindex="-1" data-name="mode insert" style="--swatch: var(--mode-insert)">mode.insert</li>
-          <li class="item swatch" tabindex="-1" data-name="mode visual" style="--swatch: var(--mode-visual)">mode.visual</li>
-          <li class="item swatch" tabindex="-1" data-name="mode command" style="--swatch: var(--mode-command)">mode.command</li>
+        <h2 class="group-title type-label">Modes</h2>
+        <ul class="swatches grid">
+          <li class="item swatch" tabindex="-1" data-name="mode normal" style="--swatch: var(--mode-normal)"><div class="field"><div class="chip"></div></div>mode.normal</li>
+          <li class="item swatch" tabindex="-1" data-name="mode insert" style="--swatch: var(--mode-insert)"><div class="field"><div class="chip"></div></div>mode.insert</li>
+          <li class="item swatch" tabindex="-1" data-name="mode visual" style="--swatch: var(--mode-visual)"><div class="field"><div class="chip"></div></div>mode.visual</li>
+          <li class="item swatch" tabindex="-1" data-name="mode command" style="--swatch: var(--mode-command)"><div class="field"><div class="chip"></div></div>mode.command</li>
         </ul>
       </section>
 
       <section class="group" aria-label="Space">
-        <h2 class="group-title">Space</h2>
+        <h2 class="group-title type-label">Space</h2>
         <div class="item bar" tabindex="-1" data-name="space cell" style="--bar: var(--space-cell)">cell 8</div>
         <div class="item bar" tabindex="-1" data-name="space gutter" style="--bar: var(--space-gutter)">gutter 16</div>
         <div class="item bar" tabindex="-1" data-name="space line" style="--bar: var(--space-line)">line 24</div>

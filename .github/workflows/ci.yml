@@ -15,3 +15,5 @@ jobs:
         run: nix flake check --print-build-logs
       - name: Build tokens
         run: nix build --print-build-logs
+      - name: Build the grid with knave-grid
+        run: nix develop --command sh -c "pnpm install --frozen-lockfile && pnpm build"

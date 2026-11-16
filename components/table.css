@@ -98,9 +98,10 @@
   max-width: 100%;
   background: var(--color-focus);
   color: var(--component-table-active-cell-text);
+  min-width: calc(var(--component-table-row-height) - 2 * var(--space-marker));
   box-shadow:
-    calc(-1 * var(--space-control)) 0 0 var(--color-focus),
-    var(--space-control) 0 0 var(--color-focus);
+    calc(-1 * var(--space-marker)) 0 0 var(--color-focus),
+    var(--space-marker) 0 0 var(--color-focus);
 }
 
 .table tr:focus .table-cell-active.table-number {

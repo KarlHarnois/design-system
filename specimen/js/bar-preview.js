@@ -12,14 +12,14 @@ class BarPreview {
 
   renderBar(element) {
     element.replaceChildren(
-      this.side("modules-left", this.spec.left.map((module) => this.module(module, module.sample, []))),
+      this.side("modules-left", this.spec.left.flatMap((group) => group.modules).map((module) => this.module(module, module.sample, []))),
       this.side("modules-center", []),
-      this.side("modules-right", this.spec.right.map((module) => this.module(module, module.sample, []))),
+      this.side("modules-right", this.spec.right.flatMap((group) => group.modules).map((module) => this.module(module, module.sample, []))),
     );
   }
 
   renderStates(element) {
-    const samples = [...this.spec.left, ...this.spec.right].flatMap((module) =>
+    const samples = [...this.spec.left, ...this.spec.right].flatMap((group) => group.modules).flatMap((module) =>
       (module.stateSamples ?? []).map((sample) => this.stateModule(module, sample)),
     );
     element.replaceChildren(this.side("modules-right", samples));

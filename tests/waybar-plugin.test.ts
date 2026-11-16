@@ -63,7 +63,7 @@ describe("WaybarPlugin", () => {
   });
 
   it("writes the same settings into the Waybar config", () => {
-    expect(fixtureBuild.file("waybar/dark/config.jsonc")).toContain('"modules-right": [\n    "battery",\n    "clock#time"\n  ]');
+    expect(fixtureBuild.file("waybar/dark/config.jsonc")).toContain('"modules-right": [\n    "pulseaudio",\n    "battery",\n    "clock#time"\n  ]');
   });
 
   it("makes the bar one bar line tall plus its inset and outline", () => {
@@ -75,7 +75,7 @@ describe("WaybarPlugin", () => {
   });
 
   it("lists the modules of each side in the spec's order", () => {
-    expect(config()["modules-right"]).toEqual(["battery", "clock#time"]);
+    expect(config()["modules-right"]).toEqual(["pulseaudio", "battery", "clock#time"]);
   });
 
   it("keeps the spec's format for each module", () => {

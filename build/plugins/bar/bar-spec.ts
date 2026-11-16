@@ -9,16 +9,18 @@ export type BarModule = {
   width?: number;
   align?: "left" | "right";
   variants?: { [variant: string]: string };
-  states?: { [state: string]: { below: number } };
+  states?: { [state: string]: { below: number; format?: string } };
   sample: BarSample;
   stateSamples?: (BarSample & { variant?: string; state?: string })[];
 };
 
-export type BarSpecJson = { left: BarModule[]; right: BarModule[] };
+export type BarGroup = { name: string; modules: BarModule[] };
+
+export type BarSpecJson = { left: BarGroup[]; right: BarGroup[] };
 
 export class BarSpec {
-  readonly left: BarModule[];
-  readonly right: BarModule[];
+  readonly left: BarGroup[];
+  readonly right: BarGroup[];
 
   constructor({ left, right }: BarSpecJson) {
     this.left = left;
@@ -30,7 +32,7 @@ export class BarSpec {
   }
 
   modules(): BarModule[] {
-    return [...this.left, ...this.right];
+    return [...this.left, ...this.right].flatMap((group) => group.modules);
   }
 
   toJSON(): BarSpecJson {

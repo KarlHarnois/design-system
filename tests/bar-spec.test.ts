@@ -15,7 +15,8 @@ describe("bar spec", () => {
   });
 
   it("names a variant or a state in every state sample", () => {
-    const samples = [...bar.left, ...bar.right].flatMap((module) => module.stateSamples ?? []);
+    const modules = [...bar.left, ...bar.right].flatMap((group) => group.modules);
+    const samples = modules.flatMap((module) => module.stateSamples ?? []);
 
     for (const sample of samples) {
       expect(sample.variant ?? sample.state).toBeDefined();

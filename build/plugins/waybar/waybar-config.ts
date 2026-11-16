@@ -29,8 +29,8 @@ export class WaybarConfig {
       "margin-right": frame,
       "margin-left": frame,
       spacing: 0,
-      "modules-left": this.spec.left.map((module) => module.waybar),
-      "modules-right": this.spec.right.map((module) => module.waybar),
+      "modules-left": this.spec.left.flatMap((group) => group.modules.map((module) => module.waybar)),
+      "modules-right": this.spec.right.flatMap((group) => group.modules.map((module) => module.waybar)),
       ...this.moduleSettings(),
     };
   }

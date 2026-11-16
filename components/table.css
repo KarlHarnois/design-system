@@ -1,21 +1,87 @@
 .table {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  grid-auto-columns: var(--column);
+  column-gap: var(--gutter);
   border-collapse: collapse;
   color: var(--component-table-text);
 }
 
-.table th,
-.table td {
+.table :is(thead, tbody) {
+  display: contents;
+}
+
+.table tr {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+}
+
+.table :is(th, td) {
   height: var(--component-table-row-height);
-  padding: 0 var(--component-table-cell-padding-inline);
+  padding: 0;
   line-height: var(--component-table-row-height);
   text-align: left;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table :is(th, td):nth-child(1) {
+  grid-column: span var(--table-span-1, 1);
+}
+
+.table :is(th, td):nth-child(2) {
+  grid-column: span var(--table-span-2, 1);
+}
+
+.table :is(th, td):nth-child(3) {
+  grid-column: span var(--table-span-3, 1);
+}
+
+.table :is(th, td):nth-child(4) {
+  grid-column: span var(--table-span-4, 1);
+}
+
+.table :is(th, td):nth-child(5) {
+  grid-column: span var(--table-span-5, 1);
+}
+
+.table :is(th, td):nth-child(6) {
+  grid-column: span var(--table-span-6, 1);
+}
+
+.table :is(th, td):nth-child(7) {
+  grid-column: span var(--table-span-7, 1);
+}
+
+.table :is(th, td):nth-child(8) {
+  grid-column: span var(--table-span-8, 1);
+}
+
+.table :is(th, td):nth-child(9) {
+  grid-column: span var(--table-span-9, 1);
+}
+
+.table :is(th, td):nth-child(10) {
+  grid-column: span var(--table-span-10, 1);
+}
+
+.table :is(th, td):nth-child(11) {
+  grid-column: span var(--table-span-11, 1);
+}
+
+.table :is(th, td):nth-child(12) {
+  grid-column: span var(--table-span-12, 1);
+}
+
+.table thead tr {
+  box-shadow: inset 0 calc(-1 * var(--component-table-header-rule-width)) var(--component-table-header-rule);
 }
 
 .table th {
   font-weight: var(--font-weight-bold);
   color: var(--component-table-header-text);
-  box-shadow: inset 0 calc(-1 * var(--component-table-header-rule-width)) var(--component-table-header-rule);
 }
 
 .table .table-number {
@@ -30,4 +96,7 @@
 .table tr:focus .table-cell-active {
   background: var(--mode-color);
   color: var(--component-table-active-cell-text);
+  box-shadow:
+    calc(-1 * var(--component-table-cursor-overhang)) 0 var(--mode-color),
+    var(--component-table-cursor-overhang) 0 var(--mode-color);
 }

@@ -1,14 +1,10 @@
 {
   "component": {
     "table": {
-      "$description": "Rows are one line tall. Only the header has a rule, drawn inside its line.",
+      "$description": "Columns span page grid columns, set per table with --table-span-<n>. Rows are one line tall.",
       "row-height": {
         "$type": "dimension",
         "$value": "{space.line}"
-      },
-      "cell-padding-inline": {
-        "$type": "dimension",
-        "$value": "{space.cell}"
       },
       "header-rule-width": {
         "$type": "dimension",
@@ -29,6 +25,11 @@
       },
       "active-cell-text": {
         "$value": "{color.text.inverse}"
+      },
+      "cursor-overhang": {
+        "$type": "dimension",
+        "$description": "How far the cell cursor reaches into the gutters, so text keeps its column edge.",
+        "$value": "{space.cell}"
       }
     }
   }

@@ -6,7 +6,7 @@ class LineEditor {
     "<C-u>": (editor) => editor.deleteToStart(),
     "<C-k>": (editor) => editor.deleteToEnd(),
     "<C-h>": (editor) => editor.deleteCharacterBefore(),
-    "<C-a>": (editor) => editor.moveTo(0),
+    "<C-a>": (editor) => editor.selectAll(),
     "<C-e>": (editor) => editor.moveTo(editor.input.value.length),
   };
 
@@ -39,6 +39,10 @@ class LineEditor {
 
   deleteCharacterBefore() {
     this.replaceBeforeCursor(this.textBeforeCursor().slice(0, -1));
+  }
+
+  selectAll() {
+    this.input.select();
   }
 
   moveTo(position) {

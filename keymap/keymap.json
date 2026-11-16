@@ -53,7 +53,7 @@
     "<C-u>": { "name": "delete-to-start", "description": "Delete from the cursor to the start of the line." },
     "<C-k>": { "name": "delete-to-end", "description": "Delete from the cursor to the end of the line." },
     "<C-h>": { "name": "delete-character", "description": "Delete the character before the cursor." },
-    "<C-a>": { "name": "line-start", "description": "Move the cursor to the start of the line." },
+    "<C-a>": { "name": "select-all", "description": "Select all the text in the field." },
     "<C-e>": { "name": "line-end", "description": "Move the cursor to the end of the line." },
     "<C-n>": { "name": "next-suggestion", "description": "Select the next suggestion." },
     "<C-p>": { "name": "previous-suggestion", "description": "Select the previous suggestion." }

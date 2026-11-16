@@ -39,8 +39,8 @@ modules changed width as their values changed.
   its own colour. The date is `%a %d %b` and the time `%H:%M`.
 - Low battery: below 10% and not charging, the battery is inverted. Waybar's
   `critical` state is set to 9, since its states match at or below the value. Its format
-  zero-pads the value, as `bat 05%`, so the inverted block is the text plus 7px on each
-  side, with no spare width.
+  zero-pads the value, as `bat 05%`, so the inverted block is a marker shaped by 0012,
+  with no spare width.
 
 ## Consequences
 - GTK3 CSS has no `line-height`. Labels and buttons take `bar.line` as `min-height`.

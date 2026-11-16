@@ -40,6 +40,7 @@ Layout follows a Swiss grid that [knave-grid](https://github.com/KarlHarnois/kna
 
 - Iosevka for interface and code. Everything that aligns to the grid is monospace.
 - Iosevka Aile for long reading, such as articles and documentation.
+- Iosevka Extended for small text, because wider letters read better at 12px. It starts on the grid but does not keep to the cell.
 - Few sizes, all snapping to the baseline. See `font.size.*` tokens.
 
 ## 5. Restraint in color

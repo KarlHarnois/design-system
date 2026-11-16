@@ -1,5 +1,7 @@
 "use strict";
 
+const MODIFIER_KEYS = new Set(["Shift", "Control", "Alt", "Meta", "CapsLock"]);
+
 class FocusList {
   constructor(items) {
     this.items = items;
@@ -122,7 +124,7 @@ class Specimen {
   }
 
   handleKey(event) {
-    if (event.ctrlKey || event.metaKey || event.altKey) return;
+    if (event.ctrlKey || event.metaKey || event.altKey || MODIFIER_KEYS.has(event.key)) return;
     const handled = this.isCommandMode() ? this.handleCommandKey(event) : this.handleNormalKey(event);
     if (handled) event.preventDefault();
   }

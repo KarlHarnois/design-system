@@ -19,6 +19,11 @@
       },
       "key-text": {
         "$value": "{color.accent}"
+      },
+      "delay": {
+        "$type": "duration",
+        "$description": "Wait before the popup opens, so fast key sequences never flash it.",
+        "$value": "{duration.quick}"
       }
     }
   }

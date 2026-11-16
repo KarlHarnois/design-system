@@ -1,19 +1,18 @@
 "use strict";
 
-const WHICH_KEY_DELAY_MS = 400;
-
 class WhichKey {
   constructor(element) {
     this.element = element;
     this.list = element.querySelector(".which-key-list");
     this.timer = undefined;
+    this.delayMs = parseFloat(getComputedStyle(element).getPropertyValue("--component-which-key-delay"));
   }
 
   update(pressed, continuations) {
     clearTimeout(this.timer);
     this.hide();
     if (continuations.length === 0) return;
-    this.timer = setTimeout(() => this.show(pressed, continuations), WHICH_KEY_DELAY_MS);
+    this.timer = setTimeout(() => this.show(pressed, continuations), this.delayMs);
   }
 
   show(pressed, continuations) {

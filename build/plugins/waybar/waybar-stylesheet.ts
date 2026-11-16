@@ -1,6 +1,7 @@
 import type { BarSpec } from "../bar/bar-spec.ts";
 import { ResolvedTheme } from "../shared/resolved-theme.ts";
 import { GtkColorPalette } from "./gtk-color-palette.ts";
+import { WaybarGroup } from "./waybar-group.ts";
 import { WaybarModule } from "./waybar-module.ts";
 
 const color = GtkColorPalette.reference;
@@ -23,6 +24,8 @@ export class WaybarStylesheet {
       this.bar(),
       this.workspaces(),
       this.modules(),
+      this.moduleSpacing(),
+      this.groupSpacing(),
       this.time(),
       this.lowBattery(),
     ]
@@ -60,15 +63,20 @@ window#waybar > box {
   color: ${color("color.text.secondary")};
   border: ${this.theme.dimension("border.width.default")} solid ${color("color.border.default")};
   border-radius: ${this.theme.dimension("radius.container")};
-  padding: ${this.theme.dimension("space.inset")};
+  padding: ${this.inset()} ${this.cell()};
 }`;
   }
 
   private workspaces(): string {
     return `#workspaces button {
-  padding: 0 ${this.cell()};
+  padding: 0 ${this.inset()};
+  margin-right: ${this.cell()};
   background: transparent;
   color: ${color("color.text.secondary")};
+}
+
+#workspaces button:last-child {
+  margin-right: 0;
 }
 
 #workspaces button.active {
@@ -83,8 +91,34 @@ window#waybar > box {
       .filter((module) => module.waybar !== WORKSPACES_MODULE)
       .map((module) => new WaybarModule(module).selector());
     return `${selectors.join(",\n")} {
-  padding: 0 ${this.cell()};
+  padding: 0 ${this.inset()};
 }`;
+  }
+
+  private moduleSpacing(): string {
+    const selectors = this.groups()
+      .filter((group) => !group.isSingle)
+      .flatMap((group) => group.modules.slice(0, -1).map((module) => module.selector()));
+    return `${selectors.join(",\n")} {
+  margin-right: ${this.cell()};
+}`;
+  }
+
+  private groupSpacing(): string {
+    const selectors = [this.spec.left, this.spec.right].flatMap((side) =>
+      side.slice(0, -1).map((group) => new WaybarGroup(group).selector()),
+    );
+    return `${selectors.join(",\n")} {
+  margin-right: ${this.theme.dimension("space.group")};
+}`;
+  }
+
+  private groups(): WaybarGroup[] {
+    return [...this.spec.left, ...this.spec.right].map((group) => new WaybarGroup(group));
+  }
+
+  private inset(): string {
+    return this.theme.dimension("space.inset");
   }
 
   private time(): string {

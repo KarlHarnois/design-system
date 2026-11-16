@@ -35,9 +35,13 @@ export class WaybarModule {
     return Object.fromEntries(variants.map(([variant, format]) => [`format-${variant}`, format]));
   }
 
-  private states(): { states?: { [state: string]: number } } {
+  private states(): { [key: string]: unknown } {
     const states = Object.entries(this.module.states ?? {});
     if (states.length === 0) return {};
-    return { states: Object.fromEntries(states.map(([state, { below }]) => [state, below - 1])) };
+    const formats = states.filter(([, state]) => state.format !== undefined);
+    return {
+      states: Object.fromEntries(states.map(([state, { below }]) => [state, below - 1])),
+      ...Object.fromEntries(formats.map(([state, { format }]) => [`format-${state}`, format])),
+    };
   }
 }

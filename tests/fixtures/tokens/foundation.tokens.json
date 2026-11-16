@@ -61,6 +61,13 @@
         "value": 15,
         "unit": "px"
       }
+    },
+    "group": {
+      "$type": "dimension",
+      "$value": {
+        "value": 10,
+        "unit": "px"
+      }
     }
   },
   "bar": {

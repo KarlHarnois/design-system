@@ -36,8 +36,24 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toContain("border: 2px solid @color_border_default;");
   });
 
-  it("insets the bar content evenly on all four sides", () => {
-    expect(stylesheet()).toMatch(/window#waybar > box \{[^}]*\n {2}padding: 3px;\n\}/);
+  it("insets the bar content by the module inset at the top and bottom and a cell at the sides", () => {
+    expect(stylesheet()).toMatch(/window#waybar > box \{[^}]*\n {2}padding: 3px 5px;\n\}/);
+  });
+
+  it("pads each workspace by the module inset and spaces workspaces a cell apart", () => {
+    expect(stylesheet()).toMatch(/#workspaces button \{\n {2}padding: 0 3px;\n {2}margin-right: 5px;/);
+  });
+
+  it("drops the trailing margin after the last workspace", () => {
+    expect(stylesheet()).toContain("#workspaces button:last-child {\n  margin-right: 0;");
+  });
+
+  it("spaces modules in a group a cell apart, without a trailing margin", () => {
+    expect(stylesheet()).toContain("#pulseaudio {\n  margin-right: 5px;");
+  });
+
+  it("spaces groups a group space apart, without a trailing margin", () => {
+    expect(stylesheet()).toContain("box#status {\n  margin-right: 10px;");
   });
 
   it("rounds the bar with the container radius", () => {
@@ -48,8 +64,8 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toMatch(/#workspaces button\.active \{\n {2}background: @color_focus;\n {2}color: @color_text_inverse;/);
   });
 
-  it("pads every module except the workspaces by one cell", () => {
-    expect(stylesheet()).toContain("#battery,\n#clock.time {\n  padding: 0 5px;");
+  it("pads every module except the workspaces by the module inset", () => {
+    expect(stylesheet()).toContain("#pulseaudio,\n#battery,\n#clock.time {\n  padding: 0 3px;");
   });
 
   it("sets the time in the primary text color", () => {
@@ -63,7 +79,7 @@ describe("WaybarPlugin", () => {
   });
 
   it("writes the same settings into the Waybar config", () => {
-    expect(fixtureBuild.file("waybar/dark/config.jsonc")).toContain('"modules-right": [\n    "pulseaudio",\n    "battery",\n    "clock#time"\n  ]');
+    expect(fixtureBuild.file("waybar/dark/config.jsonc")).toContain('"modules-right": [\n    "group/status",\n    "clock#time"\n  ]');
   });
 
   it("makes the bar one bar line tall plus its inset and outline", () => {
@@ -74,8 +90,16 @@ describe("WaybarPlugin", () => {
     expect(config()).toMatchObject({ "margin-top": 12, "margin-right": 12, "margin-left": 12 });
   });
 
-  it("lists the modules of each side in the spec's order", () => {
-    expect(config()["modules-right"]).toEqual(["pulseaudio", "battery", "clock#time"]);
+  it("lists the groups of each side in the spec's order", () => {
+    expect(config()["modules-right"]).toEqual(["group/status", "clock#time"]);
+  });
+
+  it("lays out each group's modules in a row", () => {
+    expect(config()["group/status"]).toEqual({ orientation: "inherit", modules: ["pulseaudio", "battery"] });
+  });
+
+  it("writes a state's own format", () => {
+    expect(config().battery["format-critical"]).toBe("power {capacity:02}%");
   });
 
   it("keeps the spec's format for each module", () => {

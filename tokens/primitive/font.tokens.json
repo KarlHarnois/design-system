@@ -56,6 +56,12 @@
           "value": 42,
           "unit": "px"
         }
+      },
+      "display": {
+        "$value": {
+          "value": 84,
+          "unit": "px"
+        }
       }
     },
     "line-height": {
@@ -75,6 +81,9 @@
       },
       "h1": {
         "$value": 1.5
+      },
+      "display": {
+        "$value": 1
       }
     }
   }

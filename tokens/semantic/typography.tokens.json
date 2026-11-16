@@ -1,12 +1,101 @@
 {
   "type": {
     "$type": "typography",
-    "ui": { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.body}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.body}", "letterSpacing": { "value": 0, "unit": "px" } } },
-    "ui-small": { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.small}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.small}", "letterSpacing": { "value": 0, "unit": "px" } } },
-    "label": { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.body}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.body}", "letterSpacing": { "value": 0, "unit": "px" } } },
-    "prose": { "$value": { "fontFamily": "{font.family.prose}", "fontSize": "{font.size.body}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.body}", "letterSpacing": { "value": 0, "unit": "px" } } },
-    "h1": { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.h1}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.h1}", "letterSpacing": { "value": 0, "unit": "px" } } },
-    "h2": { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.h2}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.h2}", "letterSpacing": { "value": 0, "unit": "px" } } },
-    "h3": { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.h3}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.h3}", "letterSpacing": { "value": 0, "unit": "px" } } }
+    "display": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.display}",
+        "fontWeight": "{font.weight.bold}",
+        "lineHeight": "{font.line-height.display}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "ui": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.body}",
+        "fontWeight": "{font.weight.regular}",
+        "lineHeight": "{font.line-height.body}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "ui-small": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.small}",
+        "fontWeight": "{font.weight.regular}",
+        "lineHeight": "{font.line-height.small}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "label": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.body}",
+        "fontWeight": "{font.weight.bold}",
+        "lineHeight": "{font.line-height.body}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "prose": {
+      "$value": {
+        "fontFamily": "{font.family.prose}",
+        "fontSize": "{font.size.body}",
+        "fontWeight": "{font.weight.regular}",
+        "lineHeight": "{font.line-height.body}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "h1": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.h1}",
+        "fontWeight": "{font.weight.bold}",
+        "lineHeight": "{font.line-height.h1}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "h2": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.h2}",
+        "fontWeight": "{font.weight.bold}",
+        "lineHeight": "{font.line-height.h2}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "h3": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.h3}",
+        "fontWeight": "{font.weight.bold}",
+        "lineHeight": "{font.line-height.h3}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    }
   }
 }

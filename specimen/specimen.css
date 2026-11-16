@@ -11,14 +11,54 @@ body {
   padding-bottom: var(--leading);
 }
 
+main {
+  counter-reset: section;
+}
+
+.masthead,
+.group {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: start;
+}
+
+.masthead > *,
+.group > * {
+  grid-column: 1 / -1;
+}
+
 .group {
   margin-top: calc(2 * var(--leading));
+  counter-increment: section;
+  box-shadow: inset 0 var(--border-width-strong) var(--color-border-strong);
+}
+
+.group > .grid,
+.group > .table {
+  grid-template-columns: subgrid;
 }
 
 .group-title {
   color: var(--color-text-secondary);
-  box-shadow: inset 0 var(--border-width-strong) var(--color-border-strong);
   margin-bottom: var(--leading);
+}
+
+.group-title::before {
+  content: counter(section, decimal-leading-zero) " ";
+  color: var(--color-accent);
+}
+
+@media (min-width: 66.9375em) {
+  .masthead > .type-prose,
+  .group > * {
+    grid-column: 4 / -1;
+  }
+
+  .group > .group-title {
+    grid-column: 1 / span 3;
+    margin-bottom: 0;
+  }
 }
 
 .type-prose {

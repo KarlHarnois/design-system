@@ -238,6 +238,15 @@ mod design_grid {
             ],
             type_styles: vec![
                 crate::knave_grid::spec::type_style::TypeStyle {
+                    name: "display".to_string(),
+                    lines: 4,
+                    weight: Some("bold".to_string()),
+                    size: Some(84.0),
+                    font_family: None,
+                    baseline_line: None,
+                    selector: None,
+                },
+                crate::knave_grid::spec::type_style::TypeStyle {
                     name: "h1".to_string(),
                     lines: 3,
                     weight: Some("bold".to_string()),

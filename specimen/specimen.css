@@ -108,6 +108,7 @@ kbd {
 
 .button-row {
   display: flex;
+  align-items: center;
   gap: var(--space-gutter);
   margin-bottom: var(--leading);
 }

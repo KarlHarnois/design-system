@@ -19,7 +19,7 @@ class Specimen {
   start() {
     this.root.addEventListener("keydown", (event) => this.handleKey(event));
     this.filterInput.addEventListener("input", () => this.focusList.filter(this.filterInput.value));
-    for (const button of this.root.querySelectorAll(".button")) {
+    for (const button of this.root.querySelectorAll("button.button:not([aria-disabled='true'])")) {
       button.addEventListener("click", () => this.statusLine.showMessage(`${button.textContent} pressed`));
     }
     this.focusList.first();
@@ -98,7 +98,19 @@ class Specimen {
 
   activate() {
     const current = this.focusList.current();
-    if (current?.matches("button")) current.click();
+    if (!current?.matches("button")) return;
+    if (current.getAttribute("aria-disabled") === "true") {
+      this.statusLine.showMessage(`${current.textContent} is disabled`);
+      return;
+    }
+    this.showPressed(current);
+    current.click();
+  }
+
+  showPressed(button) {
+    const duration = parseFloat(getComputedStyle(this.root.documentElement).getPropertyValue("--duration-quick"));
+    button.classList.add("is-pressed");
+    setTimeout(() => button.classList.remove("is-pressed"), duration);
   }
 
   enterSearch() {

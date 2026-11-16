@@ -69,8 +69,9 @@ window#waybar > box {
 
   private workspaces(): string {
     return `#workspaces button {
-  padding: 0 ${this.control()};
-  margin-right: ${this.cell()};
+  padding: 0 ${this.marker()};
+  min-width: ${this.markerContentMinWidth()}px;
+  margin-right: ${this.marker()};
   background: transparent;
   color: ${color("color.text.secondary")};
 }
@@ -117,6 +118,14 @@ window#waybar > box {
     return [...this.spec.left, ...this.spec.right].map((group) => new WaybarGroup(group));
   }
 
+  private marker(): string {
+    return this.theme.dimension("space.marker");
+  }
+
+  private markerContentMinWidth(): number {
+    return this.theme.pixels("bar.line") - 2 * this.theme.pixels("space.marker");
+  }
+
   private control(): string {
     return this.theme.dimension("space.control");
   }
@@ -132,7 +141,10 @@ window#waybar > box {
   }
 
   private lowBattery(): string {
+    const footprintMargin = this.theme.pixels("space.control") - this.theme.pixels("space.marker");
     return `#battery.critical:not(.charging) {
+  padding: 0 ${this.marker()};
+  margin: 0 ${footprintMargin}px;
   background: ${color("color.focus")};
   color: ${color("color.text.inverse")};
 }`;

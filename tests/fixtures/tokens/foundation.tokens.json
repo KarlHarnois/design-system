@@ -75,6 +75,13 @@
         "value": 6,
         "unit": "px"
       }
+    },
+    "marker": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      }
     }
   },
   "bar": {

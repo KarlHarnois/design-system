@@ -40,8 +40,16 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toMatch(/window#waybar > box \{[^}]*\n {2}padding: 3px;\n\}/);
   });
 
-  it("pads each workspace by the control padding and spaces workspaces a cell apart", () => {
-    expect(stylesheet()).toMatch(/#workspaces button \{\n {2}padding: 0 6px;\n {2}margin-right: 5px;/);
+  it("pads each workspace by the marker padding", () => {
+    expect(stylesheet()).toMatch(/#workspaces button \{\n {2}padding: 0 4px;/);
+  });
+
+  it("makes a workspace at least as wide as the bar line, counting GTK's content box", () => {
+    expect(stylesheet()).toMatch(/#workspaces button \{[^}]*\n {2}min-width: 10px;/);
+  });
+
+  it("spaces workspaces the marker padding apart", () => {
+    expect(stylesheet()).toMatch(/#workspaces button \{[^}]*\n {2}margin-right: 4px;/);
   });
 
   it("drops the trailing margin after the last workspace", () => {
@@ -120,6 +128,10 @@ describe("WaybarPlugin", () => {
 
   it("turns a below threshold into Waybar's at-or-below state", () => {
     expect(config().battery.states).toEqual({ critical: 19 });
+  });
+
+  it("shrinks a critical battery's inverted padding to the marker padding and keeps its footprint", () => {
+    expect(stylesheet()).toMatch(/#battery\.critical:not\(\.charging\) \{\n {2}padding: 0 4px;\n {2}margin: 0 2px;/);
   });
 
   it("inverts a critical battery unless it is charging", () => {

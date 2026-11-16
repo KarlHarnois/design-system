@@ -1,0 +1,35 @@
+{
+  "component": {
+    "table": {
+      "$description": "Rows are one line tall. Only the header has a rule, drawn inside its line.",
+      "row-height": {
+        "$type": "dimension",
+        "$value": "{space.line}"
+      },
+      "cell-padding-inline": {
+        "$type": "dimension",
+        "$value": "{space.cell}"
+      },
+      "header-rule-width": {
+        "$type": "dimension",
+        "$value": "{border.width.strong}"
+      },
+      "$type": "color",
+      "text": {
+        "$value": "{color.text.primary}"
+      },
+      "header-text": {
+        "$value": "{color.text.secondary}"
+      },
+      "header-rule": {
+        "$value": "{color.border.strong}"
+      },
+      "selected-background": {
+        "$value": "{color.selection}"
+      },
+      "active-cell-text": {
+        "$value": "{color.text.inverse}"
+      }
+    }
+  }
+}

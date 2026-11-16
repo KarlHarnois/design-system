@@ -15,7 +15,7 @@
       <header class="masthead">
         <h1 class="type-h1">Specimen</h1>
         <p class="type-prose">
-          Every token on one page. Move with <kbd>j</kbd> <kbd>k</kbd>, jump with <kbd>gg</kbd> <kbd>G</kbd> and <kbd>H</kbd> <kbd>M</kbd> <kbd>L</kbd>,
+          Every token on one page. Move with <kbd>j</kbd> <kbd>k</kbd>, jump with <kbd>gg</kbd> <kbd>G</kbd> and <kbd>H</kbd> <kbd>M</kbd> <kbd>L</kbd>, move across table cells with <kbd>h</kbd> <kbd>l</kbd>,
           filter with <kbd>/</kbd>, press with <kbd>&lt;CR&gt;</kbd>, run commands with <kbd>:</kbd>. <kbd>&lt;Space&gt;g</kbd> toggles the baselines, <kbd>&lt;Space&gt;G</kbd> the full grid, <kbd>&lt;Space&gt;t</kbd> the theme, <kbd>&lt;Space&gt;a</kbd> the accent.
         </p>
       </header>
@@ -88,6 +88,18 @@
           <li class="item list-item" tabindex="-1" data-name="component list item components">components/</li>
           <li class="item list-item" tabindex="-1" data-name="component list item specimen">specimen/</li>
         </ul>
+        <table class="table" aria-label="Type styles">
+          <thead>
+            <tr><th>Token</th><th>Type</th><th>Value</th><th class="table-number">Lines</th></tr>
+          </thead>
+          <tbody>
+            <tr class="item" tabindex="-1" data-name="component table row type h1"><td>type.h1</td><td>typography</td><td>42px bold</td><td class="table-number">3</td></tr>
+            <tr class="item" tabindex="-1" data-name="component table row type h2"><td>type.h2</td><td>typography</td><td>28px bold</td><td class="table-number">2</td></tr>
+            <tr class="item" tabindex="-1" data-name="component table row type h3"><td>type.h3</td><td>typography</td><td>18px bold</td><td class="table-number">1</td></tr>
+            <tr class="item" tabindex="-1" data-name="component table row type ui"><td>type.ui</td><td>typography</td><td>14px regular</td><td class="table-number">1</td></tr>
+            <tr class="item" tabindex="-1" data-name="component table row type prose"><td>type.prose</td><td>typography</td><td>14px Aile</td><td class="table-number">1</td></tr>
+          </tbody>
+        </table>
       </section>
 
       <section class="group" aria-label="Space">
@@ -129,6 +141,7 @@
     <script src="js/line-editor.js"></script>
     <script src="js/which-key.js"></script>
     <script src="js/command-palette.js"></script>
+    <script src="js/table-cursor.js"></script>
     <script src="js/specimen.js"></script>
   </body>
 </html>

@@ -34,7 +34,7 @@ kbd {
   outline: none;
 }
 
-.item:focus:not(.list-item) {
+.item:focus:not(.list-item, tr) {
   outline: var(--focus-width) solid var(--mode-color);
   outline-offset: var(--focus-offset);
 }
@@ -83,6 +83,11 @@ kbd {
 .button-row {
   display: flex;
   gap: var(--space-gutter);
+  margin-bottom: var(--leading);
+}
+
+.list,
+.table {
   margin-bottom: var(--leading);
 }
 

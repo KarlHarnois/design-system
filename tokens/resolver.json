@@ -39,6 +39,9 @@
         },
         {
           "$ref": "component/which-key.tokens.json"
+        },
+        {
+          "$ref": "component/table.tokens.json"
         }
       ]
     }

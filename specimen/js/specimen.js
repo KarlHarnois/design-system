@@ -8,6 +8,7 @@ class Specimen {
     const statusBar = root.querySelector(".mode-line");
     this.focusList = new FocusList([...root.querySelectorAll(".item")], statusBar);
     this.statusLine = new StatusLine(statusBar);
+    this.tableCursor = new TableCursor(this.focusList);
     this.whichKey = new WhichKey(root.querySelector(".which-key"));
     this.commands = this.normalCommands();
     this.palette = new CommandPalette(root.querySelector(".palette"), this.commands, this.statusLine, () =>
@@ -34,6 +35,10 @@ class Specimen {
       new Command("H", "screen-top", "Top item on screen", () => this.focusList.screenTop()),
       new Command("M", "screen-middle", "Middle item on screen", () => this.focusList.screenMiddle()),
       new Command("L", "screen-bottom", "Bottom item on screen", () => this.focusList.screenBottom()),
+      new Command("h", "left", "Previous cell in the table row", () => this.tableCursor.move(-1)),
+      new Command("l", "right", "Next cell in the table row", () => this.tableCursor.move(1)),
+      new Command("0", "row-start", "First cell in the table row", () => this.tableCursor.first()),
+      new Command("$", "row-end", "Last cell in the table row", () => this.tableCursor.last()),
       new Command("i", "insert", "Type in the focused field", () => this.enterInsert()),
       new Command("<CR>", "activate", "Press the focused button", () => this.activate()),
       new Command("/", "search", "Filter the tokens", () => this.enterSearch()),
@@ -67,6 +72,7 @@ class Specimen {
 
   handleNormalKey(key) {
     this.keys.press(key)?.run();
+    this.tableCursor.render();
     return true;
   }
 

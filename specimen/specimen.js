@@ -3,14 +3,14 @@
 const MODIFIER_KEYS = new Set(["Shift", "Control", "Alt", "Meta", "CapsLock"]);
 
 class FocusList {
-  constructor(items) {
+  constructor(items, statusBar) {
     this.items = items;
+    this.statusBar = statusBar;
     this.index = 0;
   }
 
   move(step) {
-    const visible = this.visibleItems();
-    const lastIndex = visible.length - 1;
+    const lastIndex = this.shownItems().length - 1;
     this.index = Math.min(Math.max(this.index + step, 0), lastIndex);
     this.focusCurrent();
   }
@@ -18,11 +18,28 @@ class FocusList {
   first() {
     this.index = 0;
     this.focusCurrent();
+    window.scrollTo({ top: 0 });
   }
 
   last() {
-    this.index = this.visibleItems().length - 1;
+    this.index = this.shownItems().length - 1;
     this.focusCurrent();
+    window.scrollTo({ top: document.documentElement.scrollHeight });
+  }
+
+  screenTop() {
+    this.focusItem(this.onScreenItems().at(0));
+  }
+
+  screenMiddle() {
+    const middle = this.statusBar.getBoundingClientRect().top / 2;
+    const distanceToMiddle = (item) => Math.abs(FocusList.centerOf(item) - middle);
+    const closest = this.onScreenItems().toSorted((one, other) => distanceToMiddle(one) - distanceToMiddle(other));
+    this.focusItem(closest.at(0));
+  }
+
+  screenBottom() {
+    this.focusItem(this.onScreenItems().at(-1));
   }
 
   filter(query) {
@@ -33,27 +50,55 @@ class FocusList {
     this.index = 0;
   }
 
+  current() {
+    return this.shownItems()[this.index];
+  }
+
   focusCurrent() {
-    const current = this.visibleItems()[this.index];
+    const current = this.current();
     current?.focus();
     current?.scrollIntoView({ block: "nearest" });
   }
 
-  visibleItems() {
+  focusItem(item) {
+    if (!item) return;
+    this.index = this.shownItems().indexOf(item);
+    this.focusCurrent();
+  }
+
+  shownItems() {
     return this.items.filter((item) => !item.hidden);
+  }
+
+  onScreenItems() {
+    const screenBottom = this.statusBar.getBoundingClientRect().top;
+    return this.shownItems().filter((item) => {
+      const { top, bottom } = item.getBoundingClientRect();
+      return top >= 0 && bottom <= screenBottom;
+    });
+  }
+
+  static centerOf(item) {
+    const { top, bottom } = item.getBoundingClientRect();
+    return (top + bottom) / 2;
   }
 }
 
 class ModeLine {
   constructor(element) {
     this.element = element;
-    this.modeName = element.querySelector(".mode-name");
+    this.modeName = element.querySelector(".status-bar-mode");
+    this.message = element.querySelector(".message");
     this.pendingKeys = element.querySelector(".pending-keys");
   }
 
   enter(mode) {
-    this.element.dataset.mode = mode;
-    this.modeName.textContent = mode.toUpperCase();
+    document.documentElement.dataset.mode = mode;
+    this.modeName.textContent = mode;
+  }
+
+  showMessage(text) {
+    this.message.textContent = text;
   }
 
   showPending(keys) {
@@ -97,14 +142,18 @@ class Specimen {
     this.root = root;
     this.filterInput = root.querySelector(".filter input");
     this.accents = [...root.querySelectorAll(".accent-option")].map((option) => option.dataset.accent);
-    this.focusList = new FocusList([...root.querySelectorAll(".item")]);
-    this.modeLine = new ModeLine(root.querySelector(".mode-line"));
+    const statusBar = root.querySelector(".mode-line");
+    this.focusList = new FocusList([...root.querySelectorAll(".item")], statusBar);
+    this.modeLine = new ModeLine(statusBar);
     this.keys = new KeySequence(this.normalBindings(), this.modeLine);
   }
 
   start() {
     this.root.addEventListener("keydown", (event) => this.handleKey(event));
     this.filterInput.addEventListener("input", () => this.focusList.filter(this.filterInput.value));
+    for (const button of this.root.querySelectorAll(".button")) {
+      button.addEventListener("click", () => this.modeLine.showMessage(`${button.textContent} pressed`));
+    }
     this.focusList.first();
   }
 
@@ -114,6 +163,11 @@ class Specimen {
       k: () => this.focusList.move(-1),
       gg: () => this.focusList.first(),
       G: () => this.focusList.last(),
+      H: () => this.focusList.screenTop(),
+      M: () => this.focusList.screenMiddle(),
+      L: () => this.focusList.screenBottom(),
+      i: () => this.enterInsert(),
+      "<CR>": () => this.activate(),
       "/": () => this.enterCommand(),
       "<Esc>": () => this.clearFilter(),
       "<Space>g": () => document.documentElement.classList.toggle("grid-overlay"),
@@ -125,7 +179,7 @@ class Specimen {
 
   handleKey(event) {
     if (event.ctrlKey || event.metaKey || event.altKey || MODIFIER_KEYS.has(event.key)) return;
-    const handled = this.isCommandMode() ? this.handleCommandKey(event) : this.handleNormalKey(event);
+    const handled = this.isTextEntryMode() ? this.handleTextEntryKey(event) : this.handleNormalKey(event);
     if (handled) event.preventDefault();
   }
 
@@ -135,14 +189,26 @@ class Specimen {
     return true;
   }
 
-  handleCommandKey(event) {
-    const leavesCommandMode = ["Escape", "Enter"].includes(event.key);
-    if (leavesCommandMode) this.enterNormal();
-    return leavesCommandMode;
+  handleTextEntryKey(event) {
+    const leavesTextEntry = ["Escape", "Enter"].includes(event.key);
+    if (leavesTextEntry) this.enterNormal();
+    return leavesTextEntry;
   }
 
-  isCommandMode() {
-    return document.activeElement === this.filterInput;
+  isTextEntryMode() {
+    return document.activeElement instanceof HTMLInputElement;
+  }
+
+  enterInsert() {
+    const input = this.focusList.current()?.querySelector(".input");
+    if (!input) return;
+    this.modeLine.enter("insert");
+    input.focus();
+  }
+
+  activate() {
+    const current = this.focusList.current();
+    if (current?.matches("button")) current.click();
   }
 
   enterCommand() {

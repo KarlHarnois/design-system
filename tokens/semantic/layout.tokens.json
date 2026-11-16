@@ -10,6 +10,10 @@
     "gutter": {
       "$value": "{dimension.2}"
     },
+    "frame": {
+      "$description": "Space between the screen edge and the windows on the desktop. Two cells, the same on every monitor.",
+      "$value": "{dimension.2}"
+    },
     "line": {
       "$value": "{dimension.3}"
     },
@@ -76,6 +80,16 @@
       },
       "strong": {
         "$value": "{dimension.rule}"
+      }
+    }
+  },
+  "radius": {
+    "container": {
+      "$type": "dimension",
+      "$description": "Corner radius of containers: windows, the bar and popups. Content inside them stays square.",
+      "$value": {
+        "value": 4,
+        "unit": "px"
       }
     }
   },

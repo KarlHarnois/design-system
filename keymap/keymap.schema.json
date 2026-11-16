@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "keymap.schema.json",
+  "title": "Keymap",
+  "description": "Vim grammar shared by every target: modes, operators, motions, text objects and actions.",
+  "type": "object",
+  "required": ["leader", "modes", "operators", "motions", "textObjects", "actions"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "leader": { "$ref": "#/$defs/key" },
+    "modes": {
+      "type": "object",
+      "required": ["normal", "insert", "visual", "command"],
+      "additionalProperties": false,
+      "properties": {
+        "normal": { "$ref": "#/$defs/mode" },
+        "insert": { "$ref": "#/$defs/mode" },
+        "visual": { "$ref": "#/$defs/mode" },
+        "command": { "$ref": "#/$defs/mode" }
+      }
+    },
+    "operators": { "$ref": "#/$defs/bindings" },
+    "motions": { "$ref": "#/$defs/bindings" },
+    "textObjects": { "$ref": "#/$defs/bindings" },
+    "actions": { "$ref": "#/$defs/bindings" }
+  },
+  "$defs": {
+    "key": {
+      "description": "A key sequence in vim notation, like `gg`, `<Esc>` or `<C-r>`.",
+      "type": "string",
+      "pattern": "^(<([CMS]-)*[A-Za-z0-9]+>|[^<\\s])+$"
+    },
+    "mode": {
+      "type": "object",
+      "required": ["description", "enter", "token"],
+      "additionalProperties": false,
+      "properties": {
+        "description": { "type": "string" },
+        "enter": { "type": "array", "items": { "$ref": "#/$defs/key" } },
+        "token": {
+          "description": "DTCG token that colors this mode's indicator.",
+          "type": "string",
+          "pattern": "^mode\\.[a-z]+$"
+        }
+      }
+    },
+    "bindings": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/key" },
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z][a-z-]*$" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}

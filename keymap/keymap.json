@@ -1,0 +1,48 @@
+{
+  "$schema": "./keymap.schema.json",
+  "leader": "<Space>",
+  "modes": {
+    "normal": { "description": "Move and act on items. The resting mode.", "enter": ["<Esc>"], "token": "mode.normal" },
+    "insert": { "description": "Type text into the focused field.", "enter": ["i", "a", "o", "O"], "token": "mode.insert" },
+    "visual": { "description": "Select a range of items.", "enter": ["v", "V"], "token": "mode.visual" },
+    "command": { "description": "Type a command on the command line.", "enter": [":"], "token": "mode.command" }
+  },
+  "operators": {
+    "d": { "name": "delete", "description": "Remove the target." },
+    "c": { "name": "change", "description": "Remove the target and enter insert mode." },
+    "y": { "name": "yank", "description": "Copy the target." },
+    ">": { "name": "indent", "description": "Move the target one level deeper." },
+    "<lt>": { "name": "outdent", "description": "Move the target one level up." }
+  },
+  "motions": {
+    "h": { "name": "left", "description": "Previous item on the same row." },
+    "j": { "name": "down", "description": "Next row." },
+    "k": { "name": "up", "description": "Previous row." },
+    "l": { "name": "right", "description": "Next item on the same row." },
+    "w": { "name": "next-word", "description": "Start of the next word or group." },
+    "b": { "name": "previous-word", "description": "Start of the previous word or group." },
+    "e": { "name": "end-of-word", "description": "End of the current word or group." },
+    "gg": { "name": "first", "description": "First item." },
+    "G": { "name": "last", "description": "Last item." },
+    "0": { "name": "row-start", "description": "First item in the row." },
+    "$": { "name": "row-end", "description": "Last item in the row." },
+    "n": { "name": "next-match", "description": "Next search match." },
+    "N": { "name": "previous-match", "description": "Previous search match." }
+  },
+  "textObjects": {
+    "iw": { "name": "inner-word", "description": "The word under focus." },
+    "aw": { "name": "a-word", "description": "The word under focus with trailing space." },
+    "ip": { "name": "inner-paragraph", "description": "The block under focus." },
+    "ap": { "name": "a-paragraph", "description": "The block under focus with trailing space." }
+  },
+  "actions": {
+    "p": { "name": "put-after", "description": "Paste after the focused item." },
+    "P": { "name": "put-before", "description": "Paste before the focused item." },
+    "u": { "name": "undo", "description": "Undo the last change." },
+    "<C-r>": { "name": "redo", "description": "Redo the last undone change." },
+    ".": { "name": "repeat", "description": "Repeat the last change." },
+    "/": { "name": "search", "description": "Search forward." },
+    "<CR>": { "name": "activate", "description": "Open or run the focused item." },
+    "q": { "name": "quit", "description": "Close the focused view." }
+  }
+}

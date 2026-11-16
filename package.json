@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tz build",
     "lint": "tz check",
-    "test": "vitest run"
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@terrazzo/cli": "2.10.0",

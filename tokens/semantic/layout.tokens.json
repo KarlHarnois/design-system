@@ -1,0 +1,47 @@
+{
+  "space": {
+    "$type": "dimension",
+    "none": { "$value": "{dimension.0}" },
+    "cell": { "$value": "{dimension.1}" },
+    "gutter": { "$value": "{dimension.2}" },
+    "line": { "$value": "{dimension.3}" },
+    "block": { "$value": "{dimension.6}" },
+    "section": { "$value": "{dimension.12}" }
+  },
+  "grid": {
+    "columns": { "$type": "number", "$value": 12 },
+    "gutter": { "$type": "dimension", "$value": "{dimension.2}" },
+    "margin": { "$type": "dimension", "$value": "{dimension.3}" },
+    "baseline": { "$type": "dimension", "$value": "{dimension.3}" },
+    "measure": {
+      "$type": "dimension",
+      "$description": "Maximum line length for reading text, 72 Iosevka cells at 16px.",
+      "$value": { "value": 36, "unit": "rem" }
+    }
+  },
+  "border": {
+    "width": {
+      "$type": "dimension",
+      "default": { "$value": "{dimension.hairline}" },
+      "strong": { "$value": "{dimension.rule}" }
+    }
+  },
+  "focus": {
+    "width": { "$type": "dimension", "$value": "{dimension.rule}" },
+    "offset": { "$type": "dimension", "$value": "{dimension.rule}" }
+  },
+  "target": {
+    "min-size": {
+      "$type": "dimension",
+      "$description": "Smallest pointer target, so the mouse stays usable.",
+      "$value": "{dimension.3}"
+    }
+  },
+  "bar": {
+    "height": {
+      "$type": "dimension",
+      "$description": "One baseline tall, for Waybar and Quickshell.",
+      "$value": "{dimension.3}"
+    }
+  }
+}

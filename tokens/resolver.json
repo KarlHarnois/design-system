@@ -1,0 +1,26 @@
+{
+  "name": "design-system",
+  "version": "2025.10",
+  "sets": {
+    "foundation": {
+      "sources": [
+        { "$ref": "primitive/color.tokens.json" },
+        { "$ref": "primitive/dimension.tokens.json" },
+        { "$ref": "primitive/font.tokens.json" },
+        { "$ref": "primitive/duration.tokens.json" },
+        { "$ref": "semantic/layout.tokens.json" },
+        { "$ref": "semantic/typography.tokens.json" }
+      ]
+    }
+  },
+  "modifiers": {
+    "theme": {
+      "contexts": {
+        "dark": [{ "$ref": "theme/dark.tokens.json" }],
+        "light": [{ "$ref": "theme/light.tokens.json" }]
+      },
+      "default": "dark"
+    }
+  },
+  "resolutionOrder": [{ "$ref": "#/sets/foundation" }, { "$ref": "#/modifiers/theme" }]
+}

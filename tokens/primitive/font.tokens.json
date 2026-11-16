@@ -1,0 +1,31 @@
+{
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "mono": { "$value": ["Iosevka", "Iosevka Term", "monospace"] },
+      "prose": { "$value": ["Iosevka Aile", "sans-serif"] }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": { "$value": 400 },
+      "bold": { "$value": 700 }
+    },
+    "size": {
+      "$type": "dimension",
+      "small": { "$value": { "value": 14, "unit": "px" } },
+      "body": { "$value": { "value": 16, "unit": "px" } },
+      "h3": { "$value": { "value": 20, "unit": "px" } },
+      "h2": { "$value": { "value": 32, "unit": "px" } },
+      "h1": { "$value": { "value": 48, "unit": "px" } }
+    },
+    "line-height": {
+      "$type": "number",
+      "$description": "Ratios that land each size on a multiple of the 24px baseline.",
+      "small": { "$value": 1.7142857 },
+      "body": { "$value": 1.5 },
+      "h3": { "$value": 1.2 },
+      "h2": { "$value": 1.5 },
+      "h1": { "$value": 1.5 }
+    }
+  }
+}

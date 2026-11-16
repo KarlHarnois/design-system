@@ -43,6 +43,9 @@ Layout follows a Swiss grid that [knave-grid](https://github.com/KarlHarnois/kna
 - Iosevka Aile for long reading, such as articles and documentation.
 - Iosevka Extended for small text, because wider letters read better at 12px. It starts on the grid but does not keep to the cell.
 - Few sizes, all snapping to the baseline. See `font.size.*` tokens.
+- A value that changes has a fixed width in characters, so changing it never moves its
+  neighbours. A label and its value stay one space apart, and the spare width falls
+  outside the pair. See `docs/decisions/0011-bar-spec.md`.
 
 ## 5. Restraint in color
 
@@ -60,6 +63,8 @@ See `docs/decisions/0012-nesting.md`.
 - Controls set their own proportions with control padding, `space.control`.
 - Markers take `space.marker` around their text and are at least as wide as their line is
   tall, so short markers are square. Markers side by side are `space.marker` apart.
+- An item that can become a marker has the marker's shape whether or not it is inverted,
+  so becoming a marker changes only its colours, never its size or position.
 - Space inside a group is smaller than space between groups.
 - Optical adjustments are allowed where the geometry looks wrong. See
   `docs/decisions/0010-optical-centring.md`.

@@ -1,7 +1,8 @@
 # 0012. Nest containers, controls and groups by one set of roles
 
 ## Status
-Accepted. Refines 0008 and 0009.
+Accepted. Refines 0008 and 0009. The marker shape rule was first written for the bar
+and is now a principle for every component.
 
 ## Context
 The bar worked out a model for shapes inside shapes: an even inset inside the outline,
@@ -29,9 +30,15 @@ radius minus the padding.
   its line is tall. One or two characters make a square; longer text is wider than tall.
 - Markers side by side, such as workspaces, are `space.marker` apart. The strip around
   and between them is then 4px everywhere.
-- Every module in the bar has the marker's shape, `space.marker` around its text, so any
-  module can become a marker without moving. The low battery inverts by changing only
-  its colours. macOS menu bar items work the same way: the highlight is the padding.
+- An item that can become a marker has the marker's shape whether or not it is inverted,
+  so becoming a marker changes only its colours, never its size or position. macOS menu
+  bar items work the same way: the highlight is the padding.
+  - Bar: every module has `space.marker` around its text. The low battery inverts by
+    changing only its colours.
+  - Table: the cursor draws its `space.marker` as a shadow outside the cell, so any cell
+    can become the cursor without its text moving.
+  - Lists and the palette: a selected row keeps its `space.control` padding and changes
+    only its background.
 - Controls: buttons, inputs, list rows and the status line pad their text by `space.control`.
 - Every `component.*.padding-inline` token points at `space.control`.
 

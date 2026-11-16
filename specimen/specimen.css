@@ -50,17 +50,6 @@ main {
   color: var(--color-accent);
 }
 
-@media (min-width: 66.9375em) {
-  .masthead > .type-prose,
-  .group > * {
-    grid-column: 4 / -1;
-  }
-
-  .group > .group-title {
-    grid-column: 1 / span 3;
-    margin-bottom: 0;
-  }
-}
 
 .type-prose {
   max-width: var(--measure);
@@ -155,4 +144,20 @@ kbd {
   background: transparent;
   border: none;
   outline: none;
+}
+
+@media (min-width: 66.9375em) {
+  .masthead > .type-prose,
+  .group > * {
+    grid-column: 2 / -1;
+  }
+
+  .group > .group-title {
+    grid-column: 1;
+    margin-bottom: 0;
+  }
+
+  .swatch {
+    grid-column: span 1;
+  }
 }

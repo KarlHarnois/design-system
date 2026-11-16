@@ -214,7 +214,7 @@ mod design_grid {
                 crate::knave_grid::spec::type_area::TypeArea {
                     name: "medium".to_string(),
                     width: 31,
-                    column_count: 8,
+                    column_count: 4,
                     margin: 1,
                     field_lines: Some(4),
                     gutter: 1,
@@ -226,7 +226,7 @@ mod design_grid {
                 crate::knave_grid::spec::type_area::TypeArea {
                     name: "wide".to_string(),
                     width: 47,
-                    column_count: 12,
+                    column_count: 6,
                     margin: 2,
                     field_lines: Some(4),
                     gutter: 1,

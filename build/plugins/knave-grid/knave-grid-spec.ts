@@ -60,7 +60,7 @@ export class KnaveGridSpec {
     const lines = style.lines(this.body.leadingPx);
     const fields = [`:lines ${lines}`, `:weight ${style.weight}`];
     if (style.sizePx !== lines * this.body.sizePx) fields.push(`:size ${KnaveGridSpec.float(style.sizePx)}`);
-    if (!style.usesFamily(this.body.fontFamily)) fields.push(`:font-family ${this.fontOf(style).name}`);
+    if (!style.usesFamily(this.body.fontFamily)) fields.push(`:font-family (clone ${this.fontOf(style).name})`);
     if (lines === 1) fields.push(":baseline-line 1");
     return `(${style.name} ${fields.join(" ")})`;
   }

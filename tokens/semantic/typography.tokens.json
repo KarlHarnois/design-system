@@ -3,15 +3,16 @@
     "$type": "typography",
     "display": {
       "$value": {
-        "fontFamily": "{font.family.mono}",
+        "fontFamily": "{font.family.prose}",
         "fontSize": "{font.size.display}",
         "fontWeight": "{font.weight.bold}",
         "lineHeight": "{font.line-height.display}",
         "letterSpacing": {
-          "value": 0,
+          "value": -2,
           "unit": "px"
         }
-      }
+      },
+      "$description": "Proportional, with tighter spacing, because monospace letters look uneven at display sizes."
     },
     "ui": {
       "$value": {

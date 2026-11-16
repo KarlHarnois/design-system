@@ -183,10 +183,16 @@ mod design_grid {
         let prose = crate::knave_grid::font::family::read_declared_family(
             "/nix/store/g6vxg8lxzs76v349vc0azw7v4lqg7dkq-design-system-web-fonts",
             "Iosevka Aile",
-            vec![crate::knave_grid::font::family::make_declared_file(
-                "regular".to_string(),
-                "iosevka-aile-regular.woff2".to_string(),
-            )],
+            vec![
+                crate::knave_grid::font::family::make_declared_file(
+                    "bold".to_string(),
+                    "iosevka-aile-bold.woff2".to_string(),
+                ),
+                crate::knave_grid::font::family::make_declared_file(
+                    "regular".to_string(),
+                    "iosevka-aile-regular.woff2".to_string(),
+                ),
+            ],
         )
         .map_err(|error: crate::knave_grid::font::tables::FontError| {
             crate::knave_grid::check::problems::GridError::UnusableFont { error: error }
@@ -242,7 +248,7 @@ mod design_grid {
                     lines: 4,
                     weight: Some("bold".to_string()),
                     size: Some(84.0),
-                    font_family: None,
+                    font_family: Some(prose.clone()),
                     baseline_line: None,
                     selector: None,
                 },
@@ -286,7 +292,7 @@ mod design_grid {
                     name: "prose".to_string(),
                     lines: 1,
                     weight: Some("regular".to_string()),
-                    font_family: Some(prose),
+                    font_family: Some(prose.clone()),
                     baseline_line: Some(1),
                     size: None,
                     selector: None,

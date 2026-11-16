@@ -51,6 +51,10 @@ main {
 }
 
 
+.type-display {
+  letter-spacing: var(--type-display-letter-spacing);
+}
+
 .type-prose {
   max-width: var(--measure);
 }

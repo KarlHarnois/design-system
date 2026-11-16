@@ -46,7 +46,7 @@ describe("KnaveGridPlugin", () => {
   });
 
   it("sets one-line styles on their own line in their own family", () => {
-    expect(spec).toContain("(note :lines 1 :weight regular :font-family prose :baseline-line 1)");
+    expect(spec).toContain("(note :lines 1 :weight regular :font-family (clone prose) :baseline-line 1)");
   });
 });
 

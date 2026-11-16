@@ -13,9 +13,13 @@ modules changed width as their values changed.
   right. One gutter (`space.cell`, 7px) sits between the bar and the windows.
 - Outline: 1px in `color.border.default`, with the `radius.container` corner. The bar
   never takes keyboard focus, so it never gets the `color.focus` outline.
-- Height: the text line is `bar.height`, 21px. An inset of `space.inset`, 4px, sits
-  around it on all four sides, and the 1px outline outside that, so the bar is 31px tall.
+- Height: the text line is `bar.line`, 16px. An inset of `space.inset`, 4px, sits
+  around it on all four sides, and the 1px outline outside that, so the bar is 26px tall.
   The inset keeps inverted blocks clear of the outline and the rounded corners.
+- The line is 16px because GTK's Pango box for 12px Iosevka is 16px tall, not because of
+  the grid. A shorter line would not shrink the GTK label, so the real bar would grow.
+- The bar is desktop chrome, so `bar.line` is separate from the page's 21px line. The
+  specimen status line stays on the page line, `space.line`.
 - Layout: workspaces sit left. Volume, battery, date and time sit right, with the time
   last. Each module has one cell of padding. `bar/bar.json` holds the modules (0011).
   There is no submap and no window title, which 0011 records as a conflict with principle 1.
@@ -32,12 +36,14 @@ modules changed width as their values changed.
   `critical` state is set to 9, since its states match at or below the value.
 
 ## Consequences
-- GTK3 CSS has no `line-height`. Labels and buttons take the 21px line as `min-height`.
+- GTK3 CSS has no `line-height`. Labels and buttons take `bar.line` as `min-height`.
+- 12px descenders end 1px to 2px above the bottom of the 16px line, so inverted blocks
+  hold them without clipping.
 - GTK3 CSS cannot change case, so the date keeps strftime's capitals, as `Mon 16 Nov`.
   Its width holds only in locales whose short day and month names have three letters.
 - The build generates the Waybar config from `bar/bar.json` and the tokens.
-- Waybar computes the height from the tokens: `bar.height` + 2 × `space.inset` +
-  2 × `border.width.default`.
+- Waybar computes the height from the tokens: `bar.line` + 2 × `space.inset` +
+  2 × `border.width.default`, 26px.
 - Waybar's exclusive zone covers its top margin and height, so Hyprland's `gaps_out`
   top is one gutter.
 - The specimen previews the bar in HTML. GTK can render it slightly differently.

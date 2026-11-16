@@ -34,6 +34,7 @@ is halfway between the centre of the capitals and the centre of the lowercase le
 - GTK: the baseline from the typo metrics rounded up, centred with `floor`, as GTK3
   labels do.
 - Shifts round to whole pixels. A half pixel rounds toward leaving the text high.
-- Today that gives the web 1px up for every one-line style, and GTK 0px.
+- Today that gives the web 1px up for every one-line style, and GTK 0px. On the 16px
+  bar line, `type.ui-small` gives the web 1px up and GTK 0px.
 - No target applies the shift yet. On a fractional scale it would make the bar look
   higher. The file is a hook for Quickshell and for a later decision.

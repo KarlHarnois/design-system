@@ -22,7 +22,7 @@ The preview dropped the submap and the window title, the config still had them.
   right-aligned text. Muted volume, `vol ---`, and charging, `chg 82%`, follow the same rule.
 - Volume and battery are 7 characters wide, exact for 0 to 99%. At 100% they grow by one
   character and the modules to their left move by one character. That is accepted.
-- Low battery inverts only the text and its 7px padding. Pango markup in `format-critical`
+- Low battery inverts only the text and its 4px padding. Pango markup in `format-critical`
   would render, but a span's background covers only the glyphs, not the label's padding.
   So the critical format zero-pads the value instead, as `bat 05%`, which fills the 7
   characters exactly.

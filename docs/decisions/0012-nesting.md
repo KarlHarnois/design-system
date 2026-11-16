@@ -29,6 +29,9 @@ radius minus the padding.
   its line is tall. One or two characters make a square; longer text is wider than tall.
 - Markers side by side, such as workspaces, are `space.marker` apart. The strip around
   and between them is then 4px everywhere.
+- Every module in the bar has the marker's shape, `space.marker` around its text, so any
+  module can become a marker without moving. The low battery inverts by changing only
+  its colours. macOS menu bar items work the same way: the highlight is the padding.
 - Controls: buttons, inputs, list rows and the status line pad their text by `space.control`.
 - Every `component.*.padding-inline` token points at `space.control`.
 
@@ -37,8 +40,5 @@ radius minus the padding.
   as a shadow, so the text does not move.
 - GTK's `min-width` sets the content box, without padding. Waybar's workspace buttons take
   `bar.line` − 2 × `space.marker` as `min-width`, so with their padding they are 16px wide.
-- The low battery keeps its module's footprint. In the critical state its padding drops to
-  `space.marker` and a margin of `space.control` − `space.marker` makes up the rest, so
-  only the text and 4px are inverted and nothing beside it moves.
 - The rule covers our own chrome only. Hyprland cannot control what is inside apps.
 - Optical adjustments stay allowed where the geometry looks wrong, as in 0010.

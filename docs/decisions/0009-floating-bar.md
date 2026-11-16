@@ -16,9 +16,9 @@ modules changed width as their values changed.
 - Height: the text line is `bar.line`, 16px. The bar's content is inset by `space.inset`,
   4px, on all four sides, and the 1px outline sits outside that, so the bar is 26px tall.
   The inset keeps inverted blocks clear of the outline and the rounded corners.
-- Spacing follows the roles in 0012. Each module and workspace has `space.control` of
-  padding left and right. Modules in a group are `space.cell` apart, groups `space.group`
-  apart. The first and last text sit 4 + 7 = 11px from the outline.
+- Spacing follows the roles in 0012, which sets the module padding. Modules in a group
+  are `space.cell` apart, groups `space.group` apart. The first and last text sit about
+  8px from the outline.
 - The line is 16px because GTK's Pango box for 12px Iosevka is 16px tall, not because of
   the grid. A shorter line would not shrink the GTK label, so the real bar would grow.
 - The bar is desktop chrome, so `bar.line` is separate from the page's 21px line. The

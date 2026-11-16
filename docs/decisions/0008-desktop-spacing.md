@@ -30,6 +30,8 @@ the outer frame and insets hold no text, so they need their own rule.
   one gutter, because the floating bar already holds the frame above it. See 0009.
 - Hyprland measures animation speed in tenths of a second, so `duration.quick` is speed 1.
 - The `border` animation is off too, so the focus outline moves without a fade.
-- `fadeIn` and `fadeOut` sit under `fade`, so a window still fades in over 100ms as it opens.
+- `windowsIn`, `windowsOut`, `fadeIn` and `fadeOut` are turned off by name, after `fade`.
+  A setting on a parent does not reach children that something else set, such as
+  Omarchy's default popin, so opening and closing stay instant.
 - The Home Manager module reads `settings.json` from the built package, which is
   import from derivation.

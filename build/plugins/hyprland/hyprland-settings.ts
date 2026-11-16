@@ -8,6 +8,7 @@ const CSS_EASE_OUT_POINTS = [
 const MILLISECONDS_PER_HYPRLAND_SPEED_UNIT = 100;
 const INSTANT_LEAVES = ["windows", "workspaces", "border"];
 const ANIMATED_LEAVES = ["fade", "windowsMove"];
+const OPEN_AND_CLOSE_LEAVES = ["windowsIn", "windowsOut", "fadeIn", "fadeOut"];
 
 export type LuaValue = string | number | boolean | LuaValue[] | { [key: string]: LuaValue };
 
@@ -66,6 +67,7 @@ export class HyprlandSettings {
     return [
       ...INSTANT_LEAVES.map((leaf) => ({ leaf, enabled: false })),
       ...ANIMATED_LEAVES.map((leaf) => ({ leaf, enabled: true, speed, bezier: CURVE_NAME })),
+      ...OPEN_AND_CLOSE_LEAVES.map((leaf) => ({ leaf, enabled: false })),
     ];
   }
 

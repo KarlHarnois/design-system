@@ -43,6 +43,17 @@ describe("HyprlandPlugin", () => {
     expect(settings("dark").animation).toContainEqual({ leaf: "fade", enabled: true, speed: 2.5, bezier: "ease-out" });
   });
 
+  it("opens and closes windows without a pop or a fade", () => {
+    expect(settings("dark").animation).toEqual(
+      expect.arrayContaining(["windowsIn", "windowsOut", "fadeIn", "fadeOut"].map((leaf) => ({ leaf, enabled: false }))),
+    );
+  });
+
+  it("turns off opening and closing after enabling fades, so the fade does not reach them", () => {
+    const leaves = settings("dark").animation.map((animation: { leaf: string }) => animation.leaf);
+    expect(leaves.indexOf("fadeIn")).toBeGreaterThan(leaves.indexOf("fade"));
+  });
+
   it("makes window and workspace changes instant", () => {
     expect(settings("dark").animation).toContainEqual({ leaf: "workspaces", enabled: false });
   });

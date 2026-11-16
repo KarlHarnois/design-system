@@ -36,7 +36,7 @@ export class HyprlandSettings {
     return {
       general: {
         gaps_in: this.gapsIn(),
-        gaps_out: this.theme.pixels("space.frame"),
+        gaps_out: this.gapsOut(),
         border_size: this.theme.pixels("border.width.default"),
         col: {
           active_border: this.color("color.focus"),
@@ -46,6 +46,12 @@ export class HyprlandSettings {
       decoration: { rounding: this.theme.pixels("radius.container") },
       animations: { enabled: true },
     };
+  }
+
+  private gapsOut(): { [side: string]: number } {
+    const frame = this.theme.pixels("space.frame");
+    const gutterBelowFloatingBar = this.theme.pixels("space.cell");
+    return { top: gutterBelowFloatingBar, right: frame, bottom: frame, left: frame };
   }
 
   private gapsIn(): { [side: string]: number } {

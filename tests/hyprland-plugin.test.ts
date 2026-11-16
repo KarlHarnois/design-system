@@ -19,8 +19,8 @@ describe("HyprlandPlugin", () => {
     expect(settings("dark").config.general.gaps_in).toEqual({ top: 2, right: 3, bottom: 3, left: 2 });
   });
 
-  it("frames the screen edge with the frame space", () => {
-    expect(settings("dark").config.general.gaps_out).toBe(12);
+  it("frames the screen edge with the frame space, leaving one gutter under the floating bar", () => {
+    expect(settings("dark").config.general.gaps_out).toEqual({ top: 5, right: 12, bottom: 12, left: 12 });
   });
 
   it("draws borders at the default border width", () => {

@@ -15,8 +15,12 @@
         "unit": "px"
       }
     },
+    "marker": {
+      "$description": "Left and right padding of a marker, an inverted inline block such as the active workspace, the low battery or the table cursor. A marker is at least as wide as its line is tall, so one or two characters make a square. Markers side by side are this far apart, so the strip around and between them matches the container inset.",
+      "$value": "{space.inset}"
+    },
     "control": {
-      "$description": "Left and right padding of a control or marker, such as a button, a list row or an inverted block. Controls and markers may be wider than tall.",
+      "$description": "Left and right padding of a control, such as a button, an input, a list row or the status line. Controls may be wider than tall.",
       "$value": "{space.cell}"
     },
     "group": {

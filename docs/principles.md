@@ -57,7 +57,9 @@ See `docs/decisions/0012-nesting.md`.
 - Containers have an even inset on all four sides, `space.inset`.
 - Inner corners are concentric: the outer radius minus the inset. Here that is zero, so
   inner shapes are square.
-- Controls and markers set their own proportions with control padding, `space.control`.
+- Controls set their own proportions with control padding, `space.control`.
+- Markers take `space.marker` around their text and are at least as wide as their line is
+  tall, so short markers are square. Markers side by side are `space.marker` apart.
 - Space inside a group is smaller than space between groups.
 - Optical adjustments are allowed where the geometry looks wrong. See
   `docs/decisions/0010-optical-centring.md`.

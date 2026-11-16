@@ -29,8 +29,8 @@ modules changed width as their values changed.
   There is no window title, and no submap since the desktop uses none (0011).
 - One size: the whole bar is `type.ui-small`.
 - Contrast: the current workspace is inverted, `color.text.inverse` on `color.focus`,
-  at the full line height. It is a marker (0012): the digit plus 7px on each side, with an
-  even 4px frame of bar background around it inside the outline. The time is `color.text.primary`.
+  at the full line height. It is a marker, shaped by 0012: a 16px square, 4px from the
+  outline and 4px from the next workspace. The time is `color.text.primary`.
   Everything else is `color.text.secondary`.
 - Fixed width: a label and its value stay one space apart, as `vol 40%`. A minimum
   width with right alignment keeps each module the same width (0011). Muted volume is

@@ -36,7 +36,6 @@ Layout follows a Swiss grid that [knave-grid](https://github.com/KarlHarnois/kna
 - Pictures and swatches span fields that run from the cap height of their first line to the descender of their last.
 - Text is flush left, ragged right. No centered paragraphs, no justified text.
 - Hierarchy comes from size, weight, and position.
-- Space inside a group is smaller than space between groups, so groups read as groups.
 
 ## 4. Typography
 
@@ -50,3 +49,15 @@ Layout follows a Swiss grid that [knave-grid](https://github.com/KarlHarnois/kna
 - Black and white. Surfaces, text, borders and focus come from the gray ramp only.
 - Emphasis comes from inversion, weight and position, never from hue.
 - Every text and surface pair meets WCAG AA contrast.
+
+## 6. Nesting
+
+See `docs/decisions/0012-nesting.md`.
+
+- Containers have an even inset on all four sides, `space.inset`.
+- Inner corners are concentric: the outer radius minus the inset. Here that is zero, so
+  inner shapes are square.
+- Controls and markers set their own proportions with control padding, `space.control`.
+- Space inside a group is smaller than space between groups.
+- Optical adjustments are allowed where the geometry looks wrong. See
+  `docs/decisions/0010-optical-centring.md`.

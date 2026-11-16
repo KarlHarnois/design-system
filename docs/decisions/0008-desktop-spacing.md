@@ -17,8 +17,7 @@ the outer frame and insets hold no text, so they need their own rule.
   `color.focus`, the others use `color.border.default`. So exactly one full contrast
   outline shows where keys go.
 - Containers (windows, the bar, popups) have a 4px radius. Content inside them stays square.
-- Nested corners: inside a container, the inner radius is the outer radius minus the
-  inset, never below 0. `space.inset` equals `radius.container`, so content stays square.
+- Nested corners follow 0012.
 - Only fades and window moves animate, at `duration.quick`. Opening, closing, focus
   changes and workspace switches are instant.
 

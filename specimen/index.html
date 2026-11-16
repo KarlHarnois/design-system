@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../dist/css/tokens.css" />
     <link rel="stylesheet" href="../dist/grid/grid.css" />
     <link rel="stylesheet" href="../dist/grid/grid-overlay.css" />
+    <link rel="stylesheet" href="../components/index.css" />
     <link rel="stylesheet" href="specimen.css" />
   </head>
   <body>
@@ -14,8 +15,8 @@
       <header class="masthead">
         <h1 class="type-h1">Specimen</h1>
         <p class="type-prose">
-          Every token on one page. Move with <kbd>j</kbd> <kbd>k</kbd>, jump with <kbd>gg</kbd> <kbd>G</kbd>,
-          filter with <kbd>/</kbd>. <kbd>&lt;Space&gt;g</kbd> toggles the baselines, <kbd>&lt;Space&gt;G</kbd> the full grid, <kbd>&lt;Space&gt;t</kbd> the theme, <kbd>&lt;Space&gt;a</kbd> the accent.
+          Every token on one page. Move with <kbd>j</kbd> <kbd>k</kbd>, jump with <kbd>gg</kbd> <kbd>G</kbd> and <kbd>H</kbd> <kbd>M</kbd> <kbd>L</kbd>,
+          filter with <kbd>/</kbd>, press with <kbd>&lt;CR&gt;</kbd>. <kbd>&lt;Space&gt;g</kbd> toggles the baselines, <kbd>&lt;Space&gt;G</kbd> the full grid, <kbd>&lt;Space&gt;t</kbd> the theme, <kbd>&lt;Space&gt;a</kbd> the accent.
         </p>
       </header>
 
@@ -71,6 +72,24 @@
         </ul>
       </section>
 
+      <section class="group" aria-label="Components">
+        <h2 class="group-title type-label">Components</h2>
+        <p class="button-row">
+          <button class="item button" type="button" tabindex="-1" data-name="component button primary save">Save</button>
+          <button class="item button button-secondary" type="button" tabindex="-1" data-name="component button secondary cancel">Cancel</button>
+        </p>
+        <label class="item input-field" tabindex="-1" data-name="component input name">
+          Name, press <kbd>i</kbd> to type
+          <input class="input" type="text" tabindex="-1" placeholder="Iosevka" />
+        </label>
+        <ul class="list" aria-label="Files">
+          <li class="item list-item" tabindex="-1" data-name="component list item tokens">tokens/</li>
+          <li class="item list-item" tabindex="-1" data-name="component list item keymap">keymap/</li>
+          <li class="item list-item" tabindex="-1" data-name="component list item components">components/</li>
+          <li class="item list-item" tabindex="-1" data-name="component list item specimen">specimen/</li>
+        </ul>
+      </section>
+
       <section class="group" aria-label="Space">
         <h2 class="group-title type-label">Space</h2>
         <div class="item bar" tabindex="-1" data-name="space cell" style="--bar: var(--space-cell)">cell 7</div>
@@ -81,13 +100,14 @@
       </section>
     </main>
 
-    <footer class="mode-line" data-mode="normal">
-      <span class="mode-name">NORMAL</span>
-      <label class="filter">
+    <footer class="status-bar mode-line">
+      <span class="status-bar-mode">normal</span>
+      <label class="status-bar-segment status-bar-fill filter">
         <span aria-hidden="true">/</span>
         <input type="search" aria-label="Filter tokens" tabindex="-1" />
       </label>
-      <span class="pending-keys" aria-live="polite"></span>
+      <span class="status-bar-segment message" aria-live="polite"></span>
+      <span class="status-bar-segment pending-keys" aria-live="polite"></span>
     </footer>
 
     <script src="specimen.js"></script>

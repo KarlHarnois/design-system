@@ -1,0 +1,25 @@
+{
+  "component": {
+    "list": {
+      "item-height": {
+        "$type": "dimension",
+        "$value": "{space.line}"
+      },
+      "padding-inline": {
+        "$type": "dimension",
+        "$value": "{space.cell}"
+      },
+      "marker-width": {
+        "$type": "dimension",
+        "$value": "{focus.width}"
+      },
+      "$type": "color",
+      "text": {
+        "$value": "{color.text.primary}"
+      },
+      "selected-background": {
+        "$value": "{color.selection}"
+      }
+    }
+  }
+}

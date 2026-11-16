@@ -1,0 +1,24 @@
+{
+  "component": {
+    "status-bar": {
+      "height": {
+        "$type": "dimension",
+        "$value": "{bar.height}"
+      },
+      "padding-inline": {
+        "$type": "dimension",
+        "$value": "{space.cell}"
+      },
+      "$type": "color",
+      "background": {
+        "$value": "{color.surface.raised}"
+      },
+      "text": {
+        "$value": "{color.text.secondary}"
+      },
+      "mode-text": {
+        "$value": "{color.text.inverse}"
+      }
+    }
+  }
+}

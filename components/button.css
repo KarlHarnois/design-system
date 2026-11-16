@@ -1,0 +1,23 @@
+.button {
+  display: inline-block;
+  height: var(--component-button-height);
+  padding: 0 var(--component-button-padding-inline);
+  font: inherit;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--component-button-height);
+  border: none;
+  border-radius: 0;
+  background: var(--component-button-primary-background);
+  color: var(--component-button-primary-text);
+  cursor: pointer;
+}
+
+.button-secondary {
+  background: var(--component-button-secondary-background);
+  color: var(--component-button-secondary-text);
+}
+
+.button:focus-visible {
+  outline: var(--focus-width) solid var(--mode-color);
+  outline-offset: var(--focus-offset);
+}

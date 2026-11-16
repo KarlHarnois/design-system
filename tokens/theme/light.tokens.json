@@ -36,6 +36,9 @@
     },
     "focus": {
       "$value": "{accent.500}"
+    },
+    "selection": {
+      "$value": "{color.gray.100}"
     }
   },
   "mode": {

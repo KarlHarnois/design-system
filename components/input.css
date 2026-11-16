@@ -1,0 +1,22 @@
+.input {
+  display: block;
+  width: 100%;
+  height: var(--component-input-height);
+  padding: 0 var(--component-input-padding-inline);
+  font: inherit;
+  line-height: var(--component-input-height);
+  border: none;
+  border-radius: 0;
+  background: var(--component-input-background);
+  color: var(--component-input-text);
+  box-shadow: inset 0 calc(-1 * var(--component-input-rule-width)) var(--component-input-rule);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--component-input-placeholder);
+}
+
+.input:focus {
+  box-shadow: inset 0 calc(-1 * var(--focus-width)) var(--mode-color);
+}

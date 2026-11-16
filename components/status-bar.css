@@ -1,0 +1,23 @@
+.status-bar {
+  display: flex;
+  height: var(--component-status-bar-height);
+  line-height: var(--component-status-bar-height);
+  background: var(--component-status-bar-background);
+  color: var(--component-status-bar-text);
+}
+
+.status-bar-mode {
+  padding: 0 var(--component-status-bar-padding-inline);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  background: var(--mode-color);
+  color: var(--component-status-bar-mode-text);
+}
+
+.status-bar-segment {
+  padding: 0 var(--component-status-bar-padding-inline);
+}
+
+.status-bar-fill {
+  flex: 1;
+}

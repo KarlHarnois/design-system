@@ -34,7 +34,7 @@ kbd {
   outline: none;
 }
 
-.item:focus {
+.item:focus:not(.list-item) {
   outline: var(--focus-width) solid var(--mode-color);
   outline-offset: var(--focus-offset);
 }
@@ -80,33 +80,25 @@ kbd {
   background: var(--color-accent);
 }
 
-:root {
-  --mode-color: var(--mode-normal);
+.button-row {
+  display: flex;
+  gap: var(--space-gutter);
+  margin-bottom: var(--leading);
 }
 
-:root:has(.mode-line[data-mode="command"]) {
-  --mode-color: var(--mode-command);
+.input-field {
+  display: block;
+  max-width: var(--measure);
+  margin-bottom: var(--leading);
 }
 
 .mode-line {
   position: fixed;
   inset: auto 0 0 0;
-  display: flex;
-  gap: var(--space-gutter);
-  height: var(--leading);
-  background: var(--color-surface-raised);
-}
-
-.mode-name {
-  font-weight: var(--font-weight-bold);
-  padding: 0 var(--space-cell);
-  background: var(--mode-color);
-  color: var(--color-text-inverse);
 }
 
 .filter {
   display: flex;
-  flex: 1;
   gap: var(--space-cell);
 }
 
@@ -117,9 +109,4 @@ kbd {
   background: transparent;
   border: none;
   outline: none;
-}
-
-.pending-keys {
-  padding-right: var(--space-cell);
-  color: var(--color-text-secondary);
 }

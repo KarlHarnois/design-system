@@ -1,0 +1,33 @@
+{
+  "component": {
+    "button": {
+      "$description": "One line tall, so a button sits on the baseline grid.",
+      "height": {
+        "$type": "dimension",
+        "$value": "{space.line}"
+      },
+      "padding-inline": {
+        "$type": "dimension",
+        "$value": "{space.cell}"
+      },
+      "primary": {
+        "$type": "color",
+        "background": {
+          "$value": "{color.accent}"
+        },
+        "text": {
+          "$value": "{color.text.inverse}"
+        }
+      },
+      "secondary": {
+        "$type": "color",
+        "background": {
+          "$value": "{color.surface.raised}"
+        },
+        "text": {
+          "$value": "{color.text.primary}"
+        }
+      }
+    }
+  }
+}

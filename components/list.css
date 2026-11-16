@@ -1,0 +1,19 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  height: var(--component-list-item-height);
+  padding: 0 var(--component-list-padding-inline);
+  line-height: var(--component-list-item-height);
+  color: var(--component-list-text);
+  outline: none;
+}
+
+.list-item[aria-selected="true"],
+.list-item:focus {
+  background: var(--component-list-selected-background);
+  box-shadow: inset var(--component-list-marker-width) 0 var(--mode-color);
+}

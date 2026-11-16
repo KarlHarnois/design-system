@@ -1,0 +1,31 @@
+{
+  "component": {
+    "input": {
+      "height": {
+        "$type": "dimension",
+        "$value": "{space.line}"
+      },
+      "padding-inline": {
+        "$type": "dimension",
+        "$value": "{space.cell}"
+      },
+      "rule-width": {
+        "$type": "dimension",
+        "$value": "{border.width.default}"
+      },
+      "$type": "color",
+      "background": {
+        "$value": "{color.surface.sunken}"
+      },
+      "text": {
+        "$value": "{color.text.primary}"
+      },
+      "placeholder": {
+        "$value": "{color.text.secondary}"
+      },
+      "rule": {
+        "$value": "{color.border.strong}"
+      }
+    }
+  }
+}

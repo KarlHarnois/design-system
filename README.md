@@ -16,7 +16,7 @@ pnpm install
 pnpm build
 ```
 
-Open `specimen/index.html` to browse the tokens.
+Run `pnpm specimen` to browse the tokens in a Chromium window without extensions, so browser vim plugins leave its keys alone.
 
 ## Use with Home Manager
 

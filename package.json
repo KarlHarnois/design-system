@@ -9,7 +9,8 @@
     "build": "tz build",
     "lint": "tz check",
     "test": "vitest run --dir tests",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "specimen": "tz build && chromium --user-data-dir=\"${XDG_CACHE_HOME:-$HOME/.cache}/design-system-specimen\" --app=\"file://$PWD/specimen/index.html\""
   },
   "devDependencies": {
     "@terrazzo/cli": "2.10.0",

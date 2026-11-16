@@ -1,0 +1,22 @@
+{
+  "name": "design-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.9.0",
+  "scripts": {
+    "build": "tz build",
+    "lint": "tz check",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@terrazzo/cli": "2.10.0",
+    "@terrazzo/parser": "^2.10.0",
+    "@terrazzo/plugin-css": "2.10.0",
+    "@types/node": "^26.6.6",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "typescript": "^7.0.2",
+    "vitest": "5.1.0"
+  }
+}

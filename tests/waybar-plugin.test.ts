@@ -36,12 +36,12 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toContain("border: 2px solid @color_border_default;");
   });
 
-  it("insets the bar content by the module inset at the top and bottom and a cell at the sides", () => {
-    expect(stylesheet()).toMatch(/window#waybar > box \{[^}]*\n {2}padding: 3px 5px;\n\}/);
+  it("insets the bar content evenly on all four sides", () => {
+    expect(stylesheet()).toMatch(/window#waybar > box \{[^}]*\n {2}padding: 3px;\n\}/);
   });
 
-  it("pads each workspace by the module inset and spaces workspaces a cell apart", () => {
-    expect(stylesheet()).toMatch(/#workspaces button \{\n {2}padding: 0 3px;\n {2}margin-right: 5px;/);
+  it("pads each workspace by the control padding and spaces workspaces a cell apart", () => {
+    expect(stylesheet()).toMatch(/#workspaces button \{\n {2}padding: 0 6px;\n {2}margin-right: 5px;/);
   });
 
   it("drops the trailing margin after the last workspace", () => {
@@ -64,8 +64,8 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toMatch(/#workspaces button\.active \{\n {2}background: @color_focus;\n {2}color: @color_text_inverse;/);
   });
 
-  it("pads every module except the workspaces by the module inset", () => {
-    expect(stylesheet()).toContain("#pulseaudio,\n#battery,\n#clock.time {\n  padding: 0 3px;");
+  it("pads every module except the workspaces by the control padding", () => {
+    expect(stylesheet()).toContain("#pulseaudio,\n#battery,\n#clock.time {\n  padding: 0 6px;");
   });
 
   it("sets the time in the primary text color", () => {

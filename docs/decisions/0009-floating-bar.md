@@ -13,13 +13,12 @@ modules changed width as their values changed.
   right. One gutter (`space.cell`, 7px) sits between the bar and the windows.
 - Outline: 1px in `color.border.default`, with the `radius.container` corner. The bar
   never takes keyboard focus, so it never gets the `color.focus` outline.
-- Height: the text line is `bar.line`, 16px. An inset of `space.inset`, 4px, sits
-  above and below it, and the 1px outline outside that, so the bar is 26px tall.
+- Height: the text line is `bar.line`, 16px. The bar's content is inset by `space.inset`,
+  4px, on all four sides, and the 1px outline sits outside that, so the bar is 26px tall.
   The inset keeps inverted blocks clear of the outline and the rounded corners.
-- The bar's content is inset by `space.cell` on the left and right.
-- Spacing: each module and workspace has `space.inset` of padding left and right, which
-  is the shape of every inverted block. Modules in a group are `space.cell` apart, groups
-  `space.group` apart. The first and last text sit 7 + 4 = 11px from the outline.
+- Spacing follows the roles in 0012. Each module and workspace has `space.control` of
+  padding left and right. Modules in a group are `space.cell` apart, groups `space.group`
+  apart. The first and last text sit 4 + 7 = 11px from the outline.
 - The line is 16px because GTK's Pango box for 12px Iosevka is 16px tall, not because of
   the grid. A shorter line would not shrink the GTK label, so the real bar would grow.
 - The bar is desktop chrome, so `bar.line` is separate from the page's 21px line. The
@@ -30,7 +29,8 @@ modules changed width as their values changed.
   There is no window title, and no submap since the desktop uses none (0011).
 - One size: the whole bar is `type.ui-small`.
 - Contrast: the current workspace is inverted, `color.text.inverse` on `color.focus`,
-  at the full line height. The block is the digit plus 4px on each side. The time is `color.text.primary`.
+  at the full line height. It is a marker (0012): the digit plus 7px on each side, with an
+  even 4px frame of bar background around it inside the outline. The time is `color.text.primary`.
   Everything else is `color.text.secondary`.
 - Fixed width: a label and its value stay one space apart, as `vol 40%`. A minimum
   width with right alignment keeps each module the same width (0011). Muted volume is
@@ -39,7 +39,7 @@ modules changed width as their values changed.
   its own colour. The date is `%a %d %b` and the time `%H:%M`.
 - Low battery: below 10% and not charging, the battery is inverted. Waybar's
   `critical` state is set to 9, since its states match at or below the value. Its format
-  zero-pads the value, as `bat 05%`, so the inverted block is the text plus 4px on each
+  zero-pads the value, as `bat 05%`, so the inverted block is the text plus 7px on each
   side, with no spare width.
 
 ## Consequences

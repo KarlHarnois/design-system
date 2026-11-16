@@ -68,6 +68,13 @@
         "value": 10,
         "unit": "px"
       }
+    },
+    "control": {
+      "$type": "dimension",
+      "$value": {
+        "value": 6,
+        "unit": "px"
+      }
     }
   },
   "bar": {

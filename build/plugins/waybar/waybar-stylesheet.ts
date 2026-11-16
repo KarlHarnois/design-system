@@ -63,13 +63,13 @@ window#waybar > box {
   color: ${color("color.text.secondary")};
   border: ${this.theme.dimension("border.width.default")} solid ${color("color.border.default")};
   border-radius: ${this.theme.dimension("radius.container")};
-  padding: ${this.inset()} ${this.cell()};
+  padding: ${this.inset()};
 }`;
   }
 
   private workspaces(): string {
     return `#workspaces button {
-  padding: 0 ${this.inset()};
+  padding: 0 ${this.control()};
   margin-right: ${this.cell()};
   background: transparent;
   color: ${color("color.text.secondary")};
@@ -91,7 +91,7 @@ window#waybar > box {
       .filter((module) => module.waybar !== WORKSPACES_MODULE)
       .map((module) => new WaybarModule(module).selector());
     return `${selectors.join(",\n")} {
-  padding: 0 ${this.inset()};
+  padding: 0 ${this.control()};
 }`;
   }
 
@@ -115,6 +115,10 @@ window#waybar > box {
 
   private groups(): WaybarGroup[] {
     return [...this.spec.left, ...this.spec.right].map((group) => new WaybarGroup(group));
+  }
+
+  private control(): string {
+    return this.theme.dimension("space.control");
   }
 
   private inset(): string {

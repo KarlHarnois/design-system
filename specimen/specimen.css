@@ -167,7 +167,7 @@ kbd {
   color: var(--color-text-secondary);
   border: var(--border-width-default) solid var(--color-border-default);
   border-radius: var(--radius-container);
-  padding: var(--space-inset) var(--space-cell);
+  padding: var(--space-inset);
 }
 
 .waybar .modules-left,
@@ -201,7 +201,7 @@ kbd {
 }
 
 .waybar .workspace {
-  padding: 0 var(--space-inset);
+  padding: 0 var(--space-control);
   color: var(--color-text-secondary);
 }
 
@@ -214,7 +214,7 @@ kbd {
 .waybar .battery,
 .waybar .clock-date,
 .waybar .clock-time {
-  padding: 0 var(--space-inset);
+  padding: 0 var(--space-control);
 }
 
 .waybar .clock-time {

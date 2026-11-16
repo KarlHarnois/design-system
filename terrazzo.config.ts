@@ -1,5 +1,6 @@
 import { defineConfig } from "@terrazzo/cli";
 import css from "@terrazzo/plugin-css";
+import { Base16Plugin } from "./build/plugins/base16/base16-plugin.ts";
 import { WaybarPlugin } from "./build/plugins/waybar/waybar-plugin.ts";
 
 const THEMES = ["dark", "light"];
@@ -16,5 +17,6 @@ export default defineConfig({
       ],
     }),
     new WaybarPlugin(THEMES),
+    new Base16Plugin(THEMES),
   ],
 });

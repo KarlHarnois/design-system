@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tz build",
     "lint": "tz check",
-    "test": "vitest run",
+    "test": "vitest run --dir tests",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

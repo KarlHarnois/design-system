@@ -167,6 +167,7 @@ kbd {
   color: var(--color-text-secondary);
   border: var(--border-width-default) solid var(--color-border-default);
   border-radius: var(--radius-container);
+  padding: var(--space-inset);
 }
 
 .waybar .modules-left,

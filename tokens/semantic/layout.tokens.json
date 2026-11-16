@@ -5,14 +5,19 @@
       "$value": "{dimension.0}"
     },
     "cell": {
+      "$description": "One Iosevka character at 14px. Space between modules in a group.",
       "$value": "{dimension.1}"
     },
     "inset": {
-      "$description": "Half a cell rounded up, equal to radius.container, so square content sits cleanly inside rounded containers.",
+      "$description": "Half a cell rounded up, equal to radius.container, so square content sits cleanly inside rounded containers. Space inside a module, around its text.",
       "$value": {
         "value": 4,
         "unit": "px"
       }
+    },
+    "group": {
+      "$description": "Two cells. Space between groups of modules, larger than the space between modules in a group.",
+      "$value": "{dimension.2}"
     },
     "gutter": {
       "$value": "{dimension.2}"

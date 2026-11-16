@@ -21,6 +21,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       ../terrazzo.config.ts
       ../tokens
       ../keymap
+      ../bar
       ../build
       ../tests
     ];

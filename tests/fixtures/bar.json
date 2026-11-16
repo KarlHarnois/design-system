@@ -1,0 +1,16 @@
+{
+  "left": [{ "name": "workspaces", "waybar": "hyprland/workspaces", "format": "{name}", "sample": { "items": ["1"], "active": "1" } }],
+  "right": [
+    {
+      "name": "battery",
+      "waybar": "battery",
+      "format": "power {capacity}%",
+      "width": 10,
+      "align": "right",
+      "variants": { "charging": "plug {capacity}%" },
+      "states": { "critical": { "below": 20 } },
+      "sample": { "values": { "capacity": 50 } }
+    },
+    { "name": "clock-time", "waybar": "clock#time", "format": "{:%H}", "sample": { "time": "2026-01-01T00:00" } }
+  ]
+}

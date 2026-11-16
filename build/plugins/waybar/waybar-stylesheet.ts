@@ -1,15 +1,19 @@
+import type { BarSpec } from "../bar/bar-spec.ts";
 import { ResolvedTheme } from "../shared/resolved-theme.ts";
 import { GtkColorPalette } from "./gtk-color-palette.ts";
+import { WaybarModule } from "./waybar-module.ts";
 
 const color = GtkColorPalette.reference;
 const BAR_TYPE_STYLE = "type.ui-small";
-const CELLS_BETWEEN_GROUPS = 2;
+const WORKSPACES_MODULE = "hyprland/workspaces";
 
 export class WaybarStylesheet {
   private readonly theme: ResolvedTheme;
+  private readonly spec: BarSpec;
 
-  constructor(theme: ResolvedTheme) {
+  constructor(theme: ResolvedTheme, spec: BarSpec) {
     this.theme = theme;
+    this.spec = spec;
   }
 
   render(): string {
@@ -18,8 +22,6 @@ export class WaybarStylesheet {
       this.reset(),
       this.bar(),
       this.workspaces(),
-      this.submap(),
-      this.window(),
       this.modules(),
       this.time(),
       this.lowBattery(),
@@ -75,25 +77,12 @@ window#waybar > box {
 }`;
   }
 
-  private submap(): string {
-    return `#submap {
-  padding: 0 ${this.cell()};
-  background: ${color("color.focus")};
-  color: ${color("color.text.inverse")};
-}`;
-  }
-
-  private window(): string {
-    return `#window {
-  margin: 0 ${this.cells(CELLS_BETWEEN_GROUPS)};
-  padding: 0 ${this.cell()};
-}`;
-  }
-
   private modules(): string {
-    return `#pulseaudio,
-#battery,
-#clock {
+    const selectors = this.spec
+      .modules()
+      .filter((module) => module.waybar !== WORKSPACES_MODULE)
+      .map((module) => new WaybarModule(module).selector());
+    return `${selectors.join(",\n")} {
   padding: 0 ${this.cell()};
 }`;
   }
@@ -118,9 +107,5 @@ window#waybar > box {
 
   private cell(): string {
     return this.theme.dimension("space.cell");
-  }
-
-  private cells(count: number): string {
-    return `${count * this.theme.pixels("space.cell")}px`;
   }
 }

@@ -2,6 +2,8 @@ import { readFileSync } from "node:fs";
 import { defineConfig } from "@terrazzo/cli";
 import css from "@terrazzo/plugin-css";
 import { KnaveGridPlugin } from "./build/plugins/knave-grid/knave-grid-plugin.ts";
+import { BarPreviewPlugin } from "./build/plugins/bar/bar-preview-plugin.ts";
+import { BarSpec } from "./build/plugins/bar/bar-spec.ts";
 import { Base16Plugin } from "./build/plugins/base16/base16-plugin.ts";
 import { HyprlandPlugin } from "./build/plugins/hyprland/hyprland-plugin.ts";
 import { OpticalCentrePlugin } from "./build/plugins/optical-centre/optical-centre-plugin.ts";
@@ -12,6 +14,7 @@ const RESOLVER_PATH = "./tokens/resolver.json";
 const { modifiers } = JSON.parse(readFileSync(RESOLVER_PATH, "utf8"));
 const THEMES = Object.keys(modifiers.theme.contexts);
 const GRID_SPEC_PATH = "./grid/src/design-grid.knv";
+const BAR_SPEC = BarSpec.read("./bar/bar.json");
 
 const webFontDirectory = (): string => {
   const directory = process.env.DESIGN_SYSTEM_WEB_FONTS;
@@ -32,7 +35,8 @@ export default defineConfig({
         { input: { theme: "light" }, prepare: (declarations) => `[data-theme="light"] {\n  color-scheme: light;\n${declarations}\n}` },
       ],
     }),
-    new WaybarPlugin(THEMES),
+    new WaybarPlugin(THEMES, BAR_SPEC),
+    new BarPreviewPlugin(BAR_SPEC),
     new Base16Plugin(THEMES),
     new HyprlandPlugin(THEMES),
     new KnaveGridPlugin(GRID_SPEC_PATH, webFontDirectory()),

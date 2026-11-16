@@ -22,7 +22,7 @@ export class GridFont {
     return `(${this.name} "${familyName}" ${files.join(" ")})`;
   }
 
-  private static fileName(familyName: string, weight: string): string {
+  static fileName(familyName: string, weight: string): string {
     return `${familyName.toLowerCase().replaceAll(" ", "-")}-${weight}.woff2`;
   }
 }

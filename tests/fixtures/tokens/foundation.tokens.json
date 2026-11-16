@@ -54,6 +54,13 @@
         "value": 3,
         "unit": "px"
       }
+    },
+    "line": {
+      "$type": "dimension",
+      "$value": {
+        "value": 15,
+        "unit": "px"
+      }
     }
   },
   "bar": {

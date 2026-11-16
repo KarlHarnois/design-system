@@ -113,6 +113,9 @@
         },
         "margin": {
           "$value": 2
+        },
+        "field-lines": {
+          "$value": 4
         }
       },
       "narrow": {

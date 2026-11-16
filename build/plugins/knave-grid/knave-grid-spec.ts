@@ -6,6 +6,7 @@ const BODY_STYLE_ID = "type.ui";
 const FONT_FAMILY_GROUP = "font.family";
 const TYPE_STYLE_GROUP = "type";
 const TYPE_AREA_GROUP = "grid.type-area";
+const TYPE_AREA_FIELDS = ["width", "column-count", "margin", "field-lines"];
 
 export class KnaveGridSpec {
   private readonly tokens: ResolvedTheme;
@@ -66,9 +67,18 @@ export class KnaveGridSpec {
 
   private typeAreaClauses(): string[] {
     return this.typeAreaNames()
-      .map((name) => ({ name, field: (field: string) => this.tokens.number(`${TYPE_AREA_GROUP}.${name}.${field}`) }))
-      .sort((narrower, wider) => narrower.field("width") - wider.field("width"))
-      .map(({ name, field }) => `(${name} :width ${field("width")} :column-count ${field("column-count")} :margin ${field("margin")})`);
+      .sort((narrower, wider) => this.typeAreaField(narrower, "width") - this.typeAreaField(wider, "width"))
+      .map((name) => `(${name} ${this.typeAreaFields(name).join(" ")})`);
+  }
+
+  private typeAreaFields(name: string): string[] {
+    return TYPE_AREA_FIELDS.filter((field) => this.tokens.has(`${TYPE_AREA_GROUP}.${name}.${field}`)).map(
+      (field) => `:${field} ${this.typeAreaField(name, field)}`,
+    );
+  }
+
+  private typeAreaField(name: string, field: string): number {
+    return this.tokens.number(`${TYPE_AREA_GROUP}.${name}.${field}`);
   }
 
   private typeAreaNames(): string[] {

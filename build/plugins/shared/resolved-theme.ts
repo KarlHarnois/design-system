@@ -21,6 +21,10 @@ export class ResolvedTheme {
     this.tokens = resolver.apply(input);
   }
 
+  has(id: string): boolean {
+    return id in this.tokens;
+  }
+
   idsUnder(group: string): string[] {
     return Object.keys(this.tokens).filter((id) => id.startsWith(`${group}.`));
   }

@@ -33,6 +33,14 @@ describe("KnaveGridPlugin", () => {
     expect(spec.indexOf("(narrow")).toBeLessThan(spec.indexOf("(wide"));
   });
 
+  it("passes a type area's field height when its tokens set one", () => {
+    expect(spec).toContain("(wide :width 39 :column-count 4 :margin 2 :field-lines 4)");
+  });
+
+  it("leaves out field height when a type area's tokens set none", () => {
+    expect(spec).toContain("(narrow :width 19 :column-count 1 :margin 1)\n");
+  });
+
   it("counts a type style's height in lines and leaves out a size knave-grid derives", () => {
     expect(spec).toContain("(title :lines 2 :weight bold)");
   });

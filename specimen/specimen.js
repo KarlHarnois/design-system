@@ -115,6 +115,7 @@ class Specimen {
       "/": () => this.enterCommand(),
       "<Esc>": () => this.clearFilter(),
       "<Space>g": () => document.documentElement.classList.toggle("grid-overlay"),
+      "<Space>G": () => this.toggleFullGrid(),
       "<Space>t": () => this.toggleTheme(),
       "<Space>a": () => this.cycleAccent(),
     };
@@ -156,6 +157,13 @@ class Specimen {
     this.filterInput.value = "";
     this.focusList.filter("");
     this.focusList.focusCurrent();
+  }
+
+  toggleFullGrid() {
+    const classes = document.documentElement.classList;
+    const showFullGrid = !classes.contains("grid-guides");
+    classes.toggle("grid-overlay", showFullGrid);
+    classes.toggle("grid-guides", showFullGrid);
   }
 
   cycleAccent() {

@@ -14,7 +14,9 @@ class WaybarFormat {
 
   field(field, sample) {
     if (field.startsWith(":")) return WaybarFormat.strftime(field.slice(1), WaybarFormat.localTime(sample.time));
-    return String(sample.values?.[field] ?? "");
+    const [name, spec] = field.split(":");
+    const value = String(sample.values?.[name] ?? "");
+    return spec?.startsWith("0") ? value.padStart(Number(spec.slice(1)), "0") : value;
   }
 
   static localTime(text) {

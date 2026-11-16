@@ -12,9 +12,9 @@ class BarPreview {
 
   renderBar(element) {
     element.replaceChildren(
-      this.side("modules-left", this.spec.left.flatMap((group) => group.modules).map((module) => this.module(module, module.sample, []))),
+      this.side("modules-left", this.spec.left.map((group) => this.group(group))),
       this.side("modules-center", []),
-      this.side("modules-right", this.spec.right.flatMap((group) => group.modules).map((module) => this.module(module, module.sample, []))),
+      this.side("modules-right", this.spec.right.map((group) => this.group(group))),
     );
   }
 
@@ -22,13 +22,24 @@ class BarPreview {
     const samples = [...this.spec.left, ...this.spec.right].flatMap((group) => group.modules).flatMap((module) =>
       (module.stateSamples ?? []).map((sample) => this.stateModule(module, sample)),
     );
-    element.replaceChildren(this.side("modules-right", samples));
+    element.replaceChildren(this.side("modules-right", [this.side("module-group", samples)]));
+  }
+
+  group(group) {
+    const element = this.side("module-group", group.modules.map((module) => this.module(module, module.sample, [])));
+    element.dataset.group = group.name;
+    return element;
   }
 
   stateModule(module, sample) {
-    const format = sample.variant === undefined ? module.format : module.variants[sample.variant];
+    const format = this.sampleFormat(module, sample);
     const classes = [sample.variant, sample.state].filter((name) => name !== undefined);
     return this.module({ ...module, format }, sample, classes);
+  }
+
+  sampleFormat(module, sample) {
+    if (sample.variant !== undefined) return module.variants[sample.variant];
+    return module.states?.[sample.state]?.format ?? module.format;
   }
 
   module(module, sample, classes) {

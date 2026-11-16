@@ -167,13 +167,19 @@ kbd {
   color: var(--color-text-secondary);
   border: var(--border-width-default) solid var(--color-border-default);
   border-radius: var(--radius-container);
-  padding: var(--space-inset);
+  padding: var(--space-inset) var(--space-cell);
 }
 
 .waybar .modules-left,
-.waybar .modules-right,
+.waybar .modules-right {
+  display: flex;
+  gap: var(--space-group);
+}
+
+.waybar .module-group,
 .waybar .workspaces {
   display: flex;
+  gap: var(--space-cell);
 }
 
 .waybar .modules-center {
@@ -195,7 +201,7 @@ kbd {
 }
 
 .waybar .workspace {
-  padding: 0 var(--space-cell);
+  padding: 0 var(--space-inset);
   color: var(--color-text-secondary);
 }
 
@@ -208,7 +214,7 @@ kbd {
 .waybar .battery,
 .waybar .clock-date,
 .waybar .clock-time {
-  padding: 0 var(--space-cell);
+  padding: 0 var(--space-inset);
 }
 
 .waybar .clock-time {

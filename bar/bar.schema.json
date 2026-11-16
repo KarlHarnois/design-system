@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bar.schema.json",
+  "title": "Desktop bar",
+  "description": "The modules of the desktop bar, in order on each side. The Waybar config and the specimen preview both read it.",
+  "type": "object",
+  "required": ["left", "right"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "left": { "$ref": "#/$defs/side" },
+    "right": { "$ref": "#/$defs/side" }
+  },
+  "$defs": {
+    "side": { "type": "array", "items": { "$ref": "#/$defs/module" } },
+    "module": {
+      "type": "object",
+      "required": ["name", "waybar", "format", "sample"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "CSS class of the module in the preview, matching the name Waybar gives it.",
+          "type": "string",
+          "pattern": "^[a-z]+(-[a-z]+)?$"
+        },
+        "waybar": { "description": "Waybar module name, such as `clock#date`.", "type": "string" },
+        "format": { "description": "Waybar format string.", "type": "string" },
+        "width": { "description": "Fixed width in characters.", "type": "integer", "minimum": 1 },
+        "align": { "description": "Where the text sits inside the fixed width.", "enum": ["left", "right"] },
+        "variants": {
+          "description": "Other formats by Waybar status, such as `muted` or `charging`.",
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "states": {
+          "description": "Waybar states, such as `critical`, active when the value is below the threshold.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["below"],
+            "additionalProperties": false,
+            "properties": { "below": { "type": "integer", "minimum": 1, "maximum": 100 } }
+          }
+        },
+        "sample": { "$ref": "#/$defs/sample" },
+        "stateSamples": {
+          "description": "Variants and states the preview shows in its state row.",
+          "type": "array",
+          "items": {
+            "allOf": [{ "$ref": "#/$defs/sample" }],
+            "properties": { "variant": { "type": "string" }, "state": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "sample": {
+      "description": "Values the preview fills the format with.",
+      "type": "object",
+      "properties": {
+        "values": { "type": "object", "additionalProperties": { "type": "number" } },
+        "time": { "description": "Local time as YYYY-MM-DDTHH:MM.", "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}$" },
+        "items": { "type": "array", "items": { "type": "string" } },
+        "active": { "type": "string" }
+      }
+    }
+  }
+}

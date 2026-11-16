@@ -1,0 +1,49 @@
+{
+  "$schema": "./bar.schema.json",
+  "left": [
+    {
+      "name": "workspaces",
+      "waybar": "hyprland/workspaces",
+      "format": "{name}",
+      "sample": { "items": ["1", "2", "3"], "active": "1" }
+    }
+  ],
+  "right": [
+    {
+      "name": "pulseaudio",
+      "waybar": "pulseaudio",
+      "format": "vol {volume}%",
+      "width": 8,
+      "align": "right",
+      "variants": { "muted": "vol ---" },
+      "sample": { "values": { "volume": 40 } },
+      "stateSamples": [{ "variant": "muted", "values": { "volume": 40 } }]
+    },
+    {
+      "name": "battery",
+      "waybar": "battery",
+      "format": "bat {capacity}%",
+      "width": 8,
+      "align": "right",
+      "variants": { "charging": "chg {capacity}%" },
+      "states": { "critical": { "below": 10 } },
+      "sample": { "values": { "capacity": 82 } },
+      "stateSamples": [
+        { "state": "critical", "values": { "capacity": 5 } },
+        { "variant": "charging", "values": { "capacity": 82 } }
+      ]
+    },
+    {
+      "name": "clock-date",
+      "waybar": "clock#date",
+      "format": "{:%a %d %b}",
+      "sample": { "time": "2026-11-16T14:32" }
+    },
+    {
+      "name": "clock-time",
+      "waybar": "clock#time",
+      "format": "{:%H:%M}",
+      "sample": { "time": "2026-11-16T14:32" }
+    }
+  ]
+}

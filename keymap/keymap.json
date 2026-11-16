@@ -2,10 +2,10 @@
   "$schema": "./keymap.schema.json",
   "leader": "<Space>",
   "modes": {
-    "normal": { "description": "Move and act on items. The resting mode.", "enter": ["<Esc>"], "token": "mode.normal" },
-    "insert": { "description": "Type text into the focused field.", "enter": ["i", "a", "o", "O"], "token": "mode.insert" },
-    "visual": { "description": "Select a range of items.", "enter": ["v", "V"], "token": "mode.visual" },
-    "command": { "description": "Type a command on the command line.", "enter": [":"], "token": "mode.command" }
+    "normal": { "description": "Move and act on items. The resting mode.", "enter": ["<Esc>"] },
+    "insert": { "description": "Type text into the focused field.", "enter": ["i", "a", "o", "O"] },
+    "visual": { "description": "Select a range of items.", "enter": ["v", "V"] },
+    "command": { "description": "Type a command on the command line.", "enter": [":"] }
   },
   "operators": {
     "d": { "name": "delete", "description": "Remove the target." },

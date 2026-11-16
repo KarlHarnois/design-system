@@ -31,30 +31,11 @@
         "$value": "{color.gray.950}"
       }
     },
-    "accent": {
-      "$value": "{accent.500}"
-    },
     "focus": {
-      "$value": "{accent.500}"
+      "$value": "{color.text.primary}"
     },
     "selection": {
       "$value": "{color.gray.100}"
-    }
-  },
-  "mode": {
-    "$type": "color",
-    "$description": "One color per vim mode, used by mode indicators and focus rings.",
-    "normal": {
-      "$value": "{color.red.500}"
-    },
-    "insert": {
-      "$value": "{color.green.500}"
-    },
-    "visual": {
-      "$value": "{color.blue.500}"
-    },
-    "command": {
-      "$value": "{color.yellow.500}"
     }
   }
 }

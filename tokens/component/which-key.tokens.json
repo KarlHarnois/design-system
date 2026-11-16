@@ -18,7 +18,7 @@
         "$value": "{color.text.secondary}"
       },
       "key-text": {
-        "$value": "{color.accent}"
+        "$value": "{color.text.primary}"
       },
       "delay": {
         "$type": "duration",

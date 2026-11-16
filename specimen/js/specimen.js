@@ -4,7 +4,6 @@ class Specimen {
   constructor(root) {
     this.root = root;
     this.filterInput = root.querySelector(".filter input");
-    this.accents = [...root.querySelectorAll(".accent-option")].map((option) => option.dataset.accent);
     const statusBar = root.querySelector(".mode-line");
     this.focusList = new FocusList([...root.querySelectorAll(".item")], statusBar);
     this.statusLine = new StatusLine(statusBar);
@@ -47,7 +46,6 @@ class Specimen {
       new Command("<Space>g", "toggle-baselines", "Show the baselines", () => this.toggleBaselines()),
       new Command("<Space>G", "toggle-full-grid", "Show the full grid", () => this.toggleFullGrid()),
       new Command("<Space>t", "toggle-theme", "Switch dark and light", () => this.toggleTheme()),
-      new Command("<Space>a", "next-accent", "Switch to the next accent", () => this.cycleAccent()),
     ];
   }
 
@@ -128,12 +126,6 @@ class Specimen {
     const showFullGrid = !classes.contains("grid-guides");
     classes.toggle("grid-overlay", showFullGrid);
     classes.toggle("grid-guides", showFullGrid);
-  }
-
-  cycleAccent() {
-    const html = document.documentElement;
-    const nextIndex = (this.accents.indexOf(html.dataset.accent) + 1) % this.accents.length;
-    html.dataset.accent = this.accents[nextIndex];
   }
 
   toggleTheme() {

@@ -96,7 +96,7 @@
 .table tr:focus .table-cell-active {
   justify-self: start;
   max-width: 100%;
-  background: var(--mode-color);
+  background: var(--color-focus);
   color: var(--component-table-active-cell-text);
 }
 

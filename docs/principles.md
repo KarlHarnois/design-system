@@ -8,7 +8,7 @@ When a target cannot follow a rule, record why in `docs/decisions/`.
 Every action is reachable from the keyboard. The mouse is a shortcut, never the only path.
 
 - Focus is always visible. No target may hide the focus ring.
-- The current mode is always visible, with the colors from `mode.*` tokens.
+- The current mode is always visible, named in the status bar.
 - Pointer targets still meet a minimum size, so the mouse stays usable.
 
 ## 2. Vim grammar everywhere
@@ -34,7 +34,7 @@ Layout follows a Swiss grid that [knave-grid](https://github.com/KarlHarnois/kna
 - Type areas, columns, gutters and margins are whole squares. See `grid.type-area.*` tokens.
 - Pictures and swatches span fields that run from the cap height of their first line to the descender of their last.
 - Text is flush left, ragged right. No centered paragraphs, no justified text.
-- Hierarchy comes from size, weight, and position. Color is reserved for state.
+- Hierarchy comes from size, weight, and position.
 
 ## 4. Typography
 
@@ -44,6 +44,6 @@ Layout follows a Swiss grid that [knave-grid](https://github.com/KarlHarnois/kna
 
 ## 5. Restraint in color
 
-- Neutral surfaces, one accent. The accent comes from a fixed menu of tuned ramps, never a free color pick.
-- Mode colors exist to tell modes apart, not to decorate.
+- Black and white. Surfaces, text, borders and focus come from the gray ramp only.
+- Emphasis comes from inversion, weight and position, never from hue.
 - Every text and surface pair meets WCAG AA contrast.

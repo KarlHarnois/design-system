@@ -37,16 +37,11 @@
     },
     "mode": {
       "type": "object",
-      "required": ["description", "enter", "token"],
+      "required": ["description", "enter"],
       "additionalProperties": false,
       "properties": {
         "description": { "type": "string" },
-        "enter": { "type": "array", "items": { "$ref": "#/$defs/key" } },
-        "token": {
-          "description": "DTCG token that colors this mode's indicator.",
-          "type": "string",
-          "pattern": "^mode\\.[a-z]+$"
-        }
+        "enter": { "type": "array", "items": { "$ref": "#/$defs/key" } }
       }
     },
     "bindings": {

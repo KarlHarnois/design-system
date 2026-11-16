@@ -47,56 +47,6 @@
     }
   },
   "modifiers": {
-    "accent": {
-      "contexts": {
-        "red": [
-          {
-            "$ref": "accent/red.tokens.json"
-          }
-        ],
-        "orange": [
-          {
-            "$ref": "accent/orange.tokens.json"
-          }
-        ],
-        "yellow": [
-          {
-            "$ref": "accent/yellow.tokens.json"
-          }
-        ],
-        "green": [
-          {
-            "$ref": "accent/green.tokens.json"
-          }
-        ],
-        "teal": [
-          {
-            "$ref": "accent/teal.tokens.json"
-          }
-        ],
-        "blue": [
-          {
-            "$ref": "accent/blue.tokens.json"
-          }
-        ],
-        "purple": [
-          {
-            "$ref": "accent/purple.tokens.json"
-          }
-        ],
-        "pink": [
-          {
-            "$ref": "accent/pink.tokens.json"
-          }
-        ],
-        "slate": [
-          {
-            "$ref": "accent/slate.tokens.json"
-          }
-        ]
-      },
-      "default": "red"
-    },
     "theme": {
       "contexts": {
         "dark": [
@@ -116,9 +66,6 @@
   "resolutionOrder": [
     {
       "$ref": "#/sets/foundation"
-    },
-    {
-      "$ref": "#/modifiers/accent"
     },
     {
       "$ref": "#/modifiers/theme"

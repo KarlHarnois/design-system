@@ -1,7 +1,7 @@
 # 0004. Offer a fixed accent menu through a resolver modifier
 
 ## Status
-Accepted
+Superseded by [0006](0006-black-and-white.md)
 
 ## Context
 People want to pick their own accent color. A free color pick can break contrast and

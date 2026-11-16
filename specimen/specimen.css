@@ -47,7 +47,7 @@ main {
 
 .group-title::before {
   content: counter(section, decimal-leading-zero) " ";
-  color: var(--color-accent);
+  color: var(--color-text-primary);
 }
 
 
@@ -69,7 +69,7 @@ kbd {
 }
 
 .item:focus:not(.list-item, tr) {
-  outline: var(--focus-width) solid var(--mode-color);
+  outline: var(--focus-width) solid var(--color-focus);
   outline-offset: var(--focus-offset);
 }
 
@@ -97,21 +97,13 @@ kbd {
   border: var(--border-width-default) solid var(--color-border-default);
 }
 
-.accent-option {
-  --swatch: var(--accent-400);
-}
-
-[data-theme="light"] .accent-option {
-  --swatch: var(--accent-500);
-}
-
 .bar::before {
   content: "";
   display: inline-block;
   width: var(--bar);
   height: var(--space-cell);
   margin-right: var(--space-gutter);
-  background: var(--color-accent);
+  background: var(--color-text-primary);
 }
 
 .button-row {

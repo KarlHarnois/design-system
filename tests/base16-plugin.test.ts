@@ -25,7 +25,7 @@ describe("Base16Plugin", () => {
     expect(fixtureBuild.file("base16/dark.yaml")).toMatch(/base0F: "#[0-9a-f]{6}"/);
   });
 
-  it("uses the bright accent shade on dark themes", () => {
+  it("uses the bright syntax shade on dark themes", () => {
     expect(fixtureBuild.file("base16/dark.yaml")).toContain('base08: "#ff0000"');
   });
 });

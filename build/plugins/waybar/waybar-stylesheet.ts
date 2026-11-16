@@ -48,7 +48,8 @@ export class WaybarStylesheet {
 }
 
 #workspaces button.urgent {
-  color: ${color("color.accent")};
+  background-color: ${color("color.text.primary")};
+  color: ${color("color.text.inverse")};
 }`;
   }
 
@@ -56,7 +57,7 @@ export class WaybarStylesheet {
     return `#mode,
 #submap {
   padding: 0 ${this.cell()};
-  background-color: ${color("mode.command")};
+  background-color: ${color("color.text.primary")};
   color: ${color("color.text.inverse")};
 }`;
   }

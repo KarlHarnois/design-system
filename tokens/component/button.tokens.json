@@ -13,7 +13,7 @@
       "primary": {
         "$type": "color",
         "background": {
-          "$value": "{color.accent}"
+          "$value": "{color.text.primary}"
         },
         "text": {
           "$value": "{color.text.inverse}"

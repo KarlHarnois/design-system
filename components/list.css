@@ -15,5 +15,5 @@
 .list-item[aria-selected="true"],
 .list-item:focus {
   background: var(--component-list-selected-background);
-  box-shadow: inset var(--component-list-marker-width) 0 var(--mode-color);
+  box-shadow: inset var(--component-list-marker-width) 0 var(--color-focus);
 }

@@ -45,28 +45,12 @@
         }
       }
     },
-    "accent": {
-      "$value": "{accent.500}"
-    },
     "focus": {
       "$value": {
         "colorSpace": "srgb",
         "components": [
           1,
           0,
-          0
-        ]
-      }
-    }
-  },
-  "mode": {
-    "$type": "color",
-    "command": {
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          1,
-          1,
           0
         ]
       }

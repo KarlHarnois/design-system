@@ -10,7 +10,7 @@
   padding: 0 var(--component-status-bar-padding-inline);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
-  background: var(--mode-color);
+  background: var(--color-focus);
   color: var(--component-status-bar-mode-text);
 }
 

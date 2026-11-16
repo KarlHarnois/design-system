@@ -4,7 +4,7 @@
       "$description": "Popup that lists the keys that can follow a pending prefix.",
       "padding-inline": {
         "$type": "dimension",
-        "$value": "{space.cell}"
+        "$value": "{space.control}"
       },
       "column-gap": {
         "$type": "dimension",

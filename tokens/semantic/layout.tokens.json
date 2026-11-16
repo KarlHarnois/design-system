@@ -5,18 +5,22 @@
       "$value": "{dimension.0}"
     },
     "cell": {
-      "$description": "One Iosevka character at 14px. Space between modules in a group.",
+      "$description": "One Iosevka character at 14px. Space between items in a group.",
       "$value": "{dimension.1}"
     },
     "inset": {
-      "$description": "Half a cell rounded up, equal to radius.container, so square content sits cleanly inside rounded containers. Space inside a module, around its text.",
+      "$description": "Space between a container's edge and its content, equal on all four sides. Equal to radius.container, so inner shapes are square. See docs/decisions/0012-nesting.md.",
       "$value": {
         "value": 4,
         "unit": "px"
       }
     },
+    "control": {
+      "$description": "Left and right padding of a control or marker, such as a button, a list row or an inverted block. Controls and markers may be wider than tall.",
+      "$value": "{space.cell}"
+    },
     "group": {
-      "$description": "Two cells. Space between groups of modules, larger than the space between modules in a group.",
+      "$description": "Two cells. Space between groups. Space inside a group is always smaller.",
       "$value": "{dimension.2}"
     },
     "gutter": {

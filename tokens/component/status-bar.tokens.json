@@ -7,7 +7,7 @@
       },
       "padding-inline": {
         "$type": "dimension",
-        "$value": "{space.cell}"
+        "$value": "{space.control}"
       },
       "$type": "color",
       "background": {

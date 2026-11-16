@@ -10,8 +10,6 @@ class Specimen {
     this.statusLine = new StatusLine(statusBar);
     this.whichKey = new WhichKey(root.querySelector(".which-key"));
     this.commands = this.normalCommands();
-    this.visual = undefined;
-    this.register = "";
     this.palette = new CommandPalette(root.querySelector(".palette"), this.commands, this.statusLine, () =>
       this.enterNormal(),
     );
@@ -37,9 +35,6 @@ class Specimen {
       new Command("M", "screen-middle", "Middle item on screen", () => this.focusList.screenMiddle()),
       new Command("L", "screen-bottom", "Bottom item on screen", () => this.focusList.screenBottom()),
       new Command("i", "insert", "Type in the focused field", () => this.enterInsert()),
-      new Command("v", "visual", "Select characters in the focused field", () => this.enterVisual(false)),
-      new Command("V", "visual-line", "Select all of the focused field", () => this.enterVisual(true)),
-      new Command("p", "put", "Paste the register into the focused field", () => this.put()),
       new Command("<CR>", "activate", "Press the focused button", () => this.activate()),
       new Command("/", "search", "Filter the tokens", () => this.enterSearch()),
       new Command(":", "command", "Open the command palette", () => this.palette.open()),
@@ -59,7 +54,6 @@ class Specimen {
   }
 
   dispatch(key) {
-    if (this.visual) return this.handleVisualKey(key);
     if (this.isTextEntryMode() && LineEditor.handles(key)) return this.editLine(key);
     if (this.palette.isOpen()) return this.palette.handleKey(key);
     if (this.isTextEntryMode()) return this.handleTextEntryKey(key);
@@ -82,62 +76,6 @@ class Specimen {
     return leavesTextEntry;
   }
 
-  handleVisualKey(key) {
-    const operators = {
-      y: () => this.yank(),
-      d: () => this.deleteSelection(),
-      c: () => this.changeSelection(),
-      "<Esc>": () => this.leaveVisual(),
-    };
-    if (VisualSelection.isMotion(key)) this.visual.move(key);
-    operators[key]?.();
-    return true;
-  }
-
-  enterVisual(linewise) {
-    const input = this.focusedFieldInput();
-    if (!input) return;
-    input.focus();
-    this.visual = new VisualSelection(input, linewise);
-    this.statusLine.enter("visual");
-  }
-
-  leaveVisual() {
-    this.visual = undefined;
-    this.enterNormal();
-  }
-
-  yank() {
-    this.register = this.visual.text();
-    this.statusLine.showMessage(`Yanked ${this.register.length} characters`);
-    navigator.clipboard?.writeText(this.register).catch(() => this.statusLine.showMessage("Yanked to the register only"));
-    this.leaveVisual();
-  }
-
-  deleteSelection() {
-    this.register = this.visual.text();
-    this.visual.delete();
-    this.leaveVisual();
-  }
-
-  changeSelection() {
-    this.register = this.visual.text();
-    this.visual.delete();
-    this.visual = undefined;
-    this.statusLine.enter("insert");
-  }
-
-  put() {
-    const input = this.focusedFieldInput();
-    if (!input || this.register === "") return;
-    input.value += this.register;
-    input.dispatchEvent(new Event("input", { bubbles: true }));
-  }
-
-  focusedFieldInput() {
-    return this.focusList.current()?.querySelector(".input");
-  }
-
   showPending(pressed, continuations) {
     this.statusLine.showPending(pressed);
     this.whichKey.update(pressed, continuations);
@@ -148,7 +86,7 @@ class Specimen {
   }
 
   enterInsert() {
-    const input = this.focusedFieldInput();
+    const input = this.focusList.current()?.querySelector(".input");
     if (!input) return;
     this.statusLine.enter("insert");
     input.focus();

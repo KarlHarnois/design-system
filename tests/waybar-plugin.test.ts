@@ -72,8 +72,8 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toMatch(/#workspaces button\.active \{\n {2}background: @color_focus;\n {2}color: @color_text_inverse;/);
   });
 
-  it("pads every module except the workspaces by the control padding", () => {
-    expect(stylesheet()).toContain("#pulseaudio,\n#battery,\n#clock.time {\n  padding: 0 6px;");
+  it("gives every module the marker padding, so any of them can become a marker", () => {
+    expect(stylesheet()).toContain("#pulseaudio,\n#battery,\n#clock.time {\n  padding: 0 4px;");
   });
 
   it("sets the time in the primary text color", () => {
@@ -130,8 +130,8 @@ describe("WaybarPlugin", () => {
     expect(config().battery.states).toEqual({ critical: 19 });
   });
 
-  it("shrinks a critical battery's inverted padding to the marker padding and keeps its footprint", () => {
-    expect(stylesheet()).toMatch(/#battery\.critical:not\(\.charging\) \{\n {2}padding: 0 4px;\n {2}margin: 0 2px;/);
+  it("changes only the colours of a critical battery, never its size", () => {
+    expect(stylesheet()).toMatch(/#battery\.critical:not\(\.charging\) \{\n {2}background: @color_focus;\n {2}color: @color_text_inverse;\n\}/);
   });
 
   it("inverts a critical battery unless it is charging", () => {

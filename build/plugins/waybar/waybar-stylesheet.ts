@@ -92,7 +92,7 @@ window#waybar > box {
       .filter((module) => module.waybar !== WORKSPACES_MODULE)
       .map((module) => new WaybarModule(module).selector());
     return `${selectors.join(",\n")} {
-  padding: 0 ${this.control()};
+  padding: 0 ${this.marker()};
 }`;
   }
 
@@ -126,10 +126,6 @@ window#waybar > box {
     return this.theme.pixels("bar.line") - 2 * this.theme.pixels("space.marker");
   }
 
-  private control(): string {
-    return this.theme.dimension("space.control");
-  }
-
   private inset(): string {
     return this.theme.dimension("space.inset");
   }
@@ -141,10 +137,7 @@ window#waybar > box {
   }
 
   private lowBattery(): string {
-    const footprintMargin = this.theme.pixels("space.control") - this.theme.pixels("space.marker");
     return `#battery.critical:not(.charging) {
-  padding: 0 ${this.marker()};
-  margin: 0 ${footprintMargin}px;
   background: ${color("color.focus")};
   color: ${color("color.text.inverse")};
 }`;

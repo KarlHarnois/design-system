@@ -25,11 +25,6 @@
       },
       "active-cell-text": {
         "$value": "{color.text.inverse}"
-      },
-      "cursor-overhang": {
-        "$type": "dimension",
-        "$description": "How far the cell cursor reaches into the gutters, so text keeps its column edge.",
-        "$value": "{space.cell}"
       }
     }
   }

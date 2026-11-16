@@ -94,9 +94,12 @@
 }
 
 .table tr:focus .table-cell-active {
+  justify-self: start;
+  max-width: 100%;
   background: var(--mode-color);
   color: var(--component-table-active-cell-text);
-  box-shadow:
-    calc(-1 * var(--component-table-cursor-overhang)) 0 var(--mode-color),
-    var(--component-table-cursor-overhang) 0 var(--mode-color);
+}
+
+.table tr:focus .table-cell-active.table-number {
+  justify-self: end;
 }

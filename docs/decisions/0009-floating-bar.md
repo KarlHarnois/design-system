@@ -13,8 +13,9 @@ modules changed width as their values changed.
   right. One gutter (`space.cell`, 7px) sits between the bar and the windows.
 - Outline: 1px in `color.border.default`, with the `radius.container` corner. The bar
   never takes keyboard focus, so it never gets the `color.focus` outline.
-- Height: the text line is `bar.height`, 21px. The outline sits outside it, so the bar
-  is 23px tall.
+- Height: the text line is `bar.height`, 21px. An inset of `space.inset`, 4px, sits
+  around it on all four sides, and the 1px outline outside that, so the bar is 31px tall.
+  The inset keeps inverted blocks clear of the outline and the rounded corners.
 - Layout: workspaces and the submap sit left. The focused window's title fills the
   middle and truncates with an ellipsis. Volume, battery, date and time sit right,
   with the time last. Each module has one cell of padding, and the groups are two
@@ -35,6 +36,8 @@ modules changed width as their values changed.
 - GTK3 CSS has no `line-height`. Labels and buttons take the 21px line as `min-height`.
 - GTK3 CSS cannot change case, so the date keeps strftime's capitals, as `Mon 16 Nov`.
   Its width holds only in locales whose short day and month names have three letters.
+- Waybar computes the height from the tokens: `bar.height` + 2 × `space.inset` +
+  2 × `border.width.default`.
 - Waybar's exclusive zone covers its top margin and height, so Hyprland's `gaps_out`
   top is one gutter.
 - The specimen previews the bar in HTML. GTK can render it slightly differently.

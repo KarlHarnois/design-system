@@ -1,20 +1,72 @@
 .button {
+  --button-background: var(--component-button-primary-background);
+  --button-background-hover: var(--component-button-primary-background-hover);
+  --button-background-pressed: var(--component-button-primary-background-pressed);
+  --button-text: var(--component-button-primary-text);
+  --button-outline: transparent;
+  --button-height: var(--component-button-height);
+
   display: inline-block;
-  height: var(--component-button-height);
+  height: var(--button-height);
   padding: 0 var(--component-button-padding-inline);
   font: inherit;
   font-weight: var(--font-weight-bold);
-  line-height: var(--component-button-height);
+  line-height: var(--button-height);
   border: none;
   border-radius: 0;
-  background: var(--component-button-primary-background);
-  color: var(--component-button-primary-text);
+  background: var(--button-background);
+  color: var(--button-text);
+  box-shadow: inset 0 0 0 var(--component-button-outline-width) var(--button-outline);
   cursor: pointer;
 }
 
 .button-secondary {
-  background: var(--component-button-secondary-background);
-  color: var(--component-button-secondary-text);
+  --button-background: transparent;
+  --button-background-hover: var(--component-button-secondary-background-hover);
+  --button-background-pressed: var(--component-button-secondary-background-pressed);
+  --button-text: var(--component-button-secondary-text);
+  --button-outline: var(--component-button-secondary-outline);
+}
+
+.button-plain {
+  --button-background: transparent;
+  --button-background-hover: var(--component-button-plain-background-hover);
+  --button-background-pressed: var(--component-button-plain-background-pressed);
+  --button-text: var(--component-button-plain-text);
+}
+
+@media (hover: hover) {
+  .button:not([aria-disabled="true"]):hover,
+  .button.is-hovered {
+    background: var(--button-background-hover);
+  }
+}
+
+.button:not([aria-disabled="true"]):active,
+.button.is-pressed {
+  background: var(--button-background-pressed);
+}
+
+.button[aria-disabled="true"] {
+  --button-text: var(--component-button-disabled-text);
+  cursor: default;
+}
+
+.button:not(.button-secondary, .button-plain)[aria-disabled="true"] {
+  --button-background: var(--component-button-disabled-background);
+}
+
+.button-small {
+  --button-height: var(--component-button-small-height);
+  padding: 0 var(--component-button-small-padding-inline);
+  font-family: var(--type-ui-small-font-family);
+  font-size: var(--type-ui-small-font-size);
+}
+
+.button-icon {
+  width: var(--button-height);
+  padding: 0;
+  text-align: center;
 }
 
 .button:focus-visible {

@@ -1,0 +1,9 @@
+{
+  "font": {
+    "family": { "mono": { "$type": "fontFamily", "$value": ["Fixture Mono", "monospace"] } },
+    "size": { "body": { "$type": "dimension", "$value": { "value": 10, "unit": "px" } } }
+  },
+  "space": { "cell": { "$type": "dimension", "$value": { "value": 5, "unit": "px" } } },
+  "bar": { "height": { "$type": "dimension", "$value": { "value": 30, "unit": "px" } } },
+  "focus": { "width": { "$type": "dimension", "$value": { "value": 3, "unit": "px" } } }
+}

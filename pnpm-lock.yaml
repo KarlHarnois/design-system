@@ -175,6 +175,9 @@ importers:
       '@terrazzo/plugin-css':
         specifier: 2.10.0
         version: 2.10.0(@terrazzo/cli@2.10.0(@types/node@26.6.6))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))
+      '@terrazzo/token-tools':
+        specifier: 2.10.0
+        version: 2.10.0
       '@types/node':
         specifier: ^26.6.6
         version: 26.6.6
@@ -184,6 +187,9 @@ importers:
       ajv-formats:
         specifier: ^3.0.1
         version: 3.0.1(ajv@8.20.0)
+      colorjs.io:
+        specifier: 0.7.1
+        version: 0.7.1
       typescript:
         specifier: ^7.0.2
         version: 7.0.2

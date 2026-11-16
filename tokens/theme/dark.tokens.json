@@ -40,10 +40,10 @@
     "fill": {
       "$description": "Interaction fills for controls. Strong fills sit under inverted controls, subtle fills under outlined and plain ones.",
       "strong-hover": {
-        "$value": "{color.gray.200}"
+        "$value": "{color.gray.300}"
       },
       "strong-pressed": {
-        "$value": "{color.gray.300}"
+        "$value": "{color.gray.400}"
       },
       "subtle-hover": {
         "$value": "{color.surface.raised}"

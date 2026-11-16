@@ -58,6 +58,7 @@ window#waybar > box {
   color: ${color("color.text.secondary")};
   border: ${this.theme.dimension("border.width.default")} solid ${color("color.border.default")};
   border-radius: ${this.theme.dimension("radius.container")};
+  padding: ${this.theme.dimension("space.inset")};
 }`;
   }
 

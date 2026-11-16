@@ -47,6 +47,13 @@
         "value": 12,
         "unit": "px"
       }
+    },
+    "inset": {
+      "$type": "dimension",
+      "$value": {
+        "value": 3,
+        "unit": "px"
+      }
     }
   },
   "bar": {

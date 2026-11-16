@@ -35,6 +35,10 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toContain("border: 2px solid @color_border_default;");
   });
 
+  it("insets the bar content evenly on all four sides", () => {
+    expect(stylesheet()).toMatch(/window#waybar > box \{[^}]*\n {2}padding: 3px;\n\}/);
+  });
+
   it("rounds the bar with the container radius", () => {
     expect(stylesheet()).toContain("border-radius: 6px;");
   });
@@ -61,8 +65,8 @@ describe("WaybarPlugin", () => {
     expect(fixtureBuild.file("waybar/dark/config.jsonc")).toContain('"modules-center": [\n    "hyprland/window"\n  ]');
   });
 
-  it("makes the bar one line tall plus its outline", () => {
-    expect(config().height).toBe(34);
+  it("makes the bar one line tall plus its inset and outline", () => {
+    expect(config().height).toBe(40);
   });
 
   it("floats the bar inside the frame on the top, left and right", () => {

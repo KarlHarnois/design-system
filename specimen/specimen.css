@@ -176,10 +176,14 @@ kbd {
   gap: var(--space-group);
 }
 
-.waybar .module-group,
-.waybar .workspaces {
+.waybar .module-group {
   display: flex;
   gap: var(--space-cell);
+}
+
+.waybar .workspaces {
+  display: flex;
+  gap: var(--space-marker);
 }
 
 .waybar .modules-center {
@@ -201,7 +205,9 @@ kbd {
 }
 
 .waybar .workspace {
-  padding: 0 var(--space-control);
+  min-width: var(--bar-line);
+  padding: 0 var(--space-marker);
+  text-align: center;
   color: var(--color-text-secondary);
 }
 
@@ -222,6 +228,8 @@ kbd {
 }
 
 .waybar .battery.critical:not(.charging) {
+  padding: 0 var(--space-marker);
+  margin: 0 calc(var(--space-control) - var(--space-marker));
   background: var(--color-focus);
   color: var(--color-text-inverse);
 }

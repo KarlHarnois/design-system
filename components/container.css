@@ -29,10 +29,15 @@
   color: var(--component-container-title-text);
 }
 
-.container:not(.container-tight) .list-item {
-  padding-inline: 0;
+.container:not(.container-tight) :where(.list-item) {
+  width: fit-content;
+  min-width: var(--component-list-item-height);
+  margin-inline: calc(-1 * var(--component-container-marker-padding-inline));
+  padding-inline: var(--component-container-marker-padding-inline);
 }
 
-.container:not(.container-tight) .list-item:is(:focus, [aria-selected="true"]) {
-  padding-inline-start: var(--component-list-padding-inline);
+.container:not(.container-tight) :where(.list-item):is(:focus, [aria-selected="true"]) {
+  background: var(--component-container-marker-background);
+  color: var(--component-container-marker-text);
+  box-shadow: none;
 }

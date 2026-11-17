@@ -15,7 +15,8 @@
   overflow-y: auto;
 }
 
-.palette-row {
+.palette .palette-row {
+  width: auto;
   display: flex;
   justify-content: space-between;
 }
@@ -25,10 +26,13 @@
   color: var(--component-palette-key-text);
 }
 
+.palette-row:is(:focus, [aria-selected="true"]) kbd {
+  color: inherit;
+}
+
 .palette-prompt {
   display: flex;
   gap: var(--component-palette-padding-inline);
-  padding: 0 var(--component-palette-padding-inline);
 }
 
 .palette-input {

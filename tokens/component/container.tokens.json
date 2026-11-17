@@ -34,6 +34,11 @@
         "$type": "dimension",
         "$value": "{space.line}"
       },
+      "marker-padding-inline": {
+        "$type": "dimension",
+        "$description": "Side padding of a list row in a text container. The row reaches this far past its text on each side, so the selected row's marker wraps the text without moving it.",
+        "$value": "{space.marker}"
+      },
       "$type": "color",
       "background": {
         "$value": "{color.surface.base}"
@@ -49,6 +54,12 @@
       },
       "title-text": {
         "$value": "{color.text.secondary}"
+      },
+      "marker-background": {
+        "$value": "{color.focus}"
+      },
+      "marker-text": {
+        "$value": "{color.text.inverse}"
       }
     }
   }

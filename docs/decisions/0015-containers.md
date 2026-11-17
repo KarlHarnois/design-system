@@ -23,9 +23,12 @@ way to group components in a box.
       below the baseline. The offsets from 0010 can absorb it; they stay at 0px.
   - `.container-tight` uses `space.inset`, 4px, on all sides, for widgets whose items are
     markers with their own padding, as in the bar.
-- Inside a text container, list rows have no side padding, so their text lines up with the
-  title. A selected row adds `space.control` on the left, so its text moves right past the
-  marker.
+- Inside a text container, a list row's text lines up with the title. Each row reaches
+  `space.marker` past its text on both sides, so the selected row is an inverted marker
+  that wraps its text, like the table cursor and the current workspace. Palette rows keep
+  their full width, since their key sits at the right edge.
+  - We tried a grey full-width highlight first, then pushing the selected text right. The
+    push moved text on every `j`/`k`, and the grey row read as a second kind of focus.
 - Two surfaces:
   - `.container` sits on `color.surface.base`, for panels in a page.
   - `.container-raised` sits on `color.surface.raised`, for popups over the page.
@@ -40,6 +43,7 @@ way to group components in a box.
 
 ## Consequences
 - Tables stay content, not containers. A table that needs a frame goes inside a panel.
-- A selected row's text moves, unlike the marker rule in 0012, where only colours change.
+- Selecting a row changes only its colours, as the marker rule in 0012 asks.
+- A selected row is only as wide as its text, so short names make small pointer targets.
 - `space.text-inset` depends on the cap height of `type.ui`. Changing the font or its size
   means recomputing it.

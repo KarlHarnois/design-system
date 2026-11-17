@@ -1,11 +1,14 @@
 .container {
-  --container-chrome: calc(2 * (var(--component-container-padding) + var(--component-container-outline-width)));
-
   box-sizing: border-box;
-  padding: var(--component-container-padding);
+  padding: calc(var(--component-container-padding-block) - var(--component-container-outline-width))
+    calc(var(--component-container-padding-inline) - var(--component-container-outline-width));
   border: var(--component-container-outline-width) solid var(--component-container-outline);
   border-radius: var(--component-container-radius);
   background: var(--component-container-background);
+}
+
+.container-tight {
+  padding: calc(var(--component-container-tight-padding) - var(--component-container-outline-width));
 }
 
 .container-raised {
@@ -17,11 +20,19 @@
 }
 
 .container-title {
-  height: var(--space-line);
+  height: var(--component-container-title-height);
   margin: 0;
-  padding: 0 var(--component-container-title-padding-inline);
+  padding: 0;
   font: inherit;
   font-weight: var(--font-weight-bold);
-  line-height: var(--space-line);
+  line-height: var(--component-container-title-height);
   color: var(--component-container-title-text);
+}
+
+.container:not(.container-tight) .list-item {
+  padding-inline: 0;
+}
+
+.container:not(.container-tight) .list-item:is(:focus, [aria-selected="true"]) {
+  padding-inline-start: var(--component-list-padding-inline);
 }

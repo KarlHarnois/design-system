@@ -37,6 +37,20 @@
     "line": {
       "$value": "{dimension.3}"
     },
+    "half-line": {
+      "$description": "Half of space.line. The top and bottom inset of a text container, so the container is always a whole number of lines tall. See docs/decisions/0015-containers.md.",
+      "$value": {
+        "value": 10.5,
+        "unit": "px"
+      }
+    },
+    "text-inset": {
+      "$description": "Side inset of a text container: space.half-line plus half the gap between space.line and the cap height of type.ui (about 10.3px), so text sits as far from the side as the caps sit from the top. 15.84px, rounded to 16px.",
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      }
+    },
     "block": {
       "$value": "{dimension.6}"
     },
@@ -109,6 +123,14 @@
       "$description": "Corner radius of containers: windows, the bar and popups. Content inside them stays square.",
       "$value": {
         "value": 4,
+        "unit": "px"
+      }
+    },
+    "control": {
+      "$type": "dimension",
+      "$description": "Corner radius of controls and markers inside containers: radius.container minus space.inset, never below 0. See docs/decisions/0012-nesting.md.",
+      "$value": {
+        "value": 0,
         "unit": "px"
       }
     }

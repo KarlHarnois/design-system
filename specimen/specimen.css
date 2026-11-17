@@ -280,7 +280,7 @@ kbd {
 
 .panel-sample {
   max-width: var(--measure);
-  margin-bottom: calc(2 * var(--leading) - var(--container-chrome));
+  margin-bottom: var(--leading);
 }
 
 .panel-sample .list {

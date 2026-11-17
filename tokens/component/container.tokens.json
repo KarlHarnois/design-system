@@ -2,8 +2,19 @@
   "component": {
     "container": {
       "$description": "A box that holds other components: panels in a page, and popups such as the palette and which-key. See docs/decisions/0015-containers.md.",
-      "padding": {
+      "padding-block": {
         "$type": "dimension",
+        "$description": "Top and bottom inset of a text container, so it is always a whole number of lines tall.",
+        "$value": "{space.half-line}"
+      },
+      "padding-inline": {
+        "$type": "dimension",
+        "$description": "Left and right inset of a text container.",
+        "$value": "{space.text-inset}"
+      },
+      "tight-padding": {
+        "$type": "dimension",
+        "$description": "Inset on all sides of a tight container, for widgets whose items are markers with their own padding, as in the bar.",
         "$value": "{space.inset}"
       },
       "radius": {
@@ -19,9 +30,9 @@
         "$description": "Space between a popup and the screen edges and status bar, as between the desktop bar and the screen.",
         "$value": "{space.frame}"
       },
-      "title-padding-inline": {
+      "title-height": {
         "$type": "dimension",
-        "$value": "{space.control}"
+        "$value": "{space.line}"
       },
       "$type": "color",
       "background": {

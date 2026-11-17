@@ -259,7 +259,7 @@ kbd {
 .desktop-window-focused {
   grid-row: span 2;
   color: var(--color-text-primary);
-  border-color: var(--color-focus);
+  border-color: var(--color-border-focused);
 }
 
 @media (min-width: 66.9375em) {

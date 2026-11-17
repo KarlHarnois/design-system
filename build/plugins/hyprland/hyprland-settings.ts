@@ -40,7 +40,7 @@ export class HyprlandSettings {
         gaps_out: this.gapsOut(),
         border_size: this.theme.pixels("border.width.default"),
         col: {
-          active_border: this.color("color.focus"),
+          active_border: this.color("color.border.focused"),
           inactive_border: this.color("color.border.default"),
         },
       },

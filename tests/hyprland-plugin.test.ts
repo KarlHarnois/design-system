@@ -27,8 +27,8 @@ describe("HyprlandPlugin", () => {
     expect(settings("dark").config.general.border_size).toBe(2);
   });
 
-  it("outlines the focused window in the focus color", () => {
-    expect(settings("dark").config.general.col.active_border).toBe("rgb(ff0000)");
+  it("outlines the focused window in the focused border color", () => {
+    expect(settings("dark").config.general.col.active_border).toBe("rgb(808080)");
   });
 
   it("outlines other windows in the default border color per theme", () => {

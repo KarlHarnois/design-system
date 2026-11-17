@@ -17,8 +17,13 @@ the outer frame and insets hold no text, so they need their own rule.
   so the frame does not need to be larger than the gutters.
 - The frame and gutters are the same on every monitor. Window contents absorb leftover pixels.
 - Window borders are 1px (`dimension.hairline`). The focused window's border is
-  `color.focus`, the others use `color.border.default`. So exactly one full contrast
+  `color.border.focused`, the others use `color.border.default`. So exactly one bright
   outline shows where keys go.
+- `color.border.focused` is `gray.400` on dark and `gray.600` on light, about 0.3 OKLCH
+  lightness softer than `color.focus`. A full white outline around the whole window read
+  too bright. Omarchy's monochrome themes do the same: Vantablack draws `#8d8d8d` borders
+  under `#ffffff` text. `color.focus` stays on small markers such as the current workspace.
+  We tried `gray.200` and `gray.300` live and kept `gray.400`.
 - Containers (windows, the bar, popups) have a 4px radius. Content inside them stays square.
 - Nested corners follow 0012.
 - Only fades and window moves animate, at `duration.quick`. Opening, closing, focus

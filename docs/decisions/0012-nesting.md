@@ -35,16 +35,17 @@ radius minus the padding.
   bar items work the same way: the highlight is the padding.
   - Bar: every module has `space.marker` around its text. The low battery inverts by
     changing only its colours.
-  - Table: the cursor draws its `space.marker` as a shadow outside the cell, so any cell
-    can become the cursor without its text moving.
+  - Table: every cell has `space.marker` at its sides, so any cell can become the cursor
+    without its text moving, and the cursor stays inside the table edges.
   - Lists and the palette: a selected row keeps its `space.control` padding and changes
     only its background.
 - Controls: buttons, inputs, list rows and the status line pad their text by `space.control`.
 - Every `component.*.padding-inline` token points at `space.control`.
 
 ## Consequences
-- The table cursor keeps its text in its column. Its `space.marker` sits outside the cell
-  as a shadow, so the text does not move.
+- Table text sits `space.marker` in from the table edges, header included, so the columns
+  still line up. An earlier version drew the cursor's padding as a shadow outside the cell,
+  which pushed the first column's cursor past the header rule.
 - GTK's `min-width` sets the content box, without padding. Waybar's workspace buttons take
   `bar.line` − 2 × `space.marker` as `min-width`, so with their padding they are 16px wide.
 - The rule covers our own chrome only. Hyprland cannot control what is inside apps.

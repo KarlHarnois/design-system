@@ -11,9 +11,6 @@
         "$value": "{space.gutter}"
       },
       "$type": "color",
-      "background": {
-        "$value": "{color.surface.raised}"
-      },
       "text": {
         "$value": "{color.text.secondary}"
       },

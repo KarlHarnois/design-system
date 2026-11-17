@@ -1,8 +1,7 @@
 .which-key {
   position: fixed;
-  inset: auto 0 var(--component-status-bar-height) auto;
-  padding: var(--space-inset);
-  background: var(--component-which-key-background);
+  inset: auto var(--component-container-offset)
+    calc(var(--component-status-bar-height) + var(--component-container-offset)) auto;
   color: var(--component-which-key-text);
 }
 

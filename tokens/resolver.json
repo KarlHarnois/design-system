@@ -32,6 +32,9 @@
           "$ref": "component/list.tokens.json"
         },
         {
+          "$ref": "component/container.tokens.json"
+        },
+        {
           "$ref": "component/status-bar.tokens.json"
         },
         {

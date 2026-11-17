@@ -11,9 +11,6 @@
         "$value": "{space.control}"
       },
       "$type": "color",
-      "background": {
-        "$value": "{color.surface.raised}"
-      },
       "text": {
         "$value": "{color.text.primary}"
       },

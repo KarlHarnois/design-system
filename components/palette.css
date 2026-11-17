@@ -1,9 +1,8 @@
 .palette {
   position: fixed;
-  inset: auto auto var(--component-status-bar-height) 0;
-  width: min(100%, var(--measure));
-  padding: var(--space-inset);
-  background: var(--component-palette-background);
+  inset: auto auto calc(var(--component-status-bar-height) + var(--component-container-offset))
+    var(--component-container-offset);
+  width: min(100% - 2 * var(--component-container-offset), var(--measure));
   color: var(--component-palette-text);
 }
 

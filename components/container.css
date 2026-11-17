@@ -1,0 +1,27 @@
+.container {
+  --container-chrome: calc(2 * (var(--component-container-padding) + var(--component-container-outline-width)));
+
+  box-sizing: border-box;
+  padding: var(--component-container-padding);
+  border: var(--component-container-outline-width) solid var(--component-container-outline);
+  border-radius: var(--component-container-radius);
+  background: var(--component-container-background);
+}
+
+.container-raised {
+  background: var(--component-container-raised-background);
+}
+
+.container:focus-within {
+  border-color: var(--component-container-focused-outline);
+}
+
+.container-title {
+  height: var(--space-line);
+  margin: 0;
+  padding: 0 var(--component-container-title-padding-inline);
+  font: inherit;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--space-line);
+  color: var(--component-container-title-text);
+}

@@ -1,0 +1,26 @@
+{
+  "component": {
+    "command-line": {
+      "$description": "A one-line prompt: `:` for commands, `/` for search. It sits in the status bar or at the foot of the palette. See docs/decisions/0017-command-line.md.",
+      "height": {
+        "$type": "dimension",
+        "$value": "{space.line}"
+      },
+      "$type": "color",
+      "prompt": {
+        "$description": "The `:` or `/` before the typed text.",
+        "$value": "{color.text.secondary}"
+      },
+      "text": {
+        "$value": "{color.text.primary}"
+      },
+      "cursor": {
+        "$description": "Block cursor, the same inverted cell as the editor's normal mode cursor.",
+        "$value": "{color.focus}"
+      },
+      "cursor-text": {
+        "$value": "{color.text.inverse}"
+      }
+    }
+  }
+}

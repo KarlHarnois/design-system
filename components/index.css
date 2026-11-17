@@ -4,6 +4,7 @@
 @import "container.css";
 @import "editor.css";
 @import "status-bar.css";
+@import "command-line.css";
 @import "palette.css";
 @import "which-key.css";
 @import "table.css";

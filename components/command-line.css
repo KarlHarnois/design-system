@@ -1,0 +1,32 @@
+.command-line {
+  display: flex;
+  height: var(--component-command-line-height);
+  line-height: var(--component-command-line-height);
+  white-space: pre;
+  color: var(--component-command-line-text);
+}
+
+.command-line-prompt {
+  color: var(--component-command-line-prompt);
+}
+
+.command-line-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  caret-color: var(--component-command-line-cursor);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.command-line-cursor {
+  background: var(--component-command-line-cursor);
+  color: var(--component-command-line-cursor-text);
+}
+
+.command-line-input::-webkit-search-cancel-button {
+  appearance: none;
+}

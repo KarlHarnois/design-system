@@ -41,6 +41,9 @@
           "$ref": "component/status-bar.tokens.json"
         },
         {
+          "$ref": "component/command-line.tokens.json"
+        },
+        {
           "$ref": "component/palette.tokens.json"
         },
         {

@@ -160,9 +160,9 @@ The <span class="editor-match">grid</span> holds every line. <span class="editor
 
     <footer class="status-bar mode-line">
       <span class="status-bar-mode">normal</span>
-      <label class="status-bar-segment status-bar-fill filter">
-        <span aria-hidden="true">/</span>
-        <input type="search" aria-label="Filter tokens" tabindex="-1" />
+      <label class="status-bar-segment status-bar-fill command-line filter">
+        <span class="command-line-prompt" aria-hidden="true">/</span>
+        <input class="command-line-input" type="search" aria-label="Filter tokens" tabindex="-1" />
       </label>
       <span class="status-bar-segment message" aria-live="polite"></span>
       <span class="status-bar-segment pending-keys" aria-live="polite"></span>
@@ -170,9 +170,9 @@ The <span class="editor-match">grid</span> holds every line. <span class="editor
 
     <div class="palette container container-raised" hidden>
       <ul class="palette-list list" aria-label="Commands"></ul>
-      <label class="palette-prompt">
-        <span aria-hidden="true">:</span>
-        <input class="palette-input" type="text" aria-label="Command" tabindex="-1" />
+      <label class="palette-prompt command-line">
+        <span class="command-line-prompt" aria-hidden="true">:</span>
+        <input class="palette-input command-line-input" type="text" aria-label="Command" tabindex="-1" />
       </label>
     </div>
 

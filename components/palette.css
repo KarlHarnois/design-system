@@ -29,17 +29,3 @@
 .palette-row:is(:focus, [aria-selected="true"]) kbd {
   color: inherit;
 }
-
-.palette-prompt {
-  display: flex;
-  gap: var(--component-palette-padding-inline);
-}
-
-.palette-input {
-  flex: 1;
-  font: inherit;
-  color: inherit;
-  background: transparent;
-  border: none;
-  outline: none;
-}

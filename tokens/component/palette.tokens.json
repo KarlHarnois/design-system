@@ -6,10 +6,6 @@
         "$type": "number",
         "$value": 8
       },
-      "padding-inline": {
-        "$type": "dimension",
-        "$value": "{space.control}"
-      },
       "$type": "color",
       "text": {
         "$value": "{color.text.primary}"

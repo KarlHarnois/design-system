@@ -8,6 +8,7 @@ class Specimen {
     this.focusList = new FocusList([...root.querySelectorAll(".item")], statusBar);
     this.statusLine = new StatusLine(statusBar);
     this.tableCursor = new TableCursor(this.focusList);
+    this.rowSelection = new RowSelection(this.focusList);
     this.whichKey = new WhichKey(root.querySelector(".which-key"));
     this.commands = this.normalCommands();
     this.palette = new CommandPalette(root.querySelector(".palette"), this.commands, this.statusLine, () =>
@@ -38,11 +39,13 @@ class Specimen {
       new Command("l", "right", "Next cell in the table row", () => this.tableCursor.move(1)),
       new Command("0", "row-start", "First cell in the table row", () => this.tableCursor.first()),
       new Command("$", "row-end", "Last cell in the table row", () => this.tableCursor.last()),
+      new Command("V", "visual-line", "Select table rows", () => this.enterVisual()),
+      new Command("y", "yank", "Copy the selected rows", () => this.yank()),
       new Command("i", "insert", "Type in the focused field", () => this.enterInsert()),
       new Command("<CR>", "activate", "Press the focused button", () => this.activate()),
       new Command("/", "search", "Filter the tokens", () => this.enterSearch()),
       new Command(":", "command", "Open the command palette", () => this.palette.open()),
-      new Command("<Esc>", "clear-filter", "Clear the filter", () => this.clearFilter()),
+      new Command("<Esc>", "normal", "Leave visual mode or clear the filter", () => this.escape()),
       new Command("<Space>g", "toggle-baselines", "Show the baselines", () => this.toggleBaselines()),
       new Command("<Space>G", "toggle-full-grid", "Show the full grid", () => this.toggleFullGrid()),
       new Command("<Space>t", "toggle-theme", "Switch dark and light", () => this.toggleTheme()),
@@ -71,6 +74,7 @@ class Specimen {
   handleNormalKey(key) {
     this.keys.press(key)?.run();
     this.tableCursor.render();
+    this.rowSelection.render();
     return true;
   }
 
@@ -111,6 +115,27 @@ class Specimen {
     const duration = parseFloat(getComputedStyle(this.root.documentElement).getPropertyValue("--duration-quick"));
     button.classList.add("is-pressed");
     setTimeout(() => button.classList.remove("is-pressed"), duration);
+  }
+
+  enterVisual() {
+    this.rowSelection.start();
+    if (this.rowSelection.isActive()) this.statusLine.enter("visual");
+  }
+
+  yank() {
+    if (!this.rowSelection.isActive()) return;
+    this.statusLine.showMessage(`${this.rowSelection.count()} rows yanked`);
+    this.leaveVisual();
+  }
+
+  escape() {
+    if (this.rowSelection.isActive()) this.leaveVisual();
+    else this.clearFilter();
+  }
+
+  leaveVisual() {
+    this.rowSelection.clear();
+    this.statusLine.enter("normal");
   }
 
   enterSearch() {

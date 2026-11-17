@@ -15,7 +15,7 @@
       <header class="masthead">
         <h1 class="type-display">Specimen</h1>
         <p class="type-prose">
-          Every token on one page. Move with <kbd>j</kbd> <kbd>k</kbd>, jump with <kbd>gg</kbd> <kbd>G</kbd> and <kbd>H</kbd> <kbd>M</kbd> <kbd>L</kbd>, move across table cells with <kbd>h</kbd> <kbd>l</kbd>,
+          Every token on one page. Move with <kbd>j</kbd> <kbd>k</kbd>, jump with <kbd>gg</kbd> <kbd>G</kbd> and <kbd>H</kbd> <kbd>M</kbd> <kbd>L</kbd>, move across table cells with <kbd>h</kbd> <kbd>l</kbd>, select rows with <kbd>V</kbd> and copy them with <kbd>y</kbd>,
           filter with <kbd>/</kbd>, press with <kbd>&lt;CR&gt;</kbd>, run commands with <kbd>:</kbd>. <kbd>&lt;Space&gt;g</kbd> toggles the baselines, <kbd>&lt;Space&gt;G</kbd> the full grid and <kbd>&lt;Space&gt;t</kbd> the theme.
         </p>
       </header>
@@ -86,7 +86,7 @@
         </ul>
         <table class="table" aria-label="Type styles" style="--table-span-1: 1; --table-span-2: 1; --table-span-3: 1; --table-span-4: 1">
           <thead>
-            <tr><th>Token</th><th>Type</th><th>Value</th><th class="table-number">Lines</th></tr>
+            <tr><th>Token</th><th>Type</th><th>Value</th><th class="table-number" aria-sort="descending">Lines</th></tr>
           </thead>
           <tbody>
             <tr class="item" tabindex="-1" data-name="component table row type h1"><td>type.h1</td><td>typography</td><td>42px bold</td><td class="table-number">3</td></tr>
@@ -94,6 +94,18 @@
             <tr class="item" tabindex="-1" data-name="component table row type h3"><td>type.h3</td><td>typography</td><td>18px bold</td><td class="table-number">1</td></tr>
             <tr class="item" tabindex="-1" data-name="component table row type ui"><td>type.ui</td><td>typography</td><td>14px regular</td><td class="table-number">1</td></tr>
             <tr class="item" tabindex="-1" data-name="component table row type prose"><td>type.prose</td><td>typography</td><td>14px Aile</td><td class="table-number">1</td></tr>
+          </tbody>
+        </table>
+        <table class="table table-compact" aria-label="Spacing roles" style="--table-span-1: 1; --table-span-2: 1; --table-span-3: 1">
+          <thead>
+            <tr><th aria-sort="ascending">Token</th><th>Type</th><th class="table-number">Pixels</th></tr>
+          </thead>
+          <tbody>
+            <tr class="item" tabindex="-1" data-name="component table compact row space cell"><td>space.cell</td><td>dimension</td><td class="table-number">7</td></tr>
+            <tr class="item" tabindex="-1" data-name="component table compact row space control"><td>space.control</td><td>dimension</td><td class="table-number">7</td></tr>
+            <tr class="item" tabindex="-1" data-name="component table compact row space group"><td>space.group</td><td>dimension</td><td class="table-number">14</td></tr>
+            <tr class="item" tabindex="-1" data-name="component table compact row space inset"><td>space.inset</td><td>dimension</td><td class="table-number">4</td></tr>
+            <tr class="item" tabindex="-1" data-name="component table compact row space marker"><td>space.marker</td><td>dimension</td><td class="table-number">4</td></tr>
           </tbody>
         </table>
       </section>
@@ -155,6 +167,7 @@
     <script src="js/which-key.js"></script>
     <script src="js/command-palette.js"></script>
     <script src="js/table-cursor.js"></script>
+    <script src="js/row-selection.js"></script>
     <script src="js/specimen.js"></script>
   </body>
 </html>

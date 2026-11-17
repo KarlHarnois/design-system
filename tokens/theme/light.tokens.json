@@ -29,6 +29,10 @@
       },
       "strong": {
         "$value": "{color.gray.950}"
+      },
+      "active": {
+        "$value": "{color.gray.800}",
+        "$description": "Border of the focused window. Dimmer than focus, because a line around a whole window reads brighter than a small marker."
       }
     },
     "focus": {

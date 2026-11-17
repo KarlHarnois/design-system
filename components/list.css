@@ -17,3 +17,13 @@
   background: var(--component-list-selected-background);
   box-shadow: inset var(--component-list-marker-width) 0 var(--color-focus);
 }
+
+.list-match {
+  background: transparent;
+  color: var(--component-list-match-text);
+  font-weight: var(--component-list-match-font-weight);
+}
+
+.list-item:is(:focus, [aria-selected="true"]) .list-match {
+  color: inherit;
+}

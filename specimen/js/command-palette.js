@@ -84,7 +84,9 @@ class CommandPalette {
     item.setAttribute("aria-selected", String(position === this.selected));
     const key = document.createElement("kbd");
     key.textContent = command.keys;
-    item.append(`${command.name} `, key);
+    const name = document.createElement("span");
+    name.append(...new MatchedText(command.name, this.input.value).nodes());
+    item.append(name, key);
     return item;
   }
 }

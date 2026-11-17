@@ -13,8 +13,17 @@
         "$type": "dimension",
         "$value": "{focus.width}"
       },
+      "match-font-weight": {
+        "$type": "fontWeight",
+        "$description": "Weight of the characters that match a filter, as Neovim's PmenuMatch. Bold Iosevka keeps the same width, so a match never moves the text. See docs/decisions/0019-match-highlight.md.",
+        "$value": "{font.weight.bold}"
+      },
       "$type": "color",
       "text": {
+        "$value": "{color.text.primary}"
+      },
+      "match-text": {
+        "$description": "Matches turn primary, so they stand out in secondary text such as descriptions.",
         "$value": "{color.text.primary}"
       },
       "selected-background": {

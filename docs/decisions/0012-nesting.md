@@ -24,7 +24,9 @@ radius minus the padding.
 - Inner radius = outer radius − inset, never below 0. `space.inset` equals
   `radius.container`, so inner shapes are square. A test fails if the inset becomes
   smaller than the radius, since inner shapes would then need a radius.
-- Containers: the palette, which-key and the bar take `space.inset` on all four sides.
+- Containers: the bar takes `space.inset` on all four sides. Text containers such as the
+  palette and which-key take the text insets from 0015.
+- `radius.control` is the inner radius for controls and markers, 0px.
 - Markers are inverted inline blocks: the active workspace, the low battery and the table
   cursor. A marker is the text with `space.marker` on each side, and at least as wide as
   its line is tall. One or two characters make a square; longer text is wider than tall.

@@ -82,6 +82,11 @@
         "value": 4,
         "unit": "px"
       }
+    },
+    "gutter": {
+      "$type": "dimension",
+      "$description": "Space between columns.",
+      "$value": "{space.cell}"
     }
   },
   "bar": {

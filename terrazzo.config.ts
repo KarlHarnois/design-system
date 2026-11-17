@@ -5,6 +5,7 @@ import { KnaveGridPlugin } from "./build/plugins/knave-grid/knave-grid-plugin.ts
 import { BarPreviewPlugin } from "./build/plugins/bar/bar-preview-plugin.ts";
 import { BarSpec } from "./build/plugins/bar/bar-spec.ts";
 import { Base16Plugin } from "./build/plugins/base16/base16-plugin.ts";
+import { TokenGlossaryPlugin } from "./build/plugins/glossary/token-glossary-plugin.ts";
 import { HyprlandPlugin } from "./build/plugins/hyprland/hyprland-plugin.ts";
 import { OpticalCentrePlugin } from "./build/plugins/optical-centre/optical-centre-plugin.ts";
 import { Woff2FontDirectory } from "./build/plugins/optical-centre/woff2-font-directory.ts";
@@ -38,6 +39,7 @@ export default defineConfig({
     new WaybarPlugin(THEMES, BAR_SPEC),
     new BarPreviewPlugin(BAR_SPEC),
     new Base16Plugin(THEMES),
+    new TokenGlossaryPlugin(THEMES),
     new HyprlandPlugin(THEMES),
     new KnaveGridPlugin(GRID_SPEC_PATH, webFontDirectory()),
     new OpticalCentrePlugin(new Woff2FontDirectory(webFontDirectory())),

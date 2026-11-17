@@ -135,6 +135,17 @@
         <div class="item bar" tabindex="-1" data-name="space block" style="--bar: var(--space-block)">block 42</div>
         <div class="item bar" tabindex="-1" data-name="space section" style="--bar: var(--space-section)">section 84</div>
       </section>
+
+      <section class="group" aria-label="Tokens">
+        <h2 class="group-title type-label">Tokens</h2>
+        <p class="type-prose glossary-intro">Every token with its value in each theme. The status line shows the focused token's CSS variable, what it points at and its description.</p>
+        <table class="table" aria-label="Token glossary" style="--table-span-1: 2; --table-span-2: 1; --table-span-3: 1">
+          <thead>
+            <tr><th aria-sort="ascending">Token</th><th>Dark</th><th>Light</th></tr>
+          </thead>
+          <tbody data-token-glossary></tbody>
+        </table>
+      </section>
     </main>
 
     <footer class="status-bar mode-line">
@@ -160,6 +171,8 @@
     </div>
 
     <script src="../dist/bar/bar.js"></script>
+    <script src="../dist/glossary/glossary.js"></script>
+    <script src="js/token-glossary-table.js"></script>
     <script src="js/waybar-format.js"></script>
     <script src="js/bar-preview.js"></script>
     <script src="js/focus-list.js"></script>

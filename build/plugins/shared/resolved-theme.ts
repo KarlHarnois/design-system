@@ -26,6 +26,22 @@ export class ResolvedTheme {
     return id in this.tokens;
   }
 
+  ids(): string[] {
+    return Object.keys(this.tokens);
+  }
+
+  type(id: string): TokenNormalized["$type"] {
+    return this.token(id).$type;
+  }
+
+  description(id: string): string | undefined {
+    return this.token(id).$description;
+  }
+
+  directAlias(id: string): string | undefined {
+    return this.token(id).aliasChain?.[0];
+  }
+
   idsUnder(group: string): string[] {
     return Object.keys(this.tokens).filter((id) => id.startsWith(`${group}.`));
   }
@@ -70,6 +86,10 @@ export class ResolvedTheme {
     return this.tokenOfType(id, "fontFamily").$value;
   }
 
+  fontWeight(id: string): number {
+    return this.tokenOfType(id, "fontWeight").$value;
+  }
+
   number(id: string): number {
     return this.tokenOfType(id, "number").$value;
   }
@@ -80,6 +100,12 @@ export class ResolvedTheme {
 
   private static quoteFontFamily(family: string): string {
     return GENERIC_FONT_FAMILIES.has(family) ? family : `"${family}"`;
+  }
+
+  private token(id: string): TokenNormalized {
+    const token = this.tokens[id];
+    if (!token) throw new Error(`Tokens for ${JSON.stringify(this.input)} have no token "${id}"`);
+    return token;
   }
 
   private tokenOfType<T extends TokenNormalized["$type"]>(id: string, type: T): Extract<TokenNormalized, { $type: T }> {

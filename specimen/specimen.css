@@ -286,3 +286,16 @@ kbd {
 .panel-sample .list {
   margin-bottom: 0;
 }
+
+.glossary-intro {
+  margin-bottom: var(--leading);
+}
+
+.glossary-chip {
+  display: inline-block;
+  width: 1ch;
+  height: 1cap;
+  margin-right: 1ch;
+  background: var(--chip);
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--color-border-default);
+}

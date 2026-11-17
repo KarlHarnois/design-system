@@ -20,6 +20,7 @@ class Specimen {
   start() {
     this.root.addEventListener("keydown", (event) => this.handleKey(event));
     this.filterInput.addEventListener("input", () => this.focusList.filter(this.filterInput.value));
+    this.root.addEventListener("focusin", (event) => this.showSummary(event.target));
     for (const button of this.root.querySelectorAll("button.button:not([aria-disabled='true'])")) {
       button.addEventListener("click", () => this.statusLine.showMessage(`${button.textContent} pressed`));
     }
@@ -117,6 +118,10 @@ class Specimen {
     setTimeout(() => button.classList.remove("is-pressed"), duration);
   }
 
+  showSummary(element) {
+    if (element.dataset?.summary) this.statusLine.showMessage(element.dataset.summary);
+  }
+
   enterVisual() {
     this.rowSelection.start();
     if (this.rowSelection.isActive()) this.statusLine.enter("visual");
@@ -172,4 +177,5 @@ class Specimen {
 }
 
 new BarPreview(window.BAR_SPEC).render(document);
+new TokenGlossaryTable(window.TOKEN_GLOSSARY).render(document);
 new Specimen(document).start();

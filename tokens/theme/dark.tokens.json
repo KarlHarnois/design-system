@@ -30,7 +30,7 @@
       "strong": {
         "$value": "{color.gray.50}"
       },
-      "active": {
+      "focused": {
         "$value": "{color.gray.200}",
         "$description": "Border of the focused window. Dimmer than focus, because a line around a whole window reads brighter than a small marker."
       }

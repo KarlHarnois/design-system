@@ -12,6 +12,9 @@
 
 .palette-list {
   max-height: calc(var(--component-palette-visible-rows) * var(--component-list-item-height));
+  margin-inline: calc(-1 * var(--component-container-marker-padding-inline));
+  padding-inline: var(--component-container-marker-padding-inline);
+  overflow-x: hidden;
   overflow-y: auto;
 }
 

@@ -1,4 +1,6 @@
 .table {
+  --table-row-height: var(--component-table-row-height);
+
   display: grid;
   grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
   grid-auto-columns: var(--column);
@@ -19,9 +21,9 @@
 
 .table :is(th, td) {
   box-sizing: border-box;
-  height: var(--component-table-row-height);
+  height: var(--table-row-height);
   padding: 0 var(--space-marker);
-  line-height: var(--component-table-row-height);
+  line-height: var(--table-row-height);
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
@@ -77,6 +79,10 @@
 }
 
 .table thead tr {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--component-table-header-background);
   box-shadow: inset 0 calc(-1 * var(--component-table-header-rule-width)) var(--component-table-header-rule);
 }
 
@@ -89,8 +95,34 @@
   text-align: right;
 }
 
+.table th[aria-sort="ascending"] {
+  --table-sort-arrow: "↑";
+}
+
+.table th[aria-sort="descending"] {
+  --table-sort-arrow: "↓";
+}
+
+.table th:is([aria-sort="ascending"], [aria-sort="descending"]):not(.table-number)::after {
+  content: var(--table-sort-arrow);
+}
+
+.table th.table-number:is([aria-sort="ascending"], [aria-sort="descending"])::before {
+  content: var(--table-sort-arrow);
+}
+
+@media (hover: hover) {
+  .table tbody tr:not(.is-selected):hover {
+    background: var(--component-table-hover-background);
+  }
+}
+
 .table tr:focus {
   outline: none;
+  background: var(--component-table-cursor-row-background);
+}
+
+.table tr.is-selected {
   background: var(--component-table-selected-background);
 }
 
@@ -99,9 +131,16 @@
   max-width: 100%;
   background: var(--color-focus);
   color: var(--component-table-active-cell-text);
-  min-width: var(--component-table-row-height);
+  min-width: var(--table-row-height);
 }
 
 .table tr:focus .table-cell-active.table-number {
   justify-self: end;
+}
+
+.table-compact {
+  --table-row-height: var(--component-table-compact-row-height);
+
+  font-family: var(--type-ui-small-font-family);
+  font-size: var(--type-ui-small-font-size);
 }

@@ -1,7 +1,7 @@
 {
   "component": {
     "table": {
-      "$description": "Columns span page grid columns, set per table with --table-span-<n>. Rows are one line tall.",
+      "$description": "Columns span page grid columns, set per table with --table-span-<n>. Rows are one line tall. Every cell has marker padding, so any cell can become the cursor.",
       "row-height": {
         "$type": "dimension",
         "$value": "{space.line}"
@@ -25,6 +25,22 @@
       },
       "active-cell-text": {
         "$value": "{color.text.inverse}"
+      },
+      "compact": {
+        "$description": "Dense rows on the bar line, in type.ui-small.",
+        "row-height": {
+          "$type": "dimension",
+          "$value": "{bar.line}"
+        }
+      },
+      "cursor-row-background": {
+        "$value": "{color.surface.raised}"
+      },
+      "hover-background": {
+        "$value": "{color.fill.subtle-hover}"
+      },
+      "header-background": {
+        "$value": "{color.surface.base}"
       }
     }
   }

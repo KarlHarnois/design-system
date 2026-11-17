@@ -10,6 +10,11 @@
         "$type": "dimension",
         "$value": "{space.gutter}"
       },
+      "columns": {
+        "$type": "number",
+        "$description": "Columns of entries. Each entry is a key and its description.",
+        "$value": 2
+      },
       "$type": "color",
       "text": {
         "$value": "{color.text.secondary}"

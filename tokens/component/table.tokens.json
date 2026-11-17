@@ -10,6 +10,11 @@
         "$type": "dimension",
         "$value": "{border.width.strong}"
       },
+      "cell-padding-inline": {
+        "$type": "dimension",
+        "$description": "Marker padding on every cell, so any cell can become the cursor without its text moving.",
+        "$value": "{space.marker}"
+      },
       "$type": "color",
       "text": {
         "$value": "{color.text.primary}"

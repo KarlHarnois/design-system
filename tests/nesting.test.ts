@@ -19,4 +19,10 @@ describe("nesting", () => {
 
     expect(inset >= radius, message).toBe(true);
   });
+
+  it("rounds controls by the container radius minus the inset, never below 0", () => {
+    const concentricRadius = Math.max(0, tokens.pixels("radius.container") - tokens.pixels("space.inset"));
+
+    expect(tokens.pixels("radius.control")).toBe(concentricRadius);
+  });
 });

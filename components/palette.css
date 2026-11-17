@@ -11,7 +11,7 @@
 }
 
 .palette-list {
-  max-height: calc(var(--component-palette-visible-rows) * var(--leading));
+  max-height: calc(var(--component-palette-visible-rows) * var(--component-list-item-height));
   overflow-y: auto;
 }
 

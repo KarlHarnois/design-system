@@ -22,7 +22,7 @@
 .table :is(th, td) {
   box-sizing: border-box;
   height: var(--table-row-height);
-  padding: 0 var(--space-marker);
+  padding: 0 var(--component-table-cell-padding-inline);
   line-height: var(--table-row-height);
   text-align: left;
   white-space: nowrap;

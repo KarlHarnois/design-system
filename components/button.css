@@ -13,7 +13,7 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--button-height);
   border: none;
-  border-radius: 0;
+  border-radius: var(--radius-control);
   background: var(--button-background);
   color: var(--button-text);
   box-shadow: inset 0 0 0 var(--component-button-outline-width) var(--button-outline);

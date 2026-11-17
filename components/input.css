@@ -6,7 +6,7 @@
   font: inherit;
   line-height: var(--component-input-height);
   border: none;
-  border-radius: 0;
+  border-radius: var(--radius-control);
   background: var(--component-input-background);
   color: var(--component-input-text);
   box-shadow: inset 0 calc(-1 * var(--component-input-rule-width)) var(--component-input-rule);

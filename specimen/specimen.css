@@ -285,3 +285,10 @@ kbd {
   background: var(--chip);
   box-shadow: inset 0 0 0 var(--border-width-default) var(--color-border-default);
 }
+
+.status-samples {
+  display: grid;
+  row-gap: var(--leading);
+  max-width: var(--measure);
+  margin-bottom: var(--leading);
+}

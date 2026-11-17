@@ -19,7 +19,7 @@ class Specimen {
 
   start() {
     this.root.addEventListener("keydown", (event) => this.handleKey(event));
-    this.filterInput.addEventListener("input", () => this.focusList.filter(this.filterInput.value));
+    this.filterInput.addEventListener("input", () => this.search(this.filterInput.value));
     this.root.addEventListener("focusin", (event) => this.showSummary(event.target));
     for (const button of this.root.querySelectorAll("button.button:not([aria-disabled='true'])")) {
       button.addEventListener("click", () => this.statusLine.showMessage(`${button.textContent} pressed`));
@@ -154,9 +154,15 @@ class Specimen {
     this.focusList.focusCurrent();
   }
 
+  search(query) {
+    this.focusList.filter(query);
+    if (this.focusList.current()) this.statusLine.showMessage("");
+    else this.statusLine.showError(`Pattern not found: ${query}`);
+  }
+
   clearFilter() {
     this.filterInput.value = "";
-    this.focusList.filter("");
+    this.search("");
     this.focusList.focusCurrent();
   }
 

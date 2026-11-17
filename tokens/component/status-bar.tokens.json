@@ -18,6 +18,13 @@
       },
       "mode-text": {
         "$value": "{color.text.inverse}"
+      },
+      "error-background": {
+        "$description": "Errors are inverted, as vim draws ErrorMsg in standout on a monochrome terminal. See docs/decisions/0018-status-messages.md.",
+        "$value": "{color.focus}"
+      },
+      "error-text": {
+        "$value": "{color.text.inverse}"
       }
     }
   }

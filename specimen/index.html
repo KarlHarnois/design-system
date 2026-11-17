@@ -97,6 +97,20 @@ The <span class="editor-match">grid</span> holds every line. <span class="editor
           <h3 class="container-title" id="reply-title">Reply, insert mode</h3>
           <div class="item editor" tabindex="-1" data-mode="insert" data-name="component editor insert reply">Thanks, merged<span class="editor-cursor"> </span></div>
         </section>
+        <div class="item status-samples" tabindex="-1" data-name="component status bar messages notice error waiting">
+          <div class="status-bar" aria-hidden="true">
+            <span class="status-bar-mode">normal</span><span class="status-bar-fill"></span>
+            <span class="status-bar-segment status-bar-message">3 rows yanked</span>
+          </div>
+          <div class="status-bar" aria-hidden="true">
+            <span class="status-bar-mode">normal</span><span class="status-bar-fill"></span>
+            <span class="status-bar-segment status-bar-message is-error">Pattern not found: xyz</span>
+          </div>
+          <div class="status-bar" aria-hidden="true">
+            <span class="status-bar-mode">normal</span><span class="status-bar-fill"></span>
+            <span class="status-bar-segment status-bar-message">Syncing mail…</span>
+          </div>
+        </div>
         <table class="table" aria-label="Type styles" style="--table-span-1: 1; --table-span-2: 1; --table-span-3: 1; --table-span-4: 1">
           <thead>
             <tr><th>Token</th><th>Type</th><th>Value</th><th class="table-number" aria-sort="descending">Lines</th></tr>
@@ -164,7 +178,7 @@ The <span class="editor-match">grid</span> holds every line. <span class="editor
         <span class="command-line-prompt" aria-hidden="true">/</span>
         <input class="command-line-input" type="search" aria-label="Filter tokens" tabindex="-1" />
       </label>
-      <span class="status-bar-segment message" aria-live="polite"></span>
+      <span class="status-bar-segment status-bar-message message" aria-live="polite"></span>
       <span class="status-bar-segment pending-keys" aria-live="polite"></span>
     </footer>
 

@@ -21,3 +21,19 @@
 .status-bar-fill {
   flex: 1;
 }
+
+.status-bar-message {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-bar-message:empty {
+  display: none;
+}
+
+.status-bar-message.is-error {
+  background: var(--component-status-bar-error-background);
+  color: var(--component-status-bar-error-text);
+}

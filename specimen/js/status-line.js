@@ -14,6 +14,12 @@ class StatusLine {
   }
 
   showMessage(text) {
+    this.message.classList.remove("is-error");
+    this.message.textContent = text;
+  }
+
+  showError(text) {
+    this.message.classList.add("is-error");
     this.message.textContent = text;
   }
 

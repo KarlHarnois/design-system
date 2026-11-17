@@ -29,6 +29,9 @@ let
   waybarColorsCss = lib.concatStrings (
     lib.mapAttrsToList (id: value: "@define-color ${gtkColorName id} ${value};\n") waybarColors
   );
+  waybarStyleWithoutImport = builtins.replaceStrings [ ''@import "colors.css";'' ] [ "" ] (
+    builtins.readFile "${themeDirectory}/style.css"
+  );
 in
 {
   options.designSystem = {
@@ -72,7 +75,11 @@ in
     waybar.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "Write the generated Waybar stylesheet to ~/.config/waybar.";
+      description = ''
+        Style Waybar with the generated stylesheet. When Home Manager manages Waybar,
+        the stylesheet is prepended to `programs.waybar.style`, so your own rules come
+        after it. Otherwise it is written to ~/.config/waybar.
+      '';
     };
 
     waybar.config.enable = lib.mkOption {
@@ -115,7 +122,10 @@ in
           };
         };
       }
-      (lib.mkIf cfg.waybar.enable {
+      (lib.mkIf (cfg.waybar.enable && waybarManagedByHomeManager) {
+        programs.waybar.style = lib.mkBefore (waybarColorsCss + waybarStyleWithoutImport);
+      })
+      (lib.mkIf (cfg.waybar.enable && !waybarManagedByHomeManager) {
         xdg.configFile."waybar/style.css".source = "${themeDirectory}/style.css";
         xdg.configFile."waybar/colors.css".text = waybarColorsCss;
       })

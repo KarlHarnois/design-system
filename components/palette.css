@@ -16,6 +16,7 @@
   padding-inline: var(--component-container-marker-padding-inline);
   overflow-x: hidden;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .palette .palette-row {

@@ -5,6 +5,7 @@ class CommandPalette {
     this.element = element;
     this.input = element.querySelector(".palette-input");
     this.list = element.querySelector(".palette-list");
+    this.count = element.querySelector(".command-line-count");
     this.commands = commands;
     this.statusLine = statusLine;
     this.onClose = onClose;
@@ -68,6 +69,13 @@ class CommandPalette {
   select(index) {
     this.selected = Math.min(Math.max(index, 0), Math.max(this.matches.length - 1, 0));
     this.list.replaceChildren(...this.matches.map((command, position) => this.row(command, position)));
+    this.list.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: "nearest" });
+    this.count.textContent = this.countText();
+  }
+
+  countText() {
+    const position = this.matches.length === 0 ? 0 : this.selected + 1;
+    return `${position}/${this.matches.length}`;
   }
 
   row(command, position) {

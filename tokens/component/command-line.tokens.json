@@ -6,6 +6,11 @@
         "$type": "dimension",
         "$value": "{space.line}"
       },
+      "count-gap": {
+        "$type": "dimension",
+        "$description": "Least space between the typed text and the count, so a long line never runs into it.",
+        "$value": "{space.group}"
+      },
       "$type": "color",
       "prompt": {
         "$description": "The `:` or `/` before the typed text.",
@@ -13,6 +18,10 @@
       },
       "text": {
         "$value": "{color.text.primary}"
+      },
+      "count": {
+        "$description": "Position and number of suggestions, such as 1/37, as fzf shows them.",
+        "$value": "{color.text.secondary}"
       },
       "cursor": {
         "$description": "Block cursor, the same inverted cell as the editor's normal mode cursor.",

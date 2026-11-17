@@ -22,6 +22,12 @@
   outline: none;
 }
 
+.command-line-count {
+  margin-left: auto;
+  padding-left: var(--component-command-line-count-gap);
+  color: var(--component-command-line-count);
+}
+
 .command-line-cursor {
   background: var(--component-command-line-cursor);
   color: var(--component-command-line-cursor-text);

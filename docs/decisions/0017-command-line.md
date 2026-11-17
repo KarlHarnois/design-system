@@ -19,6 +19,10 @@ another gap. Apps such as a mail client need the same prompt for their own comma
 - The command line sets no background or inset. It takes them from where it sits: a status
   bar segment, or the palette container. The palette shows its completions above it, as
   Neovim's popup menu sits above its command line.
+- When suggestions show, the command line ends with a count such as `11/37`: the selected
+  position and the number of matches, as fzf shows them. It is `color.text.secondary`, at
+  least `space.group` from the typed text. The palette list hides its scrollbar, since the
+  count already tells where you are, and scrolls to keep the selected row in view.
 
 ## Consequences
 - `palette.padding-inline` is gone. The palette prompt no longer needs a gap of its own.

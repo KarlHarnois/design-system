@@ -4,10 +4,12 @@ const GRAYS_FOR_BASE00_TO_BASE07 = {
   dark: ["950", "900", "800", "600", "400", "200", "100", "50"],
   light: ["0", "50", "100", "500", "600", "800", "900", "950"],
 } as const;
-const SYNTAX_SHADE = { dark: "400", light: "500" } as const;
-const SYNTAX_HUES_FOR_BASE08_TO_BASE0F = ["red", "yellow", "yellow", "green", "blue", "blue", "red", "yellow"];
+const SYNTAX_GRAYS_FOR_BASE08_TO_BASE0F = {
+  dark: ["500", "400", "400", "400", "500", "600", "500", "600"],
+  light: ["500", "600", "600", "600", "500", "400", "500", "400"],
+} as const;
 
-type Variant = keyof typeof SYNTAX_SHADE;
+type Variant = keyof typeof GRAYS_FOR_BASE00_TO_BASE07;
 
 export class Base16Scheme {
   private readonly theme: ResolvedTheme;
@@ -34,7 +36,7 @@ export class Base16Scheme {
   }
 
   private syntaxTokenIds(): string[] {
-    return SYNTAX_HUES_FOR_BASE08_TO_BASE0F.map((hue) => `color.${hue}.${SYNTAX_SHADE[this.variant]}`);
+    return SYNTAX_GRAYS_FOR_BASE08_TO_BASE0F[this.variant].map((step) => `color.gray.${step}`);
   }
 
   private static slotName(slot: number): string {
@@ -42,7 +44,8 @@ export class Base16Scheme {
   }
 
   private static variantOf(themeName: string): Variant {
-    if (themeName in SYNTAX_SHADE) return themeName as Variant;
-    throw new Error(`Base16 has no variant for theme "${themeName}". Expected one of: ${Object.keys(SYNTAX_SHADE).join(", ")}`);
+    if (themeName in GRAYS_FOR_BASE00_TO_BASE07) return themeName as Variant;
+    const variants = Object.keys(GRAYS_FOR_BASE00_TO_BASE07).join(", ");
+    throw new Error(`Base16 has no variant for theme "${themeName}". Expected one of: ${variants}`);
   }
 }

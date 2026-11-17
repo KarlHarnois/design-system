@@ -14,7 +14,9 @@ weight and position alone, the way Swiss typography and Vercel's Geist start fro
 - Emphasis uses inversion. Primary buttons, the status bar mode and the table cursor
   draw `color.text.inverse` on `color.focus`.
 - The status bar names the current mode, so modes stay distinguishable without color.
-- The primitive hue ramps stay, because base16 needs them for terminal syntax colors.
+- The primitive hue ramps are gone too. Base16's syntax slots `base08`–`base0F` use mid
+  grays, as the base16 Grayscale scheme does, so terminals and editors themed from it
+  stay monochrome. Hue comes back only with a decision of its own.
 
 ## Consequences
 Targets build one output per theme. Waybar styles move from `waybar/<theme>/<accent>/`

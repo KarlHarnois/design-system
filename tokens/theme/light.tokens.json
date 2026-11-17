@@ -8,6 +8,10 @@
       "raised": {
         "$value": "{color.gray.50}"
       },
+      "document": {
+        "$description": "Canvas behind documents written for white paper, such as HTML mail. White in both themes, since most HTML mail assumes it.",
+        "$value": "{color.gray.0}"
+      },
       "sunken": {
         "$value": "{color.gray.100}"
       }

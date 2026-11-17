@@ -78,12 +78,15 @@
           Name, press <kbd>i</kbd> to type
           <input class="input" type="text" tabindex="-1" placeholder="Iosevka" />
         </label>
-        <ul class="list" aria-label="Files">
-          <li class="item list-item" tabindex="-1" data-name="component list item tokens">tokens/</li>
-          <li class="item list-item" tabindex="-1" data-name="component list item keymap">keymap/</li>
-          <li class="item list-item" tabindex="-1" data-name="component list item components">components/</li>
-          <li class="item list-item" tabindex="-1" data-name="component list item specimen">specimen/</li>
-        </ul>
+        <section class="container panel-sample" aria-labelledby="files-title">
+          <h3 class="container-title" id="files-title">Files</h3>
+          <ul class="list" aria-label="Files">
+            <li class="item list-item" tabindex="-1" data-name="component list item tokens">tokens/</li>
+            <li class="item list-item" tabindex="-1" data-name="component list item keymap">keymap/</li>
+            <li class="item list-item" tabindex="-1" data-name="component list item components">components/</li>
+            <li class="item list-item" tabindex="-1" data-name="component list item specimen">specimen/</li>
+          </ul>
+        </section>
         <table class="table" aria-label="Type styles" style="--table-span-1: 1; --table-span-2: 1; --table-span-3: 1; --table-span-4: 1">
           <thead>
             <tr><th>Token</th><th>Type</th><th>Value</th><th class="table-number" aria-sort="descending">Lines</th></tr>
@@ -144,7 +147,7 @@
       <span class="status-bar-segment pending-keys" aria-live="polite"></span>
     </footer>
 
-    <div class="palette" hidden>
+    <div class="palette container container-raised" hidden>
       <ul class="palette-list list" aria-label="Commands"></ul>
       <label class="palette-prompt">
         <span aria-hidden="true">:</span>
@@ -152,7 +155,7 @@
       </label>
     </div>
 
-    <div class="which-key" hidden>
+    <div class="which-key container container-raised" hidden>
       <ul class="which-key-list"></ul>
     </div>
 

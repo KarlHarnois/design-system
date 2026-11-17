@@ -10,6 +10,9 @@ why each row matched. The system is black and white, so the match cannot take a 
 ## Decision
 - Matched characters are bold (`component.list.match-font-weight`), as Neovim draws
   `PmenuMatch` by default. Bold Iosevka is as wide as regular, so a match never moves the text.
+- Bold alone read too subtle, so matches are also underlined with a 1px hairline,
+  `focus.offset` below the text. We tried a gray fill, which vanished on selected rows, and a
+  2px underline, which read heavier than needed. The underline shows on every row.
 - Matches turn `color.text.primary`, so they also stand out inside secondary text such as a
   description.
 - In a selected row the match keeps the row's inverted color and stays bold.
@@ -17,5 +20,5 @@ why each row matched. The system is black and white, so the match cannot take a 
 - Search matches in an editor keep their outlines (0016). Bold is for filtered lists only.
 
 ## Consequences
-- A row that matched on hidden text, such as a command's description, shows no bold. The
-  count on the command line (0017) still tells how many rows matched.
+- Filters match only the text a row shows, as fzf does, so every row that stays has a
+  visible match.

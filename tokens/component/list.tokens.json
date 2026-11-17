@@ -18,6 +18,15 @@
         "$description": "Weight of the characters that match a filter, as Neovim's PmenuMatch. Bold Iosevka keeps the same width, so a match never moves the text. See docs/decisions/0019-match-highlight.md.",
         "$value": "{font.weight.bold}"
       },
+      "match-underline-width": {
+        "$type": "dimension",
+        "$description": "Underline under matched characters. It shows on selected rows too, where a fill would vanish.",
+        "$value": "{dimension.hairline}"
+      },
+      "match-underline-offset": {
+        "$type": "dimension",
+        "$value": "{focus.offset}"
+      },
       "$type": "color",
       "text": {
         "$value": "{color.text.primary}"

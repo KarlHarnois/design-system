@@ -20,6 +20,9 @@
 
 .list-match {
   background: transparent;
+  text-decoration: underline;
+  text-decoration-thickness: var(--component-list-match-underline-width);
+  text-underline-offset: var(--component-list-match-underline-offset);
   color: var(--component-list-match-text);
   font-weight: var(--component-list-match-font-weight);
 }

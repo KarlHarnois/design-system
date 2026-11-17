@@ -61,6 +61,7 @@ class Specimen {
   }
 
   dispatch(key) {
+    if (this.palette.isOpen() && this.palette.handles(key)) return this.palette.handleKey(key);
     if (this.isTextEntryMode() && LineEditor.handles(key)) return this.editLine(key);
     if (this.palette.isOpen()) return this.palette.handleKey(key);
     if (this.isTextEntryMode()) return this.handleTextEntryKey(key);

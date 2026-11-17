@@ -30,17 +30,28 @@ class CommandPalette {
     this.onClose();
   }
 
+  handles(key) {
+    return key in this.actions();
+  }
+
   handleKey(key) {
-    const actions = {
+    this.actions()[key]?.();
+    return this.handles(key);
+  }
+
+  actions() {
+    const next = () => this.select(this.selected + 1);
+    const previous = () => this.select(this.selected - 1);
+    return {
       "<Esc>": () => this.close(),
       "<CR>": () => this.runSelected(),
-      "<C-n>": () => this.select(this.selected + 1),
-      "<C-p>": () => this.select(this.selected - 1),
-      ArrowDown: () => this.select(this.selected + 1),
-      ArrowUp: () => this.select(this.selected - 1),
+      "<C-n>": next,
+      "<C-p>": previous,
+      "<C-j>": next,
+      "<C-k>": previous,
+      ArrowDown: next,
+      ArrowUp: previous,
     };
-    actions[key]?.();
-    return key in actions;
   }
 
   runSelected() {

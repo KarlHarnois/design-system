@@ -9,6 +9,6 @@ class Command {
   }
 
   matches(query) {
-    return `${this.name} ${this.description}`.toLowerCase().includes(query.toLowerCase());
+    return this.name.toLowerCase().includes(query.toLowerCase());
   }
 }

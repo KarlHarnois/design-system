@@ -1,0 +1,47 @@
+.editor {
+  box-sizing: border-box;
+  padding: var(--component-editor-padding-block) var(--component-editor-padding-inline);
+  font: inherit;
+  line-height: var(--component-editor-line-height);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--component-editor-background);
+  color: var(--component-editor-text);
+  caret-color: transparent;
+  outline: none;
+}
+
+.container .editor {
+  padding: 0;
+}
+
+.editor ::selection,
+.editor-selection {
+  background: var(--component-editor-selection-background);
+}
+
+.editor-match {
+  box-shadow: inset 0 0 0 var(--component-editor-match-outline-width) var(--component-editor-match-outline);
+}
+
+.editor-match.is-current {
+  background: var(--component-editor-current-match-background);
+  box-shadow: inset 0 0 0 var(--component-editor-match-outline-width) var(--component-editor-current-match-outline);
+}
+
+.editor-cursor {
+  background: var(--component-editor-cursor);
+  color: var(--component-editor-cursor-text);
+}
+
+.editor:not(:focus-within) .editor-cursor {
+  background: transparent;
+  color: inherit;
+  box-shadow: inset 0 0 0 var(--component-editor-hollow-cursor-width) var(--component-editor-cursor);
+}
+
+.editor[data-mode="insert"]:focus-within .editor-cursor {
+  background: transparent;
+  color: inherit;
+  box-shadow: inset var(--component-editor-insert-cursor-width) 0 0 var(--component-editor-cursor);
+}

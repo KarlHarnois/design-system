@@ -68,7 +68,7 @@ kbd {
   outline: none;
 }
 
-.item:focus:not(.list-item, tr) {
+.item:focus:not(.list-item, tr, .editor) {
   outline: var(--focus-width) solid var(--color-focus);
   outline-offset: var(--focus-offset);
 }

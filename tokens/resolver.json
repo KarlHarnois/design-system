@@ -35,6 +35,9 @@
           "$ref": "component/container.tokens.json"
         },
         {
+          "$ref": "component/editor.tokens.json"
+        },
+        {
           "$ref": "component/status-bar.tokens.json"
         },
         {

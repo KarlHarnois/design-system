@@ -1,0 +1,62 @@
+{
+  "component": {
+    "editor": {
+      "$description": "A multi-line text editor with a vim cursor, such as a mail composer or a text reader. See docs/decisions/0016-text-editor.md.",
+      "padding-block": {
+        "$type": "dimension",
+        "$description": "Top and bottom inset, as in a text container, so the editor is a whole number of lines tall.",
+        "$value": "{space.half-line}"
+      },
+      "padding-inline": {
+        "$type": "dimension",
+        "$description": "Left and right inset, as in a text container.",
+        "$value": "{space.text-inset}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{space.line}"
+      },
+      "insert-cursor-width": {
+        "$type": "dimension",
+        "$description": "Width of the bar cursor in insert mode. About a quarter of a cell, as in Neovim's default ver25.",
+        "$value": "{dimension.rule}"
+      },
+      "hollow-cursor-width": {
+        "$type": "dimension",
+        "$description": "Outline of the block cursor while the editor is not focused.",
+        "$value": "{border.width.default}"
+      },
+      "match-outline-width": {
+        "$type": "dimension",
+        "$value": "{border.width.default}"
+      },
+      "$type": "color",
+      "background": {
+        "$value": "{color.surface.base}"
+      },
+      "text": {
+        "$value": "{color.text.primary}"
+      },
+      "cursor": {
+        "$value": "{color.focus}"
+      },
+      "cursor-text": {
+        "$value": "{color.text.inverse}"
+      },
+      "selection-background": {
+        "$value": "{color.selection}"
+      },
+      "match-outline": {
+        "$description": "Outline of every search match.",
+        "$value": "{color.border.focused}"
+      },
+      "current-match-background": {
+        "$description": "The match the cursor is on. It takes a fill as well as the bright outline, so it stands out from the other matches without hiding the cursor.",
+        "$value": "{color.selection}"
+      },
+      "current-match-outline": {
+        "$value": "{color.focus}"
+      }
+    }
+  }
+}

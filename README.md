@@ -29,3 +29,11 @@ designSystem.theme = "light";
 ```
 
 The module installs Iosevka, writes a Waybar config and stylesheet, and writes a Hyprland theme.
+
+To keep the bar layout with another palette, set `designSystem.waybar.colors` by token id:
+
+```nix
+designSystem.waybar.colors."color.focus" = "#d79921";
+```
+
+`designSystem.colors` holds every color token of the selected theme, by token id.

@@ -19,6 +19,16 @@ let
   isCssGap = attrs: attrs ? top;
   waybarManagedByHomeManager = config.programs.waybar.enable;
   waybarSettings = builtins.fromJSON (builtins.readFile "${themeDirectory}/settings.json");
+  glossary = builtins.fromJSON (builtins.readFile "${cfg.package}/glossary/glossary.json");
+  colorEntries = builtins.filter (entry: entry.type == "color") glossary;
+  themeColors = builtins.listToAttrs (
+    map (entry: lib.nameValuePair entry.id entry.values.${cfg.theme}) colorEntries
+  );
+  waybarColors = themeColors // cfg.waybar.colors;
+  gtkColorName = id: builtins.replaceStrings [ "." "-" ] [ "_" "_" ] id;
+  waybarColorsCss = lib.concatStrings (
+    lib.mapAttrsToList (id: value: "@define-color ${gtkColorName id} ${value};\n") waybarColors
+  );
 in
 {
   options.designSystem = {
@@ -34,6 +44,29 @@ in
       type = lib.types.enum (builtins.attrNames modifiers.theme.contexts);
       default = modifiers.theme.default;
       description = "Theme to apply to every styled target.";
+    };
+
+    colors = lib.mkOption {
+      type = lib.types.attrsOf lib.types.str;
+      readOnly = true;
+      default = themeColors;
+      defaultText = lib.literalMD "every color token of `theme`, from the built glossary";
+      description = "Color tokens of the selected theme, by token id, such as `color.focus`.";
+    };
+
+    waybar.colors = lib.mkOption {
+      type = lib.types.attrsOf lib.types.str;
+      default = { };
+      example = {
+        "color.focus" = "#d79921";
+        "color.surface.base" = "#282828";
+      };
+      description = ''
+        Colors that replace tokens in the Waybar stylesheet, by token id. The bar keeps
+        the design system's layout and takes these colors, so another palette can
+        reuse it. The stylesheet reads `color.surface.base`, `color.border.default`,
+        `color.text.primary`, `color.text.secondary`, `color.text.inverse` and `color.focus`.
+      '';
     };
 
     waybar.enable = lib.mkOption {
@@ -84,7 +117,7 @@ in
       }
       (lib.mkIf cfg.waybar.enable {
         xdg.configFile."waybar/style.css".source = "${themeDirectory}/style.css";
-        xdg.configFile."waybar/colors.css".source = "${themeDirectory}/colors.css";
+        xdg.configFile."waybar/colors.css".text = waybarColorsCss;
       })
       (lib.mkIf (cfg.waybar.config.enable && waybarManagedByHomeManager) {
         programs.waybar.settings.mainBar = lib.mapAttrsRecursive (_: lib.mkDefault) waybarSettings;

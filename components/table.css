@@ -117,7 +117,7 @@
   }
 }
 
-.table tr:focus {
+.table tr:is(:focus, .is-cursor) {
   outline: none;
   background: var(--component-table-cursor-row-background);
 }
@@ -126,7 +126,7 @@
   background: var(--component-table-selected-background);
 }
 
-.table tr:focus .table-cell-active {
+.table tr:is(:focus, .is-cursor) .table-cell-active {
   justify-self: start;
   max-width: 100%;
   background: var(--color-focus);
@@ -134,7 +134,7 @@
   min-width: var(--table-row-height);
 }
 
-.table tr:focus .table-cell-active.table-number {
+.table tr:is(:focus, .is-cursor) .table-cell-active.table-number {
   justify-self: end;
 }
 

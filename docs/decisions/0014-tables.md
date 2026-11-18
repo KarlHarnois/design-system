@@ -24,6 +24,9 @@ these. The system is black and white, so each state needs a different gray, not 
   cells wide with their own side space, so no space character separates them. The design system draws the
   state only; the app sorts.
 - The header row sticks to the top of the scroll area on `color.surface.base`.
+- The cursor row is the focused row, or a row with `.is-cursor`. A list that recycles its
+  rows while scrolling, such as a mail client's inbox, cannot keep focus on one row, so it
+  marks the cursor row with the class.
 - `.table-compact` puts rows on the 16px bar line in `type.ui-small`, as small buttons do.
   Cell padding and the cursor shape stay the same.
 

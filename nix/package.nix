@@ -22,6 +22,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       ../tokens
       ../keymap
       ../bar
+      ../components
       ../build
       ../tests
     ];
@@ -52,6 +53,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     runHook preInstall
     cp -r dist $out
     cp -r keymap $out/keymap
+    cp -r components $out/css/components
     runHook postInstall
   '';
 

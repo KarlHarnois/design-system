@@ -21,7 +21,9 @@
     in
     {
       packages = forEachSystem (pkgs: {
-        default = pkgs.callPackage ./nix/package.nix { };
+        default = pkgs.callPackage ./nix/package.nix {
+          knave = knave.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        };
         web-fonts = pkgs.callPackage ./nix/web-fonts.nix { };
       });
 

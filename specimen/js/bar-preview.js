@@ -6,7 +6,7 @@ class BarPreview {
   }
 
   render(root) {
-    this.renderBar(root.querySelector('[data-bar-preview="bar"]'));
+    for (const bar of root.querySelectorAll('[data-bar-preview="bar"]')) this.renderBar(bar);
     this.renderStates(root.querySelector('[data-bar-preview="states"]'));
   }
 

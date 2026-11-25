@@ -1,5 +1,6 @@
 import type { BarSpec } from "../bar/bar-spec.ts";
 import { ResolvedTheme } from "../shared/resolved-theme.ts";
+import type { BarStyle } from "./bar-style.ts";
 import { GtkColorPalette } from "./gtk-color-palette.ts";
 import { WaybarGroup } from "./waybar-group.ts";
 import { WaybarModule } from "./waybar-module.ts";
@@ -10,10 +11,12 @@ const WORKSPACES_MODULE = "hyprland/workspaces";
 
 export class WaybarStylesheet {
   private readonly theme: ResolvedTheme;
+  private readonly style: BarStyle;
   private readonly spec: BarSpec;
 
-  constructor(theme: ResolvedTheme, spec: BarSpec) {
+  constructor(theme: ResolvedTheme, style: BarStyle, spec: BarSpec) {
     this.theme = theme;
+    this.style = style;
     this.spec = spec;
   }
 
@@ -59,11 +62,7 @@ button {
 }
 
 window#waybar > box {
-  background-color: ${color("color.surface.base")};
-  color: ${color("color.text.secondary")};
-  border: ${this.theme.dimension("border.width.default")} solid ${color("color.border.default")};
-  border-radius: ${this.theme.dimension("radius.container")};
-  padding: ${this.inset()};
+${this.style.boxDeclarations().map((declaration) => `  ${declaration}`).join("\n")}
 }`;
   }
 
@@ -124,10 +123,6 @@ window#waybar > box {
 
   private markerContentMinWidth(): number {
     return this.theme.pixels("bar.line") - 2 * this.theme.pixels("space.marker");
-  }
-
-  private inset(): string {
-    return this.theme.dimension("space.inset");
   }
 
   private time(): string {

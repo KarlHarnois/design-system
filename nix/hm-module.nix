@@ -10,7 +10,7 @@ let
   cfg = config.designSystem;
   system = pkgs.stdenv.hostPlatform.system;
   modifiers = (builtins.fromJSON (builtins.readFile ../tokens/resolver.json)).modifiers;
-  themeDirectory = "${cfg.package}/waybar/${cfg.theme}";
+  themeDirectory = "${cfg.package}/waybar/${cfg.theme}/${cfg.waybar.style}";
   hyprlandDirectory = "${cfg.package}/hyprland/${cfg.theme}";
   hyprlandManagedByHomeManager =
     config.wayland.windowManager.hyprland.enable
@@ -82,11 +82,23 @@ in
       '';
     };
 
+    waybar.style = lib.mkOption {
+      type = lib.types.enum [
+        "floating"
+        "borderless"
+      ];
+      default = "floating";
+      description = ''
+        Shape of the bar. `floating` sits inside the frame with an outline and rounded
+        corners. `borderless` runs flush along the top edge of the screen with no outline.
+      '';
+    };
+
     waybar.config.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
       description = ''
-        Configure the floating Waybar bar: modules, formats and margins.
+        Configure the Waybar bar: modules, formats and margins.
         When Home Manager manages Waybar, the config is merged into
         `programs.waybar.settings.mainBar` as defaults, so your own settings win.
         Otherwise it is written to ~/.config/waybar/config.jsonc.

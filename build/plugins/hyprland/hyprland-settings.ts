@@ -51,8 +51,8 @@ export class HyprlandSettings {
 
   private gapsOut(): { [side: string]: number } {
     const frame = this.theme.pixels("space.frame");
-    const gutterBelowFloatingBar = this.theme.pixels("space.cell");
-    return { top: gutterBelowFloatingBar, right: frame, bottom: frame, left: frame };
+    const gutterBelowBar = this.theme.pixels("space.cell");
+    return { top: gutterBelowBar, right: frame, bottom: frame, left: frame };
   }
 
   private gapsIn(): { [side: string]: number } {

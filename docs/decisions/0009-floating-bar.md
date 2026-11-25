@@ -1,7 +1,7 @@
 # 0009. Float the bar and set it in small text
 
 ## Status
-Accepted. Builds on 0006, 0007 and 0008. Changed by 0011.
+Accepted. Builds on 0006, 0007 and 0008. Changed by 0011. Extended by 0021.
 
 ## Context
 The bar ran full width along the top, in 14px text, with a centred clock and an

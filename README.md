@@ -30,6 +30,12 @@ designSystem.theme = "light";
 
 The module installs Iosevka, writes a Waybar config and stylesheet, and writes a Hyprland theme.
 
+The bar floats inside the frame by default. For a bar flush along the top edge, with no outline, set:
+
+```nix
+designSystem.waybar.style = "borderless";
+```
+
 To keep the bar layout with another palette, set `designSystem.waybar.colors` by token id:
 
 ```nix

@@ -157,6 +157,18 @@ kbd {
   padding: var(--space-inset);
 }
 
+.desktop-borderless {
+  padding-top: 0;
+  margin-top: var(--space-line);
+}
+
+.waybar-borderless {
+  margin-inline: calc(-1 * var(--space-frame));
+  border: none;
+  border-radius: 0;
+  padding-inline: calc(var(--space-frame) + var(--border-width-default) + var(--space-inset));
+}
+
 .waybar .modules-left,
 .waybar .modules-right {
   display: flex;

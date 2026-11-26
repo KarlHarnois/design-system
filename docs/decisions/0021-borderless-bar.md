@@ -29,8 +29,10 @@ its text sits straight on the wallpaper.
   markers carry the emphasis. The slight transparency lets the wallpaper tint the text.
 - The current workspace is underlined with a hairline in the bar's colour, as list
   matches are (0019), not filled. A fill was the heaviest thing on a bar of text on the
-  wallpaper. No workspace becomes a marker, so workspaces have no padding and are
-  `space.cell` apart, about one character, and the first digit sits on the window edge.
+  wallpaper. No workspace becomes a marker, so workspaces have no padding, and the first
+  digit sits on the window edge. They are `space.group` apart, two characters: wider than
+  a word space, so each reads as its own item, and narrower than the 21px between wider
+  items, which spread single digits too far apart.
   The underline is the bottom pixel of the 16px line, about 2px below the digits.
 - A low battery is underlined the same way. Every marker on a bar shares the style's
   `marker`, `marker-text`, `marker-padding` and `marker-underline-width` tokens: a fill

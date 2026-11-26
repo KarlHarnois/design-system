@@ -174,8 +174,8 @@
         },
         "workspace-gap": {
           "$type": "dimension",
-          "$description": "One cell, about one character, so the digits read as spaced text.",
-          "$value": "{space.cell}"
+          "$description": "Two characters, wider than a word space, so each workspace reads as its own item without spreading the digits out like the wider items.",
+          "$value": "{space.group}"
         },
         "module-gap": {
           "$type": "dimension",

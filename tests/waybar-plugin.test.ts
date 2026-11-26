@@ -203,7 +203,7 @@ describe("WaybarPlugin", () => {
     });
 
     it("sizes workspaces to their digit, without marker padding", () => {
-      expect(borderlessStylesheet()).toMatch(/#workspaces button \{\n {2}padding: 0 0px;\n {2}min-width: 0px;\n {2}margin-right: 5px;/);
+      expect(borderlessStylesheet()).toMatch(/#workspaces button \{\n {2}padding: 0 0px;\n {2}min-width: 0px;\n {2}margin-right: 10px;/);
     });
 
     it("spaces modules three cells apart, well apart from a label and its value", () => {

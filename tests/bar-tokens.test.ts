@@ -28,4 +28,10 @@ describe("bar tokens", () => {
 
     expect(tokens.pixels("component.bar.image-height")).toBe(fontSize.value);
   });
+
+  it("insets the borderless bar's sides by the frame plus the windows' corner radius", () => {
+    const expected = tokens.pixels("space.frame") + tokens.pixels("radius.container");
+
+    expect(borderless("margin-inline")).toBe(expected);
+  });
 });

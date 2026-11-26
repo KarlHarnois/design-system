@@ -174,8 +174,8 @@ describe("WaybarPlugin", () => {
       expect(borderlessConfig()["margin-top"]).toBe(5);
     });
 
-    it("sets the bar inside the frame on the left and right, like a row of windows", () => {
-      expect(borderlessConfig()).toMatchObject({ "margin-right": 12, "margin-left": 12 });
+    it("insets the bar's sides by its style's inline margin", () => {
+      expect(borderlessConfig()).toMatchObject({ "margin-right": 18, "margin-left": 18 });
     });
 
     it("drops the plain padding, so the time meets the window edge", () => {

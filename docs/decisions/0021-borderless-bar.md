@@ -19,10 +19,13 @@ its text sits straight on the wallpaper.
   `space.inset`, 5px, above the text and the same below it.
 - Waybar reserves the 5px margin and the 16px line. Hyprland's top gap is the other 5px,
   so 5 + 16 + 5 = 26.
-- On the left and right it sits inside the frame like a row of windows. The current
-  workspace's marker starts on the left edge of the windows.
+- On the left and right it is inset by `space.frame` + `radius.container`, 11px. The
+  windows' corners curve in by the radius, so near the bar their visible straight top edge
+  starts 4px in from their sides. Text on the frame line looked wider than the windows.
+  The first and last text now start where the corners finish curving, as 0012 insets
+  content by at least the corner radius.
 - The clock never becomes a marker, so on the borderless bar it has no padding. The time
-  then ends on the right edge of the windows, where padding would leave it 4px short.
+  then ends on that inset, where padding would leave it 4px short.
 - Every module, the time and the markers use one colour, `color.text.desktop`: white at
   84.7% opacity in the dark theme, black at 84.7% in the light theme. Text on a wallpaper
   has no surface to set a hierarchy against, so the bar uses one colour and lets the

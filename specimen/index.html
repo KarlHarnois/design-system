@@ -141,7 +141,7 @@ The <span class="editor-match">grid</span> holds every line. <span class="editor
         <h2 class="group-title type-label">Desktop</h2>
         <p class="desktop-note type-ui-small">Preview of a GTK bar. Waybar renders with GTK, so the real bar can differ slightly.</p>
         <div class="item desktop" tabindex="-1" data-name="desktop preview hyprland waybar floating bar frame gutter border radius">
-          <div class="waybar" data-bar-preview="bar"></div>
+          <div class="waybar" data-bar-preview="bar" data-bar-style="floating"></div>
           <div class="desktop-windows">
             <div class="desktop-window desktop-window-focused">editor, focused</div>
             <div class="desktop-window">terminal</div>
@@ -149,7 +149,15 @@ The <span class="editor-match">grid</span> holds every line. <span class="editor
           </div>
         </div>
         <div class="item desktop desktop-borderless" tabindex="-1" data-name="desktop preview hyprland waybar borderless bar flush top edge">
-          <div class="waybar waybar-borderless" data-bar-preview="bar"></div>
+          <div class="waybar waybar-borderless" data-bar-preview="bar" data-bar-style="borderless"></div>
+          <div class="desktop-windows">
+            <div class="desktop-window desktop-window-focused">editor, focused</div>
+            <div class="desktop-window">terminal</div>
+            <div class="desktop-window">browser</div>
+          </div>
+        </div>
+        <div class="item desktop desktop-borderless" tabindex="-1" data-name="desktop preview hyprland waybar borderless bar first workspace current">
+          <div class="waybar waybar-borderless" data-bar-preview="bar" data-bar-style="borderless" data-bar-active="1"></div>
           <div class="desktop-windows">
             <div class="desktop-window desktop-window-focused">editor, focused</div>
             <div class="desktop-window">terminal</div>

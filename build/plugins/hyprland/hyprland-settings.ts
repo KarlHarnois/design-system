@@ -1,4 +1,5 @@
 import type { ResolvedTheme } from "../shared/resolved-theme.ts";
+import type { BarStyle } from "../waybar/bar-style.ts";
 
 const CURVE_NAME = "ease-out";
 const CSS_EASE_OUT_POINTS = [
@@ -20,9 +21,11 @@ export type HyprlandSettingsJson = {
 
 export class HyprlandSettings {
   private readonly theme: ResolvedTheme;
+  private readonly bar: BarStyle;
 
-  constructor(theme: ResolvedTheme) {
+  constructor(theme: ResolvedTheme, bar: BarStyle) {
     this.theme = theme;
+    this.bar = bar;
   }
 
   toJSON(): HyprlandSettingsJson {
@@ -51,8 +54,7 @@ export class HyprlandSettings {
 
   private gapsOut(): { [side: string]: number } {
     const frame = this.theme.pixels("space.frame");
-    const gutterBelowBar = this.theme.pixels("space.cell");
-    return { top: gutterBelowBar, right: frame, bottom: frame, left: frame };
+    return { top: this.bar.windowGapTop(), right: frame, bottom: frame, left: frame };
   }
 
   private gapsIn(): { [side: string]: number } {

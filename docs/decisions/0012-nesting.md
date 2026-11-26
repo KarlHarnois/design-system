@@ -33,8 +33,7 @@ radius minus the padding.
 - Markers side by side, such as workspaces, are `space.marker` apart. The strip around
   and between them is then 4px everywhere.
 - An item that can become a marker has the marker's shape whether or not it is inverted,
-  so becoming a marker changes only its colours, never its size or position. macOS menu
-  bar items work the same way: the highlight is the padding.
+  so becoming a marker changes only its colours, never its size or position.
   - Bar: every module has `space.marker` around its text. The low battery inverts by
     changing only its colours.
   - Table: every cell has `space.marker` at its sides, so any cell can become the cursor

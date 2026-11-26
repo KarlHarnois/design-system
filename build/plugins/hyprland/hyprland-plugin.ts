@@ -1,5 +1,6 @@
 import type { BuildHookOptions, Plugin } from "@terrazzo/parser";
 import { ResolvedTheme } from "../shared/resolved-theme.ts";
+import { BarStyle } from "../waybar/bar-style.ts";
 import { HyprlandLuaScript } from "./hyprland-lua-script.ts";
 import { HyprlandSettings } from "./hyprland-settings.ts";
 
@@ -13,9 +14,13 @@ export class HyprlandPlugin implements Plugin {
 
   build({ resolver, outputFile }: BuildHookOptions): void {
     for (const themeName of this.themeNames) {
-      const settings = new HyprlandSettings(new ResolvedTheme({ theme: themeName }, resolver)).toJSON();
-      outputFile(`hyprland/${themeName}/theme.lua`, new HyprlandLuaScript(settings).render());
-      outputFile(`hyprland/${themeName}/settings.json`, `${JSON.stringify(settings, null, 2)}\n`);
+      const theme = new ResolvedTheme({ theme: themeName }, resolver);
+      for (const bar of BarStyle.all(theme)) {
+        const directory = `hyprland/${themeName}/${bar.name}`;
+        const settings = new HyprlandSettings(theme, bar).toJSON();
+        outputFile(`${directory}/theme.lua`, new HyprlandLuaScript(settings).render());
+        outputFile(`${directory}/settings.json`, `${JSON.stringify(settings, null, 2)}\n`);
+      }
     }
   }
 }

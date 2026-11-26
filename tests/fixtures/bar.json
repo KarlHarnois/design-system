@@ -1,6 +1,19 @@
 {
   "left": [
     {
+      "name": "system",
+      "styles": ["borderless"],
+      "modules": [
+        {
+          "name": "logo",
+          "waybar": "custom/logo",
+          "format": "",
+          "image": "logo.svg",
+          "sample": {}
+        }
+      ]
+    },
+    {
       "name": "desktop",
       "modules": [
         {

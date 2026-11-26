@@ -4,9 +4,9 @@
 Accepted. Extends 0009.
 
 ## Context
-The macOS 27 menu bar has no outline, no corners and no background of its own: the
-wallpaper shows through behind its text. Some desktops read better with a bar like that
-than with the floating bar of 0009, which sits inside the frame as one more container.
+The floating bar of 0009 sits inside the frame as one more container, with a background,
+an outline and corners. Some desktops read better with a bar that draws none of those, so
+its text sits straight on the wallpaper.
 
 ## Decision
 - The bar has two styles, `floating` and `borderless`. `floating` stays the default and
@@ -14,16 +14,19 @@ than with the floating bar of 0009, which sits inside the frame as one more cont
 - `borderless` is transparent and draws no outline and no corner radius.
 - Without an outline there is nothing for an inset to keep the markers clear of, so the
   bar is exactly `bar.line` tall, 16px, with no inset.
-- It sits inside the frame like a row of windows: `space.frame` above it, one gutter below
-  it. The first and last text sit on the left and right edges of the windows. Markers
-  hang `space.marker` past the text into the frame, as hanging punctuation does, so an
-  inverted workspace never pushes the text off the edge. With no marker showing, the
-  marker padding would otherwise leave the text 4px short of the edge.
-- Text keeps the theme's tokens: `color.text.secondary` for the modules and
-  `color.text.primary` for the time. macOS draws menu bar text in its label colors,
-  white at 85% and at 55% opacity in dark mode. Over black those come to about `#d9d9d9`
-  and `#8c8c8c`, close to `color.text.primary` and `color.text.secondary`. Opaque tokens
-  keep the bar the same colours as every other surface, whatever the wallpaper.
+- The windows start the floating bar's height, 26px, below the top of the screen. The text
+  sits centred in that space, as it sits in the floating bar: `border.width.default` +
+  `space.inset`, 5px, above the text and the same below it.
+- Waybar reserves the 5px margin and the 16px line. Hyprland's top gap is the other 5px,
+  so 5 + 16 + 5 = 26.
+- On the left and right it sits inside the frame like a row of windows. The current
+  workspace's marker starts on the left edge of the windows.
+- The clock never becomes a marker, so its modules drop the marker padding. The time
+  then ends on the right edge of the windows, where padding would leave it 4px short.
+- Every module, the time and the markers use one colour, `color.text.desktop`: white at
+  84.7% opacity in the dark theme, black at 84.7% in the light theme. Text on a wallpaper
+  has no surface to set a hierarchy against, so the bar uses one colour and lets the
+  markers carry the emphasis. The slight transparency lets the wallpaper tint the text.
 - Everything else is shared: the spec in `bar/bar.json`, the type, the markers and the
   spacing of modules and groups.
 
@@ -31,8 +34,13 @@ than with the floating bar of 0009, which sits inside the frame as one more cont
 - The build writes each style to `waybar/<theme>/<style>/`. Each directory holds the same
   four files as before.
 - The Home Manager module picks the style with `designSystem.waybar.style`.
-- Hyprland's top gap stays one gutter in both styles.
-- macOS switches its menu bar text between white and black to suit the wallpaper. The
-  borderless bar cannot, so it needs a wallpaper that contrasts with the theme's text: dark
-  for the dark theme, light for the light theme.
-- The specimen previews both styles, with the sunken surface standing in for the wallpaper.
+- Hyprland's top gap depends on the bar style: one gutter under the floating bar, 5px
+  under the borderless bar. The build writes Hyprland settings per style to
+  `hyprland/<theme>/<style>/`, and `designSystem.waybar.style` picks both.
+- Translucent colours build as `rgba()` in the GTK stylesheet and the glossary, since GTK3
+  does not read eight-digit hex.
+- The bar cannot switch its text colour to suit the wallpaper, so it needs a wallpaper that
+  contrasts with the theme: dark for the dark theme, light for the light theme.
+- The specimen previews both styles. The borderless preview shows
+  `specimen/wallpaper-dark.jpg` or `specimen/wallpaper-light.jpg` for the current theme
+  when it exists, local files the repo ignores, and the sunken surface otherwise.

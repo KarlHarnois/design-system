@@ -157,8 +157,20 @@ kbd {
   padding: var(--space-inset);
 }
 
+.desktop-borderless + .desktop-borderless {
+  margin-top: var(--space-cell);
+}
+
 .desktop-borderless {
+  --floating-text-offset: calc(var(--border-width-default) + var(--space-inset));
+  padding-top: var(--floating-text-offset);
+  gap: var(--floating-text-offset);
   margin-top: var(--space-line);
+  background: url("wallpaper-dark.jpg") center / cover, var(--color-surface-sunken);
+}
+
+[data-theme="light"] .desktop-borderless {
+  background-image: url("wallpaper-light.jpg");
 }
 
 .waybar-borderless {
@@ -166,7 +178,20 @@ kbd {
   border: none;
   border-radius: 0;
   padding: 0;
-  margin-inline: calc(-1 * var(--space-marker));
+}
+
+.waybar.waybar-borderless :is(.clock-date, .clock-time) {
+  padding: 0;
+}
+
+.waybar.waybar-borderless,
+.waybar.waybar-borderless :is(.workspace, .clock-time) {
+  color: var(--color-text-desktop);
+}
+
+.waybar.waybar-borderless .workspace.active {
+  background: var(--color-text-desktop);
+  color: var(--color-text-inverse);
 }
 
 .waybar .modules-left,
@@ -192,6 +217,17 @@ kbd {
 
 .waybar :is(.workspace, .pulseaudio, .battery, .clock-date, .clock-time) {
   white-space: pre;
+}
+
+.waybar .module-image {
+  width: round(up, calc(var(--type-ui-small-font-size) * var(--module-image-aspect-ratio)), 1px);
+  height: var(--bar-line);
+  background-color: currentColor;
+  mask: var(--module-image) left center / auto var(--type-ui-small-font-size) no-repeat;
+}
+
+.waybar .module-group:has(> .module-image:last-child) {
+  margin-right: calc(var(--space-cell) - var(--space-group));
 }
 
 .waybar .module-fixed {

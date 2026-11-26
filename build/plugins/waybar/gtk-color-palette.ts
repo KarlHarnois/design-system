@@ -21,6 +21,6 @@ export class GtkColorPalette {
 
   private defineColor(id: string): string {
     const name = GtkColorPalette.reference(id).slice(1);
-    return `@define-color ${name} ${this.theme.hex(id)};`;
+    return `@define-color ${name} ${this.theme.cssColor(id)};`;
   }
 }

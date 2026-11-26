@@ -9,6 +9,8 @@ import { tokenToColor } from "@terrazzo/token-tools";
 import Color from "colorjs.io";
 
 const MILLISECONDS_PER_SECOND = 1000;
+const OPAQUE = 1;
+const MAX_CHANNEL = 255;
 const GENERIC_FONT_FAMILIES = new Set(["serif", "sans-serif", "monospace", "cursive", "fantasy", "system-ui"]);
 
 export class ResolvedTheme {
@@ -53,9 +55,19 @@ export class ResolvedTheme {
   }
 
   hex(id: string): string {
+    return this.srgb(id).toString({ format: "hex", collapse: false });
+  }
+
+  cssColor(id: string): string {
+    const srgb = this.srgb(id);
+    if (srgb.alpha === OPAQUE) return this.hex(id);
+    const [red, green, blue] = srgb.coords.map((channel) => Math.round((channel ?? 0) * MAX_CHANNEL));
+    return `rgba(${red}, ${green}, ${blue}, ${srgb.alpha})`;
+  }
+
+  private srgb(id: string): Color {
     const token = this.tokenOfType(id, "color");
-    const srgb = new Color(tokenToColor(token.$value)).to("srgb").toGamut();
-    return srgb.toString({ format: "hex", collapse: false });
+    return new Color(tokenToColor(token.$value)).to("srgb").toGamut();
   }
 
   dimension(id: string): string {

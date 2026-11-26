@@ -2,6 +2,19 @@
   "$schema": "./bar.schema.json",
   "left": [
     {
+      "name": "system",
+      "styles": ["borderless"],
+      "modules": [
+        {
+          "name": "logo",
+          "waybar": "custom/logo",
+          "format": "",
+          "image": "nixos-logo.svg",
+          "sample": {}
+        }
+      ]
+    },
+    {
       "name": "desktop",
       "modules": [
         {
@@ -9,7 +22,7 @@
           "waybar": "hyprland/workspaces",
           "format": "{icon}",
           "icons": { "10": "0" },
-          "sample": { "items": ["1", "2", "3", "10"], "active": "1" }
+          "sample": { "items": ["1", "2", "3", "10"], "active": "3" }
         }
       ]
     }

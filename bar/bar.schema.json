@@ -50,6 +50,11 @@
           "description": "Waybar format string.",
           "type": "string"
         },
+        "image": {
+          "description": "SVG file next to the spec, filled with currentColor, drawn one bar line square in the bar's text colour as the module's background. The module has no marker padding, so it sits on the window edge when it is first or last.",
+          "type": "string",
+          "pattern": "^[a-z-]+\\.svg$"
+        },
         "icons": {
           "description": "Waybar format icons: text shown for `{icon}` by name. Names without an icon show as themselves, such as workspace 10 as `0`.",
           "type": "object",
@@ -166,6 +171,18 @@
           "minItems": 1,
           "items": {
             "$ref": "#/$defs/module"
+          }
+        },
+        "styles": {
+          "description": "Bar styles that show the group. Every style shows it when this is left out.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "floating",
+              "borderless"
+            ]
           }
         }
       }

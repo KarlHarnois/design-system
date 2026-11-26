@@ -11,7 +11,7 @@ let
   system = pkgs.stdenv.hostPlatform.system;
   modifiers = (builtins.fromJSON (builtins.readFile ../tokens/resolver.json)).modifiers;
   themeDirectory = "${cfg.package}/waybar/${cfg.theme}/${cfg.waybar.style}";
-  hyprlandDirectory = "${cfg.package}/hyprland/${cfg.theme}";
+  hyprlandDirectory = "${cfg.package}/hyprland/${cfg.theme}/${cfg.waybar.style}";
   hyprlandManagedByHomeManager =
     config.wayland.windowManager.hyprland.enable
     && (config.wayland.windowManager.hyprland.configType or "hyprlang") == "lua";
@@ -29,6 +29,10 @@ let
   waybarColorsCss = lib.concatStrings (
     lib.mapAttrsToList (id: value: "@define-color ${gtkColorName id} ${value};\n") waybarColors
   );
+  waybarImages = lib.filterAttrs (name: _: lib.hasSuffix ".svg" name) (builtins.readDir themeDirectory);
+  waybarImageFiles = lib.mapAttrs' (
+    name: _: lib.nameValuePair "waybar/${name}" { source = "${themeDirectory}/${name}"; }
+  ) waybarImages;
   waybarStyleWithoutImport = builtins.replaceStrings [ ''@import "colors.css";'' ] [ "" ] (
     builtins.readFile "${themeDirectory}/style.css"
   );
@@ -89,8 +93,8 @@ in
       ];
       default = "floating";
       description = ''
-        Shape of the bar. `floating` sits inside the frame with an outline and rounded
-        corners. `borderless` is transparent, with no outline, and aligns its markers with the
+        Shape of the bar, which also sets Hyprland's top gap. `floating` sits inside the
+        frame with an outline and rounded corners. `borderless` is transparent, with no outline, and aligns its markers with the
         frame like the windows below it.
       '';
     };
@@ -135,6 +139,9 @@ in
           };
         };
       }
+      (lib.mkIf cfg.waybar.enable {
+        xdg.configFile = waybarImageFiles;
+      })
       (lib.mkIf (cfg.waybar.enable && waybarManagedByHomeManager) {
         programs.waybar.style = lib.mkBefore (waybarColorsCss + waybarStyleWithoutImport);
       })

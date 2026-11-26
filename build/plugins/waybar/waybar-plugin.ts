@@ -3,8 +3,11 @@ import type { BarSpec } from "../bar/bar-spec.ts";
 import { ResolvedTheme } from "../shared/resolved-theme.ts";
 import { BarStyle } from "./bar-style.ts";
 import { GtkColorPalette } from "./gtk-color-palette.ts";
+import { TintedImage } from "./tinted-image.ts";
 import { WaybarConfig } from "./waybar-config.ts";
 import { WaybarStylesheet } from "./waybar-stylesheet.ts";
+
+type OutputFile = BuildHookOptions["outputFile"];
 
 export class WaybarPlugin implements Plugin {
   readonly name = "waybar";
@@ -17,16 +20,25 @@ export class WaybarPlugin implements Plugin {
   }
 
   build({ resolver, outputFile }: BuildHookOptions): void {
-    for (const theme of this.themeNames) {
-      const resolved = new ResolvedTheme({ theme }, resolver);
-      for (const style of BarStyle.all(resolved)) {
-        const directory = `waybar/${theme}/${style.name}`;
-        outputFile(`${directory}/colors.css`, new GtkColorPalette(resolved).stylesheet());
-        outputFile(`${directory}/style.css`, new WaybarStylesheet(resolved, style, this.spec).render());
-        const config = new WaybarConfig(style, this.spec);
-        outputFile(`${directory}/config.jsonc`, config.render());
-        outputFile(`${directory}/settings.json`, `${JSON.stringify(config.toJSON(), null, 2)}\n`);
+    for (const themeName of this.themeNames) {
+      const theme = new ResolvedTheme({ theme: themeName }, resolver);
+      for (const style of BarStyle.all(theme)) {
+        this.writeStyle(outputFile, theme, style);
       }
+    }
+  }
+
+  private writeStyle(outputFile: OutputFile, theme: ResolvedTheme, style: BarStyle): void {
+    const directory = `waybar/${theme.name}/${style.name}`;
+    const spec = this.spec.forStyle(style.name);
+    const config = new WaybarConfig(style, spec);
+    outputFile(`${directory}/colors.css`, new GtkColorPalette(theme).stylesheet());
+    outputFile(`${directory}/style.css`, new WaybarStylesheet(theme, style, spec).render());
+    outputFile(`${directory}/config.jsonc`, config.render());
+    outputFile(`${directory}/settings.json`, `${JSON.stringify(config.toJSON(), null, 2)}\n`);
+    for (const image of spec.images()) {
+      const tint = theme.cssColor(style.colors().text);
+      outputFile(`${directory}/${image}`, new TintedImage(spec.imageSource(image)).render(tint));
     }
   }
 }

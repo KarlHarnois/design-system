@@ -151,12 +151,20 @@ describe("WaybarPlugin", () => {
       expect(borderlessConfig().height).toBe(18);
     });
 
-    it("sets the bar one frame below the top edge", () => {
-      expect(borderlessConfig()["margin-top"]).toBe(12);
+    it("sets the text where the floating bar's outline and inset put it", () => {
+      expect(borderlessConfig()["margin-top"]).toBe(5);
     });
 
-    it("hangs the markers into the frame, so the first and last text meet the window edges", () => {
-      expect(borderlessConfig()).toMatchObject({ "margin-right": 8, "margin-left": 8 });
+    it("sets the bar inside the frame on the left and right, like a row of windows", () => {
+      expect(borderlessConfig()).toMatchObject({ "margin-right": 12, "margin-left": 12 });
+    });
+
+    it("drops the clock's marker padding, so the time meets the window edge", () => {
+      expect(borderlessStylesheet()).toMatch(/#clock\.date,\n#clock\.time \{\n {2}padding: 0;\n\}\n$/);
+    });
+
+    it("keeps the marker padding on the floating bar's clock", () => {
+      expect(stylesheet()).not.toMatch(/#clock\.date,\n#clock\.time \{\n {2}padding: 0;/);
     });
 
     it("lets the wallpaper show through", () => {
@@ -169,6 +177,43 @@ describe("WaybarPlugin", () => {
 
     it("keeps the bar layout of the floating bar", () => {
       expect(borderlessConfig()["modules-right"]).toEqual(config()["modules-right"]);
+    });
+  });
+
+  describe("image modules", () => {
+    const borderlessStyle = () => fixtureBuild.file("waybar/dark/borderless/style.css");
+    const borderlessSettings = () => JSON.parse(fixtureBuild.file("waybar/dark/borderless/settings.json"));
+
+    it("leaves a group out of the styles it does not name", () => {
+      expect(config()["modules-left"]).not.toContain("custom/logo");
+    });
+
+    it("shows a group in the styles it names", () => {
+      expect(borderlessSettings()["modules-left"]).toEqual(["custom/logo", "hyprland/workspaces"]);
+    });
+
+    it("tints the image in the borderless bar's desktop text colour", () => {
+      expect(fixtureBuild.file("waybar/dark/borderless/logo.svg")).toContain('<svg color="rgba(255, 255, 255, 0.5)" ');
+    });
+
+    it("draws the image as tall as the bar's type size, keeping its aspect ratio", () => {
+      expect(borderlessStyle()).toMatch(/#custom-logo \{\n {2}min-width: 16px;\n {2}background-image: url\("logo\.svg"\);\n {2}background-size: 16px 8px;/);
+    });
+
+    it("pins the image to the module's left edge", () => {
+      expect(borderlessStyle()).toMatch(/#custom-logo \{[^}]*background-position: left center;/);
+    });
+
+    it("gives the image no marker padding, so it sits on the window edge", () => {
+      expect(borderlessStyle()).not.toMatch(/#custom-logo[^{]*\{\n {2}padding/);
+    });
+
+    it("sets an image one cell from the next group, the gutter between windows", () => {
+      expect(borderlessStyle()).toContain("#custom-logo {\n  margin-right: 5px;\n}");
+    });
+
+    it("keeps the image module's static format", () => {
+      expect(borderlessSettings()["custom/logo"]).toEqual({ format: "" });
     });
   });
 });

@@ -1,8 +1,9 @@
 "use strict";
 
 class BarPreview {
-  constructor(spec) {
+  constructor(spec, images) {
     this.spec = spec;
+    this.images = images;
   }
 
   render(root) {
@@ -11,11 +12,17 @@ class BarPreview {
   }
 
   renderBar(element) {
+    const { barStyle, barActive } = element.dataset;
+    const groups = (side) => this.shownGroups(side, barStyle).map((group) => this.group(group, barActive));
     element.replaceChildren(
-      this.side("modules-left", this.spec.left.map((group) => this.group(group))),
+      this.side("modules-left", groups(this.spec.left)),
       this.side("modules-center", []),
-      this.side("modules-right", this.spec.right.map((group) => this.group(group))),
+      this.side("modules-right", groups(this.spec.right)),
     );
+  }
+
+  shownGroups(groups, style) {
+    return groups.filter((group) => group.styles === undefined || group.styles.includes(style));
   }
 
   renderStates(element) {
@@ -25,8 +32,9 @@ class BarPreview {
     element.replaceChildren(this.side("modules-right", [this.side("module-group", samples)]));
   }
 
-  group(group) {
-    const element = this.side("module-group", group.modules.map((module) => this.module(module, module.sample, [])));
+  group(group, active) {
+    const sample = (module) => (active === undefined || module.sample.items === undefined ? module.sample : { ...module.sample, active });
+    const element = this.side("module-group", group.modules.map((module) => this.module(module, sample(module), [])));
     element.dataset.group = group.name;
     return element;
   }
@@ -43,6 +51,7 @@ class BarPreview {
   }
 
   module(module, sample, classes) {
+    if (module.image !== undefined) return this.image(module);
     if (sample.items !== undefined) return this.workspaces(module, sample);
     const element = document.createElement("span");
     element.classList.add(module.name, ...classes);
@@ -51,6 +60,15 @@ class BarPreview {
       element.classList.add("module-fixed", `module-align-${module.align ?? "left"}`);
       element.style.setProperty("--module-width", module.width);
     }
+    return element;
+  }
+
+  image(module) {
+    const element = document.createElement("span");
+    element.classList.add(module.name, "module-image");
+    const { url, aspectRatio } = this.images[module.image];
+    element.style.setProperty("--module-image", `url("${url}")`);
+    element.style.setProperty("--module-image-aspect-ratio", aspectRatio);
     return element;
   }
 

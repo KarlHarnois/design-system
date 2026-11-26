@@ -1,6 +1,7 @@
 import type { BarSpec } from "../bar/bar-spec.ts";
 import { ResolvedTheme } from "../shared/resolved-theme.ts";
 import type { BarStyle } from "./bar-style.ts";
+import { TintedImage } from "./tinted-image.ts";
 import { GtkColorPalette } from "./gtk-color-palette.ts";
 import { WaybarGroup } from "./waybar-group.ts";
 import { WaybarModule } from "./waybar-module.ts";
@@ -27,10 +28,12 @@ export class WaybarStylesheet {
       this.bar(),
       this.workspaces(),
       this.modules(),
+      ...this.images(),
       this.moduleSpacing(),
-      this.groupSpacing(),
+      ...this.groupSpacing(),
       this.time(),
       this.lowBattery(),
+      ...this.style.rules(),
     ]
       .join("\n\n")
       .concat("\n");
@@ -72,7 +75,7 @@ ${this.style.boxDeclarations().map((declaration) => `  ${declaration}`).join("\n
   min-width: ${this.markerContentMinWidth()}px;
   margin-right: ${this.marker()};
   background: transparent;
-  color: ${color("color.text.secondary")};
+  color: ${color(this.style.colors().text)};
 }
 
 #workspaces button:last-child {
@@ -80,7 +83,7 @@ ${this.style.boxDeclarations().map((declaration) => `  ${declaration}`).join("\n
 }
 
 #workspaces button.active {
-  background: ${color("color.focus")};
+  background: ${color(this.style.colors().marker)};
   color: ${color("color.text.inverse")};
 }`;
   }
@@ -88,12 +91,32 @@ ${this.style.boxDeclarations().map((declaration) => `  ${declaration}`).join("\n
   private modules(): string {
     const selectors = this.spec
       .modules()
-      .filter((module) => module.waybar !== WORKSPACES_MODULE)
+      .filter((module) => module.waybar !== WORKSPACES_MODULE && module.image === undefined)
       .map((module) => new WaybarModule(module).selector());
     return `${selectors.join(",\n")} {
   padding: 0 ${this.marker()};
 }`;
   }
+
+  private images(): string[] {
+    return this.spec
+      .modules()
+      .map((module) => new WaybarModule(module))
+      .flatMap((module) => (module.image === undefined ? [] : [this.image(module.selector(), module.image)]));
+  }
+
+  private image(selector: string, image: string): string {
+    const height = this.theme.typography(BAR_TYPE_STYLE).fontSize.value;
+    const width = height * new TintedImage(this.spec.imageSource(image)).aspectRatio();
+    return `${selector} {
+  min-width: ${Math.ceil(width)}px;
+  background-image: url("${image}");
+  background-size: ${Number(width.toFixed(2))}px ${height}px;
+  background-position: left center;
+  background-repeat: no-repeat;
+}`;
+  }
+
 
   private moduleSpacing(): string {
     const selectors = this.groups()
@@ -104,12 +127,21 @@ ${this.style.boxDeclarations().map((declaration) => `  ${declaration}`).join("\n
 }`;
   }
 
-  private groupSpacing(): string {
-    const selectors = [this.spec.left, this.spec.right].flatMap((side) =>
-      side.slice(0, -1).map((group) => new WaybarGroup(group).selector()),
+  private groupSpacing(): string[] {
+    const groups = [this.spec.left, this.spec.right].flatMap((side) =>
+      side.slice(0, -1).map((group) => new WaybarGroup(group)),
     );
-    return `${selectors.join(",\n")} {
-  margin-right: ${this.theme.dimension("space.group")};
+    const textGroups = groups.filter((group) => !group.endsWithImage);
+    const imageGroups = groups.filter((group) => group.endsWithImage);
+    return [this.marginRight(textGroups, "space.group"), this.marginRight(imageGroups, "space.cell")].filter(
+      (rule) => rule !== undefined,
+    );
+  }
+
+  private marginRight(groups: WaybarGroup[], spaceId: string): string | undefined {
+    if (groups.length === 0) return undefined;
+    return `${groups.map((group) => group.selector()).join(",\n")} {
+  margin-right: ${this.theme.dimension(spaceId)};
 }`;
   }
 
@@ -127,13 +159,13 @@ ${this.style.boxDeclarations().map((declaration) => `  ${declaration}`).join("\n
 
   private time(): string {
     return `#clock.time {
-  color: ${color("color.text.primary")};
+  color: ${color(this.style.colors().emphasis)};
 }`;
   }
 
   private lowBattery(): string {
     return `#battery.critical:not(.charging) {
-  background: ${color("color.focus")};
+  background: ${color(this.style.colors().marker)};
   color: ${color("color.text.inverse")};
 }`;
   }

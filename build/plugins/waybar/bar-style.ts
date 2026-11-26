@@ -2,8 +2,11 @@ import type { ResolvedTheme } from "../shared/resolved-theme.ts";
 import { GtkColorPalette } from "./gtk-color-palette.ts";
 
 const color = GtkColorPalette.reference;
+const CLOCK_SELECTORS = ["#clock.date", "#clock.time"];
 
 export type BarPlacement = { [setting: string]: number };
+
+export type BarColors = { text: string; emphasis: string; marker: string };
 
 export abstract class BarStyle {
   abstract readonly name: string;
@@ -19,10 +22,18 @@ export abstract class BarStyle {
 
   abstract placement(): BarPlacement;
 
+  abstract colors(): BarColors;
+
+  abstract windowGapTop(): number;
+
   abstract boxDeclarations(): string[];
 
+  rules(): string[] {
+    return [];
+  }
+
   protected textDeclaration(): string {
-    return `color: ${color("color.text.secondary")};`;
+    return `color: ${color(this.colors().text)};`;
   }
 
   protected frameMargins(): BarPlacement {
@@ -50,8 +61,16 @@ export abstract class BarStyle {
 export class FloatingBar extends BarStyle {
   readonly name = "floating";
 
+  colors(): BarColors {
+    return { text: "color.text.secondary", emphasis: "color.text.primary", marker: "color.focus" };
+  }
+
   placement(): BarPlacement {
     return { height: this.line() + 2 * this.inset() + 2 * this.outline(), ...this.frameMargins() };
+  }
+
+  windowGapTop(): number {
+    return this.theme.pixels("space.cell");
   }
 
   boxDeclarations(): string[] {
@@ -68,12 +87,30 @@ export class FloatingBar extends BarStyle {
 export class BorderlessBar extends BarStyle {
   readonly name = "borderless";
 
+  colors(): BarColors {
+    const desktopText = "color.text.desktop";
+    return { text: desktopText, emphasis: desktopText, marker: desktopText };
+  }
+
   placement(): BarPlacement {
-    const textOnFrame = this.frame() - this.theme.pixels("space.marker");
-    return { height: this.line(), "margin-top": this.frame(), "margin-right": textOnFrame, "margin-left": textOnFrame };
+    return { ...this.frameMargins(), height: this.line(), "margin-top": this.floatingTextOffset() };
+  }
+
+  windowGapTop(): number {
+    return this.floatingTextOffset();
   }
 
   boxDeclarations(): string[] {
     return ["background-color: transparent;", this.textDeclaration()];
+  }
+
+  private floatingTextOffset(): number {
+    return this.outline() + this.inset();
+  }
+
+  rules(): string[] {
+    return [`${CLOCK_SELECTORS.join(",\n")} {
+  padding: 0;
+}`];
   }
 }

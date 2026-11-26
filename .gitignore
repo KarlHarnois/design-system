@@ -5,3 +5,4 @@ result-*
 .direnv/
 grid/src/design-grid.knv
 grid/target/
+specimen/wallpaper-*.jpg

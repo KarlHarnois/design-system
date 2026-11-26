@@ -25,6 +25,18 @@
       },
       "inverse": {
         "$value": "{color.gray.0}"
+      },
+      "desktop": {
+        "$description": "Text drawn straight on the wallpaper, such as the borderless bar. Black at 84.7% opacity, so a little of the wallpaper shows through every glyph. See docs/decisions/0021-borderless-bar.md.",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.847
+        }
       }
     },
     "border": {

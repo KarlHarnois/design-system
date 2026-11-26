@@ -4,7 +4,7 @@ type ValueFormatter = (theme: ResolvedTheme, id: string) => string;
 
 export class TokenValueText {
   private static readonly FORMATTERS: Record<string, ValueFormatter> = {
-    color: (theme, id) => theme.hex(id),
+    color: (theme, id) => theme.cssColor(id),
     dimension: (theme, id) => theme.dimension(id),
     duration: (theme, id) => `${theme.milliseconds(id)}ms`,
     number: (theme, id) => String(theme.number(id)),

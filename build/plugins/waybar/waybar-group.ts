@@ -12,6 +12,10 @@ export class WaybarGroup {
     return this.group.modules.map((module) => new WaybarModule(module));
   }
 
+  get endsWithImage(): boolean {
+    return this.group.modules.at(-1)?.image !== undefined;
+  }
+
   get isSingle(): boolean {
     return this.group.modules.length === 1;
   }

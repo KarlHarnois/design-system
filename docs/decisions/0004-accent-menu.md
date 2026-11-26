@@ -5,7 +5,7 @@ Superseded by [0006](0006-black-and-white.md)
 
 ## Context
 People want to pick their own accent color. A free color pick can break contrast and
-needs a shade generator. Radix Themes, GNOME and macOS instead offer a fixed list of
+needs a shade generator. Radix Themes and GNOME instead offer a fixed list of
 accents, each with shades tuned ahead of time.
 
 ## Decision

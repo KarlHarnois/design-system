@@ -1,6 +1,7 @@
 import type { BarModule } from "../bar/bar-spec.ts";
 
 const WAYBAR_ALIGN = { left: 0, right: 1 } as const;
+const CUSTOM_KIND = "custom";
 
 export class WaybarModule {
   private readonly module: BarModule;
@@ -13,10 +14,15 @@ export class WaybarModule {
     return this.module.waybar;
   }
 
+  get image(): string | undefined {
+    return this.module.image;
+  }
+
   selector(): string {
     const [type, id] = this.module.waybar.split("#");
-    const widget = type.split("/").at(-1);
-    return id === undefined ? `#${widget}` : `#${widget}.${id}`;
+    const [kind, widget] = type.includes("/") ? type.split("/") : [undefined, type];
+    const element = kind === CUSTOM_KIND ? `#${CUSTOM_KIND}-${widget}` : `#${widget}`;
+    return id === undefined ? element : `${element}.${id}`;
   }
 
   settings(): { [key: string]: unknown } {

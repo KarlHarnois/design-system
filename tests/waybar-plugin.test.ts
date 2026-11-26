@@ -62,8 +62,12 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toContain("#workspaces button:last-child {\n  margin-right: 0;");
   });
 
-  it("spaces modules in a group a cell apart, without a trailing margin", () => {
+  it("spaces modules in a group its style's module gap apart, without a trailing margin", () => {
     expect(stylesheet()).toContain("#pulseaudio {\n  margin-right: 5px;");
+  });
+
+  it("spaces a phrase's modules a cell apart, like words", () => {
+    expect(stylesheet()).toContain("#clock.date {\n  margin-right: 5px;");
   });
 
   it("spaces groups a group space apart, without a trailing margin", () => {
@@ -100,7 +104,7 @@ describe("WaybarPlugin", () => {
   });
 
   it("writes the same settings into the Waybar config", () => {
-    expect(fixtureBuild.file("waybar/dark/floating/config.jsonc")).toContain('"modules-right": [\n    "group/status",\n    "clock#time"\n  ]');
+    expect(fixtureBuild.file("waybar/dark/floating/config.jsonc")).toContain('"modules-right": [\n    "group/status",\n    "group/clock"\n  ]');
   });
 
   it("makes the bar one bar line tall plus its inset and outline", () => {
@@ -112,7 +116,7 @@ describe("WaybarPlugin", () => {
   });
 
   it("lists the groups of each side in the spec's order", () => {
-    expect(config()["modules-right"]).toEqual(["group/status", "clock#time"]);
+    expect(config()["modules-right"]).toEqual(["group/status", "group/clock"]);
   });
 
   it("lays out each group's modules in a row", () => {
@@ -200,6 +204,18 @@ describe("WaybarPlugin", () => {
 
     it("sizes workspaces to their digit, without marker padding", () => {
       expect(borderlessStylesheet()).toMatch(/#workspaces button \{\n {2}padding: 0 0px;\n {2}min-width: 0px;\n {2}margin-right: 5px;/);
+    });
+
+    it("spaces modules three cells apart, well apart from a label and its value", () => {
+      expect(borderlessStylesheet()).toContain("#pulseaudio {\n  margin-right: 15px;");
+    });
+
+    it("spaces groups the style's group gap apart", () => {
+      expect(borderlessStylesheet()).toContain("box#status {\n  margin-right: 15px;");
+    });
+
+    it("keeps a phrase's modules a cell apart", () => {
+      expect(borderlessStylesheet()).toContain("#clock.date {\n  margin-right: 5px;");
     });
 
     it("keeps the bar layout of the floating bar", () => {

@@ -35,8 +35,13 @@ its text sits straight on the wallpaper.
 - A low battery is underlined the same way. Every marker on a bar shares the style's
   `marker`, `marker-text`, `marker-padding` and `marker-underline-width` tokens: a fill
   with the marker padding on the floating bar, an underline with no padding on the
-  borderless bar. With no padding anywhere, the borderless bar's gaps are only the
-  spacing tokens: `space.cell` inside a group, `space.group` between groups.
+  borderless bar.
+- With no padding, the borderless bar's gaps come only from tokens, in two levels. Inside
+  an item, the space between a label and its value and between the date and the time is
+  one character, `space.cell`. Between items it is three cells, 21px: the style's
+  `module-gap`, and its `group-gap`, which aliases it. At 7px against 21px, a label never
+  reads as apart from its value. The spec marks the clock group as a `phrase`, whose
+  modules stay `space.cell` apart in every style.
 - Everything else is shared: the spec in `bar/bar.json`, the type, the markers and the
   spacing of modules and groups.
 

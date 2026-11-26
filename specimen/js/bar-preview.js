@@ -35,7 +35,8 @@ class BarPreview {
 
   spaced(groupElements) {
     for (const element of groupElements.slice(0, -1)) {
-      element.style.marginRight = `var(--${element.dataset.spaceAfter.replaceAll(".", "-")})`;
+      const { spaceAfter } = element.dataset;
+      element.style.marginRight = spaceAfter === undefined ? "var(--bar-style-group-gap)" : `var(--${spaceAfter.replaceAll(".", "-")})`;
     }
     return groupElements;
   }
@@ -59,7 +60,8 @@ class BarPreview {
   group(group, { active, states }) {
     const element = this.side("module-group", group.modules.map((module) => this.previewModule(module, active, states[module.name])));
     element.dataset.group = group.name;
-    element.dataset.spaceAfter = group.spaceAfter ?? "space.group";
+    element.classList.toggle("phrase", group.phrase === true);
+    if (group.spaceAfter !== undefined) element.dataset.spaceAfter = group.spaceAfter;
     return element;
   }
 

@@ -28,7 +28,7 @@ export class WaybarStylesheet {
       this.workspaces(),
       ...this.modulePadding(),
       ...this.images(),
-      this.moduleSpacing(),
+      ...this.moduleSpacing(),
       ...this.groupSpacing(),
       this.time(),
       this.lowBattery(),
@@ -115,11 +115,15 @@ ${this.markerDeclarations()}
 }`;
   }
 
-  private moduleSpacing(): string | undefined {
-    const modules = this.groups()
-      .filter((group) => !group.isSingle)
-      .flatMap((group) => group.modules.slice(0, -1));
-    return this.ruleFor(modules, `margin-right: ${this.theme.dimension("space.cell")};`);
+  private moduleSpacing(): (string | undefined)[] {
+    const groups = this.groups().filter((group) => !group.isSingle);
+    const leading = (selected: WaybarGroup[]) => selected.flatMap((group) => group.modules.slice(0, -1));
+    const phrases = groups.filter((group) => group.isPhrase);
+    const others = groups.filter((group) => !group.isPhrase);
+    return [
+      this.ruleFor(leading(others), `margin-right: ${this.style.pixels("module-gap")}px;`),
+      this.ruleFor(leading(phrases), `margin-right: ${this.theme.dimension("space.cell")};`),
+    ];
   }
 
   private groupSpacing(): string[] {
@@ -127,8 +131,12 @@ ${this.markerDeclarations()}
       side.slice(0, -1).map((group) => new WaybarGroup(group)),
     );
     return groups.map((group) => `${group.selector()} {
-  margin-right: ${this.theme.dimension(group.spaceAfter)};
+  margin-right: ${this.groupGap(group)}px;
 }`);
+  }
+
+  private groupGap(group: WaybarGroup): number {
+    return group.spaceAfter === undefined ? this.style.pixels("group-gap") : this.theme.pixels(group.spaceAfter);
   }
 
   private time(): string {

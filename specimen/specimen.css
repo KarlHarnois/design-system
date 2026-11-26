@@ -178,6 +178,10 @@ kbd {
 }
 
 .waybar .module-group {
+  gap: var(--bar-style-module-gap);
+}
+
+.waybar .module-group.phrase {
   gap: var(--space-cell);
 }
 

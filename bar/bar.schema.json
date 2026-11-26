@@ -157,7 +157,7 @@
       }
     },
     "group": {
-      "description": "Modules that read as one group. Modules in a group are space.cell apart, groups are spaceAfter apart.",
+      "description": "Modules that read as one group. Modules in a group are the bar style's module-gap apart, or space.cell in a phrase; groups are the style's group-gap apart unless spaceAfter says otherwise.",
       "type": "object",
       "required": [
         "name",
@@ -190,9 +190,13 @@
           }
         },
         "spaceAfter": {
-          "description": "Space token between this group and the next on its side. Defaults to space.group.",
+          "description": "Space token between this group and the next on its side. Defaults to the bar style's group-gap.",
           "type": "string",
           "pattern": "^space\\.[a-z-]+$"
+        },
+        "phrase": {
+          "description": "Whether the modules read as one phrase, such as a date and a time. A phrase's modules are space.cell apart in every style, one character, like words. Other groups take the bar style's module-gap.",
+          "type": "boolean"
         }
       }
     }

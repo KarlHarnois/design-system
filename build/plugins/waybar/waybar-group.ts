@@ -1,8 +1,6 @@
 import type { BarGroup } from "../bar/bar-spec.ts";
 import { WaybarModule } from "./waybar-module.ts";
 
-const DEFAULT_SPACE_AFTER = "space.group";
-
 export class WaybarGroup {
   private readonly group: BarGroup;
 
@@ -14,8 +12,12 @@ export class WaybarGroup {
     return this.group.modules.map((module) => new WaybarModule(module));
   }
 
-  get spaceAfter(): string {
-    return this.group.spaceAfter ?? DEFAULT_SPACE_AFTER;
+  get isPhrase(): boolean {
+    return this.group.phrase ?? false;
+  }
+
+  get spaceAfter(): string | undefined {
+    return this.group.spaceAfter;
   }
 
   get isSingle(): boolean {

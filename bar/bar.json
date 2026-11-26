@@ -46,6 +46,7 @@
     },
     {
       "name": "clock",
+      "phrase": true,
       "modules": [
         {
           "name": "clock-date",

@@ -61,6 +61,16 @@
           "$description": "Space between workspaces. Markers side by side are space.marker apart (0012).",
           "$value": "{space.marker}"
         },
+        "module-gap": {
+          "$type": "dimension",
+          "$description": "Space between modules in a group. With the marker padding around each module, the text is about two characters apart.",
+          "$value": "{space.cell}"
+        },
+        "group-gap": {
+          "$type": "dimension",
+          "$description": "Space between groups, unless the spec sets the group's spaceAfter.",
+          "$value": "{space.group}"
+        },
         "marker-underline-width": {
           "$type": "dimension",
           "$description": "The floating bar marks with a fill, not an underline.",
@@ -166,6 +176,16 @@
           "$type": "dimension",
           "$description": "One cell, about one character, so the digits read as spaced text.",
           "$value": "{space.cell}"
+        },
+        "module-gap": {
+          "$type": "dimension",
+          "$description": "Space between modules in a group, three cells, so it reads well apart from the one-character space between a label and its value.",
+          "$value": "{dimension.3}"
+        },
+        "group-gap": {
+          "$type": "dimension",
+          "$description": "Space between groups, the same as between modules, so each module reads as its own item. Unless the spec sets the group's spaceAfter.",
+          "$value": "{component.bar-style.borderless.module-gap}"
         },
         "marker-underline-width": {
           "$type": "dimension",

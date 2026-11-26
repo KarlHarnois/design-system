@@ -78,6 +78,15 @@
       "name": "clock",
       "modules": [
         {
+          "name": "clock-date",
+          "waybar": "clock#date",
+          "marker": false,
+          "format": "{:%d}",
+          "sample": {
+            "time": "2026-01-01T00:00"
+          }
+        },
+        {
           "name": "clock-time",
           "waybar": "clock#time",
           "format": "{:%H}",
@@ -86,7 +95,8 @@
           },
           "marker": false
         }
-      ]
+      ],
+      "phrase": true
     }
   ]
 }

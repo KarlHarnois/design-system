@@ -1,6 +1,6 @@
 import type { BuildHookOptions, Plugin } from "@terrazzo/parser";
 import { ResolvedTheme } from "../shared/resolved-theme.ts";
-import { BarStyle } from "../waybar/bar-style.ts";
+import { BarStyle } from "../bar/bar-style.ts";
 import { HyprlandLuaScript } from "./hyprland-lua-script.ts";
 import { HyprlandSettings } from "./hyprland-settings.ts";
 

@@ -2,6 +2,7 @@ import type { BarModule } from "../bar/bar-spec.ts";
 
 const WAYBAR_ALIGN = { left: 0, right: 1 } as const;
 const CUSTOM_KIND = "custom";
+const WORKSPACES_MODULE = "hyprland/workspaces";
 
 export class WaybarModule {
   private readonly module: BarModule;
@@ -16,6 +17,14 @@ export class WaybarModule {
 
   get image(): string | undefined {
     return this.module.image;
+  }
+
+  get isMarker(): boolean {
+    return this.module.marker ?? true;
+  }
+
+  get isWorkspaces(): boolean {
+    return this.module.waybar === WORKSPACES_MODULE;
   }
 
   selector(): string {

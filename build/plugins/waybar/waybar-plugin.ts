@@ -1,9 +1,9 @@
 import type { BuildHookOptions, Plugin } from "@terrazzo/parser";
 import type { BarSpec } from "../bar/bar-spec.ts";
+import { BarStyle } from "../bar/bar-style.ts";
+import { SvgImage } from "../bar/svg-image.ts";
 import { ResolvedTheme } from "../shared/resolved-theme.ts";
-import { BarStyle } from "./bar-style.ts";
 import { GtkColorPalette } from "./gtk-color-palette.ts";
-import { TintedImage } from "./tinted-image.ts";
 import { WaybarConfig } from "./waybar-config.ts";
 import { WaybarStylesheet } from "./waybar-stylesheet.ts";
 
@@ -37,8 +37,8 @@ export class WaybarPlugin implements Plugin {
     outputFile(`${directory}/config.jsonc`, config.render());
     outputFile(`${directory}/settings.json`, `${JSON.stringify(config.toJSON(), null, 2)}\n`);
     for (const image of spec.images()) {
-      const tint = theme.cssColor(style.colors().text);
-      outputFile(`${directory}/${image}`, new TintedImage(spec.imageSource(image)).render(tint));
+      const tint = theme.cssColor(style.tokenId("text"));
+      outputFile(`${directory}/${image}`, new SvgImage(spec.imageSource(image)).tinted(tint));
     }
   }
 }

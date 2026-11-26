@@ -16,6 +16,12 @@ describe("WaybarPlugin", () => {
     expect(fixtureBuild.file("waybar/dark/floating/colors.css")).toContain("@define-color color_surface_base #000000;");
   });
 
+  it("defines an alias as a reference, so overriding the aliased color reaches it", () => {
+    expect(fixtureBuild.file("waybar/dark/floating/colors.css")).toContain(
+      "@define-color component_bar_style_floating_marker @color_focus;",
+    );
+  });
+
   it("resolves colors per theme", () => {
     expect(fixtureBuild.file("waybar/light/floating/colors.css")).toContain("@define-color color_surface_base #ffffff;");
   });
@@ -32,8 +38,8 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toMatch(/label,\nbutton \{\n {2}min-height: 18px;/);
   });
 
-  it("outlines the bar in the default border color", () => {
-    expect(stylesheet()).toContain("border: 2px solid @color_border_default;");
+  it("outlines the bar in its style's outline width and colour", () => {
+    expect(stylesheet()).toContain("border: 2px solid @component_bar_style_floating_outline;");
   });
 
   it("insets the bar content evenly on all four sides", () => {
@@ -68,16 +74,22 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toContain("border-radius: 6px;");
   });
 
-  it("inverts the current workspace on the focus color", () => {
-    expect(stylesheet()).toMatch(/#workspaces button\.active \{\n {2}background: @color_focus;\n {2}color: @color_text_inverse;/);
+  it("inverts the current workspace on its style's marker colours", () => {
+    expect(stylesheet()).toMatch(
+      /#workspaces button\.active \{\n {2}background: @component_bar_style_floating_marker;\n {2}color: @component_bar_style_floating_marker_text;/,
+    );
   });
 
-  it("gives every module the marker padding, so any of them can become a marker", () => {
-    expect(stylesheet()).toContain("#pulseaudio,\n#battery,\n#clock.time {\n  padding: 0 4px;");
+  it("gives every marker module the marker padding, so inverting it changes only its colours", () => {
+    expect(stylesheet()).toContain("#pulseaudio,\n#battery {\n  padding: 0 4px;");
   });
 
-  it("sets the time in the primary text color", () => {
-    expect(stylesheet()).toMatch(/#clock\.time \{\n {2}color: @color_text_primary;/);
+  it("gives a module that never becomes a marker its style's plain padding", () => {
+    expect(stylesheet()).toContain("#clock.time {\n  padding: 0 4px;");
+  });
+
+  it("sets the time in its style's emphasis colour", () => {
+    expect(stylesheet()).toMatch(/#clock\.time \{\n {2}color: @component_bar_style_floating_emphasis;/);
   });
 
   const config = () => JSON.parse(fixtureBuild.file("waybar/dark/floating/settings.json"));
@@ -135,7 +147,9 @@ describe("WaybarPlugin", () => {
   });
 
   it("changes only the colours of a critical battery, never its size", () => {
-    expect(stylesheet()).toMatch(/#battery\.critical:not\(\.charging\) \{\n {2}background: @color_focus;\n {2}color: @color_text_inverse;\n\}/);
+    expect(stylesheet()).toMatch(
+      /#battery\.critical:not\(\.charging\) \{\n {2}background: @component_bar_style_floating_marker;\n {2}color: @component_bar_style_floating_marker_text;\n\}/,
+    );
   });
 
   it("inverts a critical battery unless it is charging", () => {
@@ -159,20 +173,18 @@ describe("WaybarPlugin", () => {
       expect(borderlessConfig()).toMatchObject({ "margin-right": 12, "margin-left": 12 });
     });
 
-    it("drops the clock's marker padding, so the time meets the window edge", () => {
-      expect(borderlessStylesheet()).toMatch(/#clock\.date,\n#clock\.time \{\n {2}padding: 0;\n\}\n$/);
-    });
-
-    it("keeps the marker padding on the floating bar's clock", () => {
-      expect(stylesheet()).not.toMatch(/#clock\.date,\n#clock\.time \{\n {2}padding: 0;/);
+    it("drops the plain padding, so the time meets the window edge", () => {
+      expect(borderlessStylesheet()).toContain("#clock.time {\n  padding: 0 0px;\n}");
     });
 
     it("lets the wallpaper show through", () => {
-      expect(borderlessBox()).toContain("background-color: transparent;");
+      expect(fixtureBuild.file("waybar/dark/borderless/colors.css")).toContain(
+        "@define-color component_bar_style_borderless_background rgba(0, 0, 0, 0);",
+      );
     });
 
-    it("draws no outline and no inset", () => {
-      expect(borderlessBox()).not.toMatch(/border|padding/);
+    it("draws no outline, no corner and no inset", () => {
+      expect(borderlessBox()).toMatch(/border: 0px solid [^;]+;\n {2}border-radius: 0px;\n {2}padding: 0px;/);
     });
 
     it("keeps the bar layout of the floating bar", () => {

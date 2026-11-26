@@ -51,6 +51,9 @@
         },
         {
           "$ref": "component/table.tokens.json"
+        },
+        {
+          "$ref": "component/bar.tokens.json"
         }
       ]
     }

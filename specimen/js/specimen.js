@@ -183,6 +183,6 @@ class Specimen {
   }
 }
 
-new BarPreview(window.BAR_SPEC, window.BAR_IMAGES).render(document);
+new BarPreview(window.BAR_SPEC, window.BAR_IMAGES, window.BAR_STYLE_PROPERTIES).render(document);
 new TokenGlossaryTable(window.TOKEN_GLOSSARY).render(document);
 new Specimen(document).start();

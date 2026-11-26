@@ -1,24 +1,42 @@
 "use strict";
 
 class BarPreview {
-  constructor(spec, images) {
+  constructor(spec, images, styleProperties) {
     this.spec = spec;
     this.images = images;
+    this.styleProperties = styleProperties;
   }
 
   render(root) {
     for (const bar of root.querySelectorAll('[data-bar-preview="bar"]')) this.renderBar(bar);
-    this.renderStates(root.querySelector('[data-bar-preview="states"]'));
+    const states = root.querySelector('[data-bar-preview="states"]');
+    this.applyStyle(states, states.dataset.barStyle);
+    this.renderStates(states);
+  }
+
+  applyStyle(element, style) {
+    const scope = element.closest(".desktop") ?? element;
+    for (const property of this.styleProperties) {
+      scope.style.setProperty(`--bar-style-${property}`, `var(--component-bar-style-${style}-${property})`);
+    }
   }
 
   renderBar(element) {
     const { barStyle, barActive } = element.dataset;
-    const groups = (side) => this.shownGroups(side, barStyle).map((group) => this.group(group, barActive));
+    this.applyStyle(element, barStyle);
+    const groups = (side) => this.spaced(this.shownGroups(side, barStyle).map((group) => this.group(group, barActive)));
     element.replaceChildren(
       this.side("modules-left", groups(this.spec.left)),
       this.side("modules-center", []),
       this.side("modules-right", groups(this.spec.right)),
     );
+  }
+
+  spaced(groupElements) {
+    for (const element of groupElements.slice(0, -1)) {
+      element.style.marginRight = `var(--${element.dataset.spaceAfter.replaceAll(".", "-")})`;
+    }
+    return groupElements;
   }
 
   shownGroups(groups, style) {
@@ -36,6 +54,7 @@ class BarPreview {
     const sample = (module) => (active === undefined || module.sample.items === undefined ? module.sample : { ...module.sample, active });
     const element = this.side("module-group", group.modules.map((module) => this.module(module, sample(module), [])));
     element.dataset.group = group.name;
+    element.dataset.spaceAfter = group.spaceAfter ?? "space.group";
     return element;
   }
 
@@ -54,7 +73,8 @@ class BarPreview {
     if (module.image !== undefined) return this.image(module);
     if (sample.items !== undefined) return this.workspaces(module, sample);
     const element = document.createElement("span");
-    element.classList.add(module.name, ...classes);
+    element.classList.add(module.name, "module-text", ...classes);
+    element.classList.toggle("module-plain", module.marker === false);
     element.textContent = new WaybarFormat(module.format).render(sample);
     if (module.width !== undefined) {
       element.classList.add("module-fixed", `module-align-${module.align ?? "left"}`);
@@ -77,7 +97,7 @@ class BarPreview {
     element.classList.add(module.name);
     for (const item of sample.items) {
       const workspace = document.createElement("span");
-      workspace.classList.add("workspace");
+      workspace.classList.add("workspace", "module-text");
       workspace.classList.toggle("active", item === sample.active);
       const icon = module.icons?.[item] ?? item;
       workspace.textContent = new WaybarFormat(module.format).render({ values: { name: item, icon } });

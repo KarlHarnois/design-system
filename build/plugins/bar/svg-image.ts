@@ -1,7 +1,7 @@
 const SVG_OPENING = "<svg ";
 const VIEW_BOX = /viewBox="([^"]+)"/;
 
-export class TintedImage {
+export class SvgImage {
   private readonly source: string;
 
   constructor(source: string) {
@@ -9,7 +9,7 @@ export class TintedImage {
     this.source = source;
   }
 
-  render(cssColor: string): string {
+  tinted(cssColor: string): string {
     return this.source.replace(SVG_OPENING, `${SVG_OPENING}color="${cssColor}" `);
   }
 

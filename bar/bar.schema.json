@@ -51,9 +51,13 @@
           "type": "string"
         },
         "image": {
-          "description": "SVG file next to the spec, filled with currentColor, drawn one bar line square in the bar's text colour as the module's background. The module has no marker padding, so it sits on the window edge when it is first or last.",
+          "description": "SVG file next to the spec, filled with currentColor, drawn component.bar.image-height tall in the bar's text colour as the module's background, pinned to the module's left edge.",
           "type": "string",
           "pattern": "^[a-z-]+\\.svg$"
+        },
+        "marker": {
+          "description": "Whether the module can become a marker. A marker module carries space.marker padding at its sides, so inverting it changes only its colours (0012). A module that never becomes one takes the bar style's plain-padding instead. Defaults to true.",
+          "type": "boolean"
         },
         "icons": {
           "description": "Waybar format icons: text shown for `{icon}` by name. Names without an icon show as themselves, such as workspace 10 as `0`.",
@@ -153,7 +157,7 @@
       }
     },
     "group": {
-      "description": "Modules that read as one group. Modules in a group are space.cell apart, groups are space.group apart.",
+      "description": "Modules that read as one group. Modules in a group are space.cell apart, groups are spaceAfter apart.",
       "type": "object",
       "required": [
         "name",
@@ -184,6 +188,11 @@
               "borderless"
             ]
           }
+        },
+        "spaceAfter": {
+          "description": "Space token between this group and the next on its side. Defaults to space.group.",
+          "type": "string",
+          "pattern": "^space\\.[a-z-]+$"
         }
       }
     }

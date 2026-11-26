@@ -1,0 +1,161 @@
+{
+  "component": {
+    "bar": {
+      "$description": "The desktop bar. See docs/decisions/0009-floating-bar.md, 0021-borderless-bar.md and 0022-bar-logo.md.",
+      "image-height": {
+        "$type": "dimension",
+        "$description": "Height of an image module, the font size of type.ui-small, so an image weighs about as much as the text beside it.",
+        "$value": {
+          "value": 12,
+          "unit": "px"
+        }
+      }
+    },
+    "bar-style": {
+      "$description": "One group per bar style. Every style has the same properties, and the build writes one Waybar config, stylesheet and Hyprland theme per style.",
+      "floating": {
+        "$description": "A container inside the frame, with an outline and rounded corners. See docs/decisions/0009-floating-bar.md.",
+        "outline-width": {
+          "$type": "dimension",
+          "$value": "{border.width.default}"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{radius.container}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$description": "Inset on all sides, which keeps markers clear of the outline and the corners.",
+          "$value": "{space.inset}"
+        },
+        "margin-top": {
+          "$type": "dimension",
+          "$value": "{space.frame}"
+        },
+        "margin-inline": {
+          "$type": "dimension",
+          "$value": "{space.frame}"
+        },
+        "window-gap": {
+          "$type": "dimension",
+          "$description": "Hyprland's top gap, between the bar and the windows.",
+          "$value": "{space.cell}"
+        },
+        "plain-padding": {
+          "$type": "dimension",
+          "$description": "Side padding of a module that never becomes a marker, the same as a marker's, so the first and last text sit about 8px from the outline.",
+          "$value": "{space.marker}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{color.surface.base}"
+        },
+        "outline": {
+          "$type": "color",
+          "$value": "{color.border.default}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{color.text.secondary}"
+        },
+        "emphasis": {
+          "$type": "color",
+          "$value": "{color.text.primary}"
+        },
+        "marker": {
+          "$type": "color",
+          "$value": "{color.focus}"
+        },
+        "marker-text": {
+          "$type": "color",
+          "$value": "{color.text.inverse}"
+        }
+      },
+      "borderless": {
+        "$description": "Text straight on the wallpaper, centred in the floating bar's height. See docs/decisions/0021-borderless-bar.md.",
+        "outline-width": {
+          "$type": "dimension",
+          "$value": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        "padding": {
+          "$type": "dimension",
+          "$description": "No outline, so no inset to keep markers clear of it.",
+          "$value": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        "margin-top": {
+          "$type": "dimension",
+          "$description": "The floating bar's outline width plus its padding, so the text sits as far from the top of the bar space as in the floating bar.",
+          "$value": {
+            "value": 5,
+            "unit": "px"
+          }
+        },
+        "margin-inline": {
+          "$type": "dimension",
+          "$value": "{space.frame}"
+        },
+        "window-gap": {
+          "$type": "dimension",
+          "$description": "The same as margin-top, so the text is centred and the windows start the floating bar's height below the top of the screen.",
+          "$value": {
+            "value": 5,
+            "unit": "px"
+          }
+        },
+        "plain-padding": {
+          "$type": "dimension",
+          "$description": "A module that never becomes a marker sits on the window edge.",
+          "$value": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        "background": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0
+          }
+        },
+        "outline": {
+          "$type": "color",
+          "$value": "{color.border.default}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{color.text.desktop}"
+        },
+        "emphasis": {
+          "$type": "color",
+          "$value": "{color.text.desktop}"
+        },
+        "marker": {
+          "$type": "color",
+          "$value": "{color.text.desktop}"
+        },
+        "marker-text": {
+          "$type": "color",
+          "$value": "{color.text.inverse}"
+        }
+      }
+    }
+  }
+}

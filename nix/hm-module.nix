@@ -24,11 +24,11 @@ let
   themeColors = builtins.listToAttrs (
     map (entry: lib.nameValuePair entry.id entry.values.${cfg.theme}) colorEntries
   );
-  waybarColors = themeColors // cfg.waybar.colors;
   gtkColorName = id: builtins.replaceStrings [ "." "-" ] [ "_" "_" ] id;
-  waybarColorsCss = lib.concatStrings (
-    lib.mapAttrsToList (id: value: "@define-color ${gtkColorName id} ${value};\n") waybarColors
+  waybarColorOverrides = lib.concatStrings (
+    lib.mapAttrsToList (id: value: "@define-color ${gtkColorName id} ${value};\n") cfg.waybar.colors
   );
+  waybarColorsCss = builtins.readFile "${themeDirectory}/colors.css" + waybarColorOverrides;
   waybarImages = lib.filterAttrs (name: _: lib.hasSuffix ".svg" name) (builtins.readDir themeDirectory);
   waybarImageFiles = lib.mapAttrs' (
     name: _: lib.nameValuePair "waybar/${name}" { source = "${themeDirectory}/${name}"; }
@@ -71,8 +71,9 @@ in
       description = ''
         Colors that replace tokens in the Waybar stylesheet, by token id. The bar keeps
         the design system's layout and takes these colors, so another palette can
-        reuse it. The stylesheet reads `color.surface.base`, `color.border.default`,
-        `color.text.primary`, `color.text.secondary`, `color.text.inverse` and `color.focus`.
+        reuse it. They are appended after the generated colors, and the bar's
+        `component.bar-style.*` colors alias the semantic ones, so overriding
+        `color.focus` or `color.text.secondary` reaches the bar.
       '';
     };
 

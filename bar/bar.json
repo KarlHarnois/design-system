@@ -4,12 +4,14 @@
     {
       "name": "system",
       "styles": ["borderless"],
+      "spaceAfter": "space.cell",
       "modules": [
         {
           "name": "logo",
           "waybar": "custom/logo",
           "format": "",
           "image": "nixos-logo.svg",
+          "marker": false,
           "sample": {}
         }
       ]
@@ -63,12 +65,14 @@
         {
           "name": "clock-date",
           "waybar": "clock#date",
+          "marker": false,
           "format": "{:%a %d %b}",
           "sample": { "time": "2026-11-16T14:32" }
         },
         {
           "name": "clock-time",
           "waybar": "clock#time",
+          "marker": false,
           "format": "{:%H:%M}",
           "sample": { "time": "2026-11-16T14:32" }
         }

@@ -133,6 +133,31 @@
           ]
         }
       }
+    },
+    "overlay": {
+      "$description": "Translucent text colours for text drawn straight on a wallpaper. 84.7% opacity, so a little of the wallpaper shows through every glyph.",
+      "white": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.847
+        }
+      },
+      "black": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.847
+        }
+      }
     }
   }
 }

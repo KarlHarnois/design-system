@@ -137,10 +137,23 @@ kbd {
 .desktop {
   display: flex;
   flex-direction: column;
-  gap: var(--space-cell);
+  gap: var(--bar-style-window-gap);
   height: calc(12 * var(--space-line));
-  padding: var(--space-frame);
+  padding: var(--bar-style-margin-top) var(--bar-style-margin-inline) var(--space-frame);
   background: var(--color-surface-sunken);
+}
+
+.desktop-borderless {
+  margin-top: var(--space-line);
+  background: url("wallpaper-dark.jpg") center / cover, var(--color-surface-sunken);
+}
+
+.desktop-borderless + .desktop-borderless {
+  margin-top: var(--space-cell);
+}
+
+[data-theme="light"] .desktop-borderless {
+  background-image: url("wallpaper-light.jpg");
 }
 
 .waybar {
@@ -150,63 +163,25 @@ kbd {
   font-size: var(--type-ui-small-font-size);
   font-weight: var(--type-ui-small-font-weight);
   line-height: var(--bar-line);
-  background-color: var(--color-surface-base);
-  color: var(--color-text-secondary);
-  border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-container);
-  padding: var(--space-inset);
-}
-
-.desktop-borderless + .desktop-borderless {
-  margin-top: var(--space-cell);
-}
-
-.desktop-borderless {
-  --floating-text-offset: calc(var(--border-width-default) + var(--space-inset));
-  padding-top: var(--floating-text-offset);
-  gap: var(--floating-text-offset);
-  margin-top: var(--space-line);
-  background: url("wallpaper-dark.jpg") center / cover, var(--color-surface-sunken);
-}
-
-[data-theme="light"] .desktop-borderless {
-  background-image: url("wallpaper-light.jpg");
-}
-
-.waybar-borderless {
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-}
-
-.waybar.waybar-borderless :is(.clock-date, .clock-time) {
-  padding: 0;
-}
-
-.waybar.waybar-borderless,
-.waybar.waybar-borderless :is(.workspace, .clock-time) {
-  color: var(--color-text-desktop);
-}
-
-.waybar.waybar-borderless .workspace.active {
-  background: var(--color-text-desktop);
-  color: var(--color-text-inverse);
+  background-color: var(--bar-style-background);
+  color: var(--bar-style-text);
+  border: var(--bar-style-outline-width) solid var(--bar-style-outline);
+  border-radius: var(--bar-style-radius);
+  padding: var(--bar-style-padding);
 }
 
 .waybar .modules-left,
-.waybar .modules-right {
+.waybar .modules-right,
+.waybar .module-group,
+.waybar .workspaces {
   display: flex;
-  gap: var(--space-group);
 }
 
 .waybar .module-group {
-  display: flex;
   gap: var(--space-cell);
 }
 
 .waybar .workspaces {
-  display: flex;
   gap: var(--space-marker);
 }
 
@@ -215,19 +190,20 @@ kbd {
   min-width: 0;
 }
 
-.waybar :is(.workspace, .pulseaudio, .battery, .clock-date, .clock-time) {
+.waybar .module-text {
   white-space: pre;
+  padding: 0 var(--space-marker);
+}
+
+.waybar .module-plain {
+  padding: 0 var(--bar-style-plain-padding);
 }
 
 .waybar .module-image {
-  width: round(up, calc(var(--type-ui-small-font-size) * var(--module-image-aspect-ratio)), 1px);
+  width: round(up, calc(var(--component-bar-image-height) * var(--module-image-aspect-ratio)), 1px);
   height: var(--bar-line);
   background-color: currentColor;
-  mask: var(--module-image) left center / auto var(--type-ui-small-font-size) no-repeat;
-}
-
-.waybar .module-group:has(> .module-image:last-child) {
-  margin-right: calc(var(--space-cell) - var(--space-group));
+  mask: var(--module-image) left center / auto var(--component-bar-image-height) no-repeat;
 }
 
 .waybar .module-fixed {
@@ -241,30 +217,17 @@ kbd {
 
 .waybar .workspace {
   min-width: var(--bar-line);
-  padding: 0 var(--space-marker);
   text-align: center;
-  color: var(--color-text-secondary);
 }
 
-.waybar .workspace.active {
-  background: var(--color-focus);
-  color: var(--color-text-inverse);
-}
-
-.waybar .pulseaudio,
-.waybar .battery,
-.waybar .clock-date,
-.waybar .clock-time {
-  padding: 0 var(--space-marker);
-}
-
-.waybar .clock-time {
-  color: var(--color-text-primary);
-}
-
+.waybar .workspace.active,
 .waybar .battery.critical:not(.charging) {
-  background: var(--color-focus);
-  color: var(--color-text-inverse);
+  background: var(--bar-style-marker);
+  color: var(--bar-style-marker-text);
+}
+
+.waybar .clock-time {
+  color: var(--bar-style-emphasis);
 }
 
 .waybar-states {

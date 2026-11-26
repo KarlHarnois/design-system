@@ -8,6 +8,7 @@ export type BarModule = {
   waybar: string;
   format: string;
   image?: string;
+  marker?: boolean;
   icons?: { [name: string]: string };
   width?: number;
   align?: "left" | "right";
@@ -17,7 +18,7 @@ export type BarModule = {
   stateSamples?: (BarSample & { variant?: string; state?: string })[];
 };
 
-export type BarGroup = { name: string; styles?: string[]; modules: BarModule[] };
+export type BarGroup = { name: string; styles?: string[]; spaceAfter?: string; modules: BarModule[] };
 
 export type BarSpecJson = { left: BarGroup[]; right: BarGroup[] };
 

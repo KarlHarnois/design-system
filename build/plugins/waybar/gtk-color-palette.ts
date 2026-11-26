@@ -21,6 +21,11 @@ export class GtkColorPalette {
 
   private defineColor(id: string): string {
     const name = GtkColorPalette.reference(id).slice(1);
-    return `@define-color ${name} ${this.theme.cssColor(id)};`;
+    return `@define-color ${name} ${this.value(id)};`;
+  }
+
+  private value(id: string): string {
+    const alias = this.theme.directAlias(id);
+    return alias === undefined ? this.theme.cssColor(id) : GtkColorPalette.reference(alias);
   }
 }

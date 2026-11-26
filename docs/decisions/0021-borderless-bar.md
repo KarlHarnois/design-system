@@ -21,7 +21,7 @@ its text sits straight on the wallpaper.
   so 5 + 16 + 5 = 26.
 - On the left and right it sits inside the frame like a row of windows. The current
   workspace's marker starts on the left edge of the windows.
-- The clock never becomes a marker, so its modules drop the marker padding. The time
+- The clock never becomes a marker, so on the borderless bar it has no padding. The time
   then ends on the right edge of the windows, where padding would leave it 4px short.
 - Every module, the time and the markers use one colour, `color.text.desktop`: white at
   84.7% opacity in the dark theme, black at 84.7% in the light theme. Text on a wallpaper
@@ -29,6 +29,15 @@ its text sits straight on the wallpaper.
   markers carry the emphasis. The slight transparency lets the wallpaper tint the text.
 - Everything else is shared: the spec in `bar/bar.json`, the type, the markers and the
   spacing of modules and groups.
+
+- Each style is a group of `component.bar-style.<style>` tokens with the same properties:
+  outline, radius, padding, margins, Hyprland's window gap, plain padding and the bar's
+  colours. The build reads every style from the tokens, so the floating and borderless
+  bars differ only in token values. `tests/bar-tokens.test.ts` checks the arithmetic the
+  borderless values rest on.
+- A module that never becomes a marker says so in the spec with `"marker": false` and
+  takes its style's `plain-padding`: the marker padding on the floating bar, none on the
+  borderless bar. The clock is such a module.
 
 ## Consequences
 - The build writes each style to `waybar/<theme>/<style>/`. Each directory holds the same
@@ -38,7 +47,11 @@ its text sits straight on the wallpaper.
   under the borderless bar. The build writes Hyprland settings per style to
   `hyprland/<theme>/<style>/`, and `designSystem.waybar.style` picks both.
 - Translucent colours build as `rgba()` in the GTK stylesheet and the glossary, since GTK3
-  does not read eight-digit hex.
+  does not read eight-digit hex. Opaque colours stay hex. Aliased colours build as GTK
+  references, so a colour overridden in `designSystem.waybar.colors` reaches every token
+  that aliases it.
+- The specimen sets `--bar-style-*` from the style's tokens on each preview, so the
+  preview CSS has no rules of its own per style.
 - The bar cannot switch its text colour to suit the wallpaper, so it needs a wallpaper that
   contrasts with the theme: dark for the dark theme, light for the light theme.
 - The specimen previews both styles. The borderless preview shows

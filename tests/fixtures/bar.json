@@ -2,16 +2,20 @@
   "left": [
     {
       "name": "system",
-      "styles": ["borderless"],
+      "styles": [
+        "borderless"
+      ],
       "modules": [
         {
           "name": "logo",
           "waybar": "custom/logo",
           "format": "",
           "image": "logo.svg",
-          "sample": {}
+          "sample": {},
+          "marker": false
         }
-      ]
+      ],
+      "spaceAfter": "space.cell"
     },
     {
       "name": "desktop",
@@ -79,7 +83,8 @@
           "format": "{:%H}",
           "sample": {
             "time": "2026-01-01T00:00"
-          }
+          },
+          "marker": false
         }
       ]
     }

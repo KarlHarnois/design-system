@@ -74,9 +74,9 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toContain("border-radius: 6px;");
   });
 
-  it("fills the current workspace in its style's current colours", () => {
+  it("fills the current workspace in its style's marker colours", () => {
     expect(stylesheet()).toMatch(
-      /#workspaces button\.active \{\n {2}background: @component_bar_style_floating_current_background;\n {2}color: @component_bar_style_floating_current_text;/,
+      /#workspaces button\.active \{\n {2}background: @component_bar_style_floating_marker;\n {2}color: @component_bar_style_floating_marker_text;/,
     );
   });
 
@@ -149,7 +149,7 @@ describe("WaybarPlugin", () => {
 
   it("changes only the colours of a critical battery, never its size", () => {
     expect(stylesheet()).toMatch(
-      /#battery\.critical:not\(\.charging\) \{\n {2}background: @component_bar_style_floating_marker;\n {2}color: @component_bar_style_floating_marker_text;\n\}/,
+      /#battery\.critical:not\(\.charging\) \{\n {2}background: @component_bar_style_floating_marker;\n {2}color: @component_bar_style_floating_marker_text;\n {2}box-shadow: inset 0 -0px [^;]+;\n\}/,
     );
   });
 
@@ -188,8 +188,14 @@ describe("WaybarPlugin", () => {
       expect(borderlessBox()).toMatch(/border: 0px solid [^;]+;\n {2}border-radius: 0px;\n {2}padding: 0px;/);
     });
 
-    it("underlines the current workspace with its style's underline width", () => {
-      expect(borderlessStylesheet()).toContain("box-shadow: inset 0 -1px @component_bar_style_borderless_current_text;");
+    it("underlines every marker with its style's underline width", () => {
+      const underline = "box-shadow: inset 0 -1px @component_bar_style_borderless_marker_text;";
+
+      expect(borderlessStylesheet().split(underline)).toHaveLength(3);
+    });
+
+    it("drops the marker padding, so no module keeps room for a fill", () => {
+      expect(borderlessStylesheet()).toContain("#pulseaudio,\n#battery {\n  padding: 0 0px;");
     });
 
     it("sizes workspaces to their digit, without marker padding", () => {

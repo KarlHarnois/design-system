@@ -281,9 +281,9 @@
           "$description": "Smallest width of a workspace, padding included. One bar line, so the current workspace's marker is a square.",
           "$value": "{bar.line}"
         },
-        "workspace-padding": {
+        "marker-padding": {
           "$type": "dimension",
-          "$description": "Side padding of a workspace, the marker padding, so the current one inverts without moving.",
+          "$description": "Side padding of a module that can become a marker, so inverting it changes only its colours (0012).",
           "$value": "{space.marker}"
         },
         "workspace-gap": {
@@ -291,9 +291,9 @@
           "$description": "Space between workspaces. Markers side by side are space.marker apart (0012).",
           "$value": "{space.marker}"
         },
-        "current-underline-width": {
+        "marker-underline-width": {
           "$type": "dimension",
-          "$description": "The floating bar marks the current workspace with a fill, not an underline.",
+          "$description": "The floating bar marks with a fill, not an underline.",
           "$value": {
             "value": 0,
             "unit": "px"
@@ -320,14 +320,6 @@
           "$value": "{color.focus}"
         },
         "marker-text": {
-          "$type": "color",
-          "$value": "{color.text.inverse}"
-        },
-        "current-background": {
-          "$type": "color",
-          "$value": "{color.focus}"
-        },
-        "current-text": {
           "$type": "color",
           "$value": "{color.text.inverse}"
         }
@@ -392,8 +384,9 @@
             "unit": "px"
           }
         },
-        "workspace-padding": {
+        "marker-padding": {
           "$type": "dimension",
+          "$description": "No padding: the borderless bar marks with an underline, which needs no room around the text.",
           "$value": {
             "value": 0,
             "unit": "px"
@@ -404,9 +397,9 @@
           "$description": "One cell, about one character, so the digits read as spaced text.",
           "$value": "{space.cell}"
         },
-        "current-underline-width": {
+        "marker-underline-width": {
           "$type": "dimension",
-          "$description": "The current workspace is underlined with a hairline, as list matches are (0019), so the bar keeps one colour and no fills.",
+          "$description": "Markers are a hairline underline, as list matches are (0019), so the bar keeps one colour and no fills. They mark the current workspace and a low battery.",
           "$value": {
             "value": 1,
             "unit": "px"
@@ -438,14 +431,7 @@
         },
         "marker": {
           "$type": "color",
-          "$value": "{color.text.desktop}"
-        },
-        "marker-text": {
-          "$type": "color",
-          "$value": "{color.text.inverse}"
-        },
-        "current-background": {
-          "$type": "color",
+          "$description": "No fill behind a marker.",
           "$value": {
             "colorSpace": "srgb",
             "components": [
@@ -456,7 +442,7 @@
             "alpha": 0
           }
         },
-        "current-text": {
+        "marker-text": {
           "$type": "color",
           "$value": "{color.text.desktop}"
         }

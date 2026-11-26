@@ -22,9 +22,10 @@ class BarPreview {
   }
 
   renderBar(element) {
-    const { barStyle, barActive } = element.dataset;
+    const { barStyle, barActive, barState } = element.dataset;
     this.applyStyle(element, barStyle);
-    const groups = (side) => this.spaced(this.shownGroups(side, barStyle).map((group) => this.group(group, barActive)));
+    const preview = { active: barActive, states: this.moduleStates(barState) };
+    const groups = (side) => this.spaced(this.shownGroups(side, barStyle).map((group) => this.group(group, preview)));
     element.replaceChildren(
       this.side("modules-left", groups(this.spec.left)),
       this.side("modules-center", []),
@@ -50,12 +51,23 @@ class BarPreview {
     element.replaceChildren(this.side("modules-right", [this.side("module-group", samples)]));
   }
 
-  group(group, active) {
-    const sample = (module) => (active === undefined || module.sample.items === undefined ? module.sample : { ...module.sample, active });
-    const element = this.side("module-group", group.modules.map((module) => this.module(module, sample(module), [])));
+  moduleStates(barState) {
+    if (barState === undefined) return {};
+    return Object.fromEntries(barState.split(" ").map((entry) => entry.split(":")));
+  }
+
+  group(group, { active, states }) {
+    const element = this.side("module-group", group.modules.map((module) => this.previewModule(module, active, states[module.name])));
     element.dataset.group = group.name;
     element.dataset.spaceAfter = group.spaceAfter ?? "space.group";
     return element;
+  }
+
+  previewModule(module, active, state) {
+    const stateSample = state === undefined ? undefined : module.stateSamples?.find((sample) => sample.state === state);
+    if (stateSample !== undefined) return this.stateModule(module, stateSample);
+    if (active !== undefined && module.sample.items !== undefined) return this.module(module, { ...module.sample, active }, []);
+    return this.module(module, module.sample, []);
   }
 
   stateModule(module, sample) {

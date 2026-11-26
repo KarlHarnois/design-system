@@ -32,7 +32,11 @@ its text sits straight on the wallpaper.
   wallpaper. No workspace becomes a marker, so workspaces have no padding and are
   `space.cell` apart, about one character, and the first digit sits on the window edge.
   The underline is the bottom pixel of the 16px line, about 2px below the digits.
-  The floating bar keeps its square marker: the style's `current-underline-width` is 0.
+- A low battery is underlined the same way. Every marker on a bar shares the style's
+  `marker`, `marker-text`, `marker-padding` and `marker-underline-width` tokens: a fill
+  with the marker padding on the floating bar, an underline with no padding on the
+  borderless bar. With no padding anywhere, the borderless bar's gaps are only the
+  spacing tokens: `space.cell` inside a group, `space.group` between groups.
 - Everything else is shared: the spec in `bar/bar.json`, the type, the markers and the
   spacing of modules and groups.
 

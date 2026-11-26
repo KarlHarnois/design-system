@@ -73,8 +73,7 @@ window#waybar > box {
   }
 
   private workspaces(): string {
-    const padding = this.style.pixels("workspace-padding");
-    const underline = this.style.pixels("current-underline-width");
+    const padding = this.style.pixels("marker-padding");
     return `#workspaces button {
   padding: 0 ${padding}px;
   min-width: ${Math.max(0, this.style.pixels("workspace-width") - 2 * padding)}px;
@@ -88,16 +87,14 @@ window#waybar > box {
 }
 
 #workspaces button.active {
-  background: ${this.color("current-background")};
-  color: ${this.color("current-text")};
-  box-shadow: inset 0 -${underline}px ${this.color("current-text")};
+${this.markerDeclarations()}
 }`;
   }
 
   private modulePadding(): (string | undefined)[] {
     const modules = this.textModules();
     return [
-      this.ruleFor(modules.filter((module) => module.isMarker), `padding: 0 ${this.marker()};`),
+      this.ruleFor(modules.filter((module) => module.isMarker), `padding: 0 ${this.style.pixels("marker-padding")}px;`),
       this.ruleFor(modules.filter((module) => !module.isMarker), `padding: 0 ${this.style.pixels("plain-padding")}px;`),
     ];
   }
@@ -142,8 +139,7 @@ window#waybar > box {
 
   private lowBattery(): string {
     return `#battery.critical:not(.charging) {
-  background: ${this.color("marker")};
-  color: ${this.color("marker-text")};
+${this.markerDeclarations()}
 }`;
   }
 
@@ -170,7 +166,14 @@ window#waybar > box {
     return color(this.style.tokenId(property));
   }
 
-  private marker(): string {
-    return this.theme.dimension("space.marker");
+  private markerDeclarations(): string {
+    const underline = this.style.pixels("marker-underline-width");
+    return [
+      `background: ${this.color("marker")};`,
+      `color: ${this.color("marker-text")};`,
+      `box-shadow: inset 0 -${underline}px ${this.color("marker-text")};`,
+    ]
+      .map((declaration) => `  ${declaration}`)
+      .join("\n");
   }
 }

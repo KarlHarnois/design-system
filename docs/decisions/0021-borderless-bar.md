@@ -14,9 +14,11 @@ than with the floating bar of 0009, which sits inside the frame as one more cont
 - `borderless` is transparent and draws no outline and no corner radius.
 - Without an outline there is nothing for an inset to keep the markers clear of, so the
   bar is exactly `bar.line` tall, 16px, with no inset.
-- It sits inside the frame like a row of windows: `space.frame` above it and on its left
-  and right, one gutter below it. The current workspace's marker starts on the left edge
-  of the windows, and the time's marker ends on their right edge.
+- It sits inside the frame like a row of windows: `space.frame` above it, one gutter below
+  it. The first and last text sit on the left and right edges of the windows. Markers
+  hang `space.marker` past the text into the frame, as hanging punctuation does, so an
+  inverted workspace never pushes the text off the edge. With no marker showing, the
+  marker padding would otherwise leave the text 4px short of the edge.
 - Text keeps the theme's tokens: `color.text.secondary` for the modules and
   `color.text.primary` for the time. macOS draws menu bar text in its label colors,
   white at 85% and at 55% opacity in dark mode. Over black those come to about `#d9d9d9`

@@ -69,7 +69,8 @@ export class BorderlessBar extends BarStyle {
   readonly name = "borderless";
 
   placement(): BarPlacement {
-    return { height: this.line(), ...this.frameMargins() };
+    const textOnFrame = this.frame() - this.theme.pixels("space.marker");
+    return { height: this.line(), "margin-top": this.frame(), "margin-right": textOnFrame, "margin-left": textOnFrame };
   }
 
   boxDeclarations(): string[] {

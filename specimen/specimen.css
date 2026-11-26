@@ -166,6 +166,7 @@ kbd {
   border: none;
   border-radius: 0;
   padding: 0;
+  margin-inline: calc(-1 * var(--space-marker));
 }
 
 .waybar .modules-left,

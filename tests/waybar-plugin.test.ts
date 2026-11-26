@@ -151,15 +151,19 @@ describe("WaybarPlugin", () => {
       expect(borderlessConfig().height).toBe(18);
     });
 
-    it("sets the bar inside the frame, like a row of windows", () => {
-      expect(borderlessConfig()).toMatchObject({ "margin-top": 12, "margin-right": 12, "margin-left": 12 });
+    it("sets the bar one frame below the top edge", () => {
+      expect(borderlessConfig()["margin-top"]).toBe(12);
+    });
+
+    it("hangs the markers into the frame, so the first and last text meet the window edges", () => {
+      expect(borderlessConfig()).toMatchObject({ "margin-right": 8, "margin-left": 8 });
     });
 
     it("lets the wallpaper show through", () => {
       expect(borderlessBox()).toContain("background-color: transparent;");
     });
 
-    it("draws no outline and no inset, so the markers meet the frame", () => {
+    it("draws no outline and no inset", () => {
       expect(borderlessBox()).not.toMatch(/border|padding/);
     });
 

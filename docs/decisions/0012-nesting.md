@@ -36,7 +36,8 @@ radius minus the padding.
   so becoming a marker changes only its colours, never its size or position.
   - Bar: every module that can become a marker has `space.marker` around its text. The
     low battery inverts by changing only its colours. Modules that never become markers,
-    such as the clock, are `"marker": false` in the spec (0021).
+    such as the clock, are `"marker": false` in the spec. On the borderless bar no
+    workspace becomes a marker either, so they have no padding (0021).
   - Table: every cell has `space.marker` at its sides, so any cell can become the cursor
     without its text moving, and the cursor stays inside the table edges.
   - Lists and the palette: a selected row keeps its `space.control` padding and changes

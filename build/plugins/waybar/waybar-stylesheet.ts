@@ -73,10 +73,12 @@ window#waybar > box {
   }
 
   private workspaces(): string {
+    const padding = this.style.pixels("workspace-padding");
+    const underline = this.style.pixels("current-underline-width");
     return `#workspaces button {
-  padding: 0 ${this.marker()};
-  min-width: ${this.markerContentMinWidth()}px;
-  margin-right: ${this.marker()};
+  padding: 0 ${padding}px;
+  min-width: ${Math.max(0, this.style.pixels("workspace-width") - 2 * padding)}px;
+  margin-right: ${this.style.pixels("workspace-gap")}px;
   background: transparent;
   color: ${this.color("text")};
 }
@@ -86,8 +88,9 @@ window#waybar > box {
 }
 
 #workspaces button.active {
-  background: ${this.color("marker")};
-  color: ${this.color("marker-text")};
+  background: ${this.color("current-background")};
+  color: ${this.color("current-text")};
+  box-shadow: inset 0 -${underline}px ${this.color("current-text")};
 }`;
   }
 
@@ -169,9 +172,5 @@ window#waybar > box {
 
   private marker(): string {
     return this.theme.dimension("space.marker");
-  }
-
-  private markerContentMinWidth(): number {
-    return this.theme.pixels("bar.line") - 2 * this.theme.pixels("space.marker");
   }
 }

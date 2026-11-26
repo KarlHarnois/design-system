@@ -97,7 +97,7 @@ class BarPreview {
     element.classList.add(module.name);
     for (const item of sample.items) {
       const workspace = document.createElement("span");
-      workspace.classList.add("workspace", "module-text");
+      workspace.classList.add("workspace");
       workspace.classList.toggle("active", item === sample.active);
       const icon = module.icons?.[item] ?? item;
       workspace.textContent = new WaybarFormat(module.format).render({ values: { name: item, icon } });

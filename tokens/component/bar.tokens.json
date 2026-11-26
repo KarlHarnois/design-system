@@ -46,6 +46,29 @@
           "$description": "Side padding of a module that never becomes a marker, the same as a marker's, so the first and last text sit about 8px from the outline.",
           "$value": "{space.marker}"
         },
+        "workspace-width": {
+          "$type": "dimension",
+          "$description": "Smallest width of a workspace, padding included. One bar line, so the current workspace's marker is a square.",
+          "$value": "{bar.line}"
+        },
+        "workspace-padding": {
+          "$type": "dimension",
+          "$description": "Side padding of a workspace, the marker padding, so the current one inverts without moving.",
+          "$value": "{space.marker}"
+        },
+        "workspace-gap": {
+          "$type": "dimension",
+          "$description": "Space between workspaces. Markers side by side are space.marker apart (0012).",
+          "$value": "{space.marker}"
+        },
+        "current-underline-width": {
+          "$type": "dimension",
+          "$description": "The floating bar marks the current workspace with a fill, not an underline.",
+          "$value": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
         "background": {
           "$type": "color",
           "$value": "{color.surface.base}"
@@ -67,6 +90,14 @@
           "$value": "{color.focus}"
         },
         "marker-text": {
+          "$type": "color",
+          "$value": "{color.text.inverse}"
+        },
+        "current-background": {
+          "$type": "color",
+          "$value": "{color.focus}"
+        },
+        "current-text": {
           "$type": "color",
           "$value": "{color.text.inverse}"
         }
@@ -123,6 +154,31 @@
             "unit": "px"
           }
         },
+        "workspace-width": {
+          "$type": "dimension",
+          "$description": "Workspaces are as wide as their digit, since none of them becomes a marker.",
+          "$value": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        "workspace-padding": {
+          "$type": "dimension",
+          "$value": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        "workspace-gap": {
+          "$type": "dimension",
+          "$description": "One cell, about one character, so the digits read as spaced text.",
+          "$value": "{space.cell}"
+        },
+        "current-underline-width": {
+          "$type": "dimension",
+          "$description": "The current workspace is underlined with a hairline, as list matches are (0019), so the bar keeps one colour and no fills.",
+          "$value": "{dimension.hairline}"
+        },
         "background": {
           "$type": "color",
           "$value": {
@@ -154,6 +210,22 @@
         "marker-text": {
           "$type": "color",
           "$value": "{color.text.inverse}"
+        },
+        "current-background": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0
+          }
+        },
+        "current-text": {
+          "$type": "color",
+          "$value": "{color.text.desktop}"
         }
       }
     }

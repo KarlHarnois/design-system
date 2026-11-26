@@ -74,11 +74,12 @@ describe("WaybarPlugin", () => {
     expect(stylesheet()).toContain("border-radius: 6px;");
   });
 
-  it("inverts the current workspace on its style's marker colours", () => {
+  it("fills the current workspace in its style's current colours", () => {
     expect(stylesheet()).toMatch(
-      /#workspaces button\.active \{\n {2}background: @component_bar_style_floating_marker;\n {2}color: @component_bar_style_floating_marker_text;/,
+      /#workspaces button\.active \{\n {2}background: @component_bar_style_floating_current_background;\n {2}color: @component_bar_style_floating_current_text;/,
     );
   });
+
 
   it("gives every marker module the marker padding, so inverting it changes only its colours", () => {
     expect(stylesheet()).toContain("#pulseaudio,\n#battery {\n  padding: 0 4px;");
@@ -185,6 +186,14 @@ describe("WaybarPlugin", () => {
 
     it("draws no outline, no corner and no inset", () => {
       expect(borderlessBox()).toMatch(/border: 0px solid [^;]+;\n {2}border-radius: 0px;\n {2}padding: 0px;/);
+    });
+
+    it("underlines the current workspace with its style's underline width", () => {
+      expect(borderlessStylesheet()).toContain("box-shadow: inset 0 -1px @component_bar_style_borderless_current_text;");
+    });
+
+    it("sizes workspaces to their digit, without marker padding", () => {
+      expect(borderlessStylesheet()).toMatch(/#workspaces button \{\n {2}padding: 0 0px;\n {2}min-width: 0px;\n {2}margin-right: 5px;/);
     });
 
     it("keeps the bar layout of the floating bar", () => {

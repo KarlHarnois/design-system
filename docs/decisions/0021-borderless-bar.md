@@ -27,6 +27,12 @@ its text sits straight on the wallpaper.
   84.7% opacity in the dark theme, black at 84.7% in the light theme. Text on a wallpaper
   has no surface to set a hierarchy against, so the bar uses one colour and lets the
   markers carry the emphasis. The slight transparency lets the wallpaper tint the text.
+- The current workspace is underlined with a hairline in the bar's colour, as list
+  matches are (0019), not filled. A fill was the heaviest thing on a bar of text on the
+  wallpaper. No workspace becomes a marker, so workspaces have no padding and are
+  `space.cell` apart, about one character, and the first digit sits on the window edge.
+  The underline is the bottom pixel of the 16px line, about 2px below the digits.
+  The floating bar keeps its square marker: the style's `current-underline-width` is 0.
 - Everything else is shared: the spec in `bar/bar.json`, the type, the markers and the
   spacing of modules and groups.
 

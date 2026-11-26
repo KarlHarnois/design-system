@@ -158,15 +158,14 @@ kbd {
 }
 
 .desktop-borderless {
-  padding-top: 0;
   margin-top: var(--space-line);
 }
 
 .waybar-borderless {
-  margin-inline: calc(-1 * var(--space-frame));
+  background-color: transparent;
   border: none;
   border-radius: 0;
-  padding-inline: calc(var(--space-frame) + var(--border-width-default) + var(--space-inset));
+  padding: 0;
 }
 
 .waybar .modules-left,

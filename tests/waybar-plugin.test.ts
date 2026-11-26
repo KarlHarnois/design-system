@@ -145,21 +145,22 @@ describe("WaybarPlugin", () => {
   describe("borderless", () => {
     const borderlessStylesheet = () => fixtureBuild.file("waybar/dark/borderless/style.css");
     const borderlessConfig = () => JSON.parse(fixtureBuild.file("waybar/dark/borderless/settings.json"));
+    const borderlessBox = () => borderlessStylesheet().match(/window#waybar > box \{[^}]*\}/)?.[0];
 
-    it("makes the bar one bar line tall plus its inset, with no outline", () => {
-      expect(borderlessConfig().height).toBe(24);
+    it("makes the bar exactly one bar line tall", () => {
+      expect(borderlessConfig().height).toBe(18);
     });
 
-    it("runs the bar flush along the top edge", () => {
-      expect(borderlessConfig()).not.toHaveProperty("margin-top");
+    it("sets the bar inside the frame, like a row of windows", () => {
+      expect(borderlessConfig()).toMatchObject({ "margin-top": 12, "margin-right": 12, "margin-left": 12 });
     });
 
-    it("draws no outline and no corner", () => {
-      expect(borderlessStylesheet()).not.toMatch(/window#waybar > box \{[^}]*border/);
+    it("lets the wallpaper show through", () => {
+      expect(borderlessBox()).toContain("background-color: transparent;");
     });
 
-    it("keeps the content where the floating bar puts it", () => {
-      expect(borderlessStylesheet()).toMatch(/window#waybar > box \{[^}]*\n {2}padding: 3px 17px;\n\}/);
+    it("draws no outline and no inset, so the markers meet the frame", () => {
+      expect(borderlessBox()).not.toMatch(/border|padding/);
     });
 
     it("keeps the bar layout of the floating bar", () => {

@@ -90,7 +90,8 @@ in
       default = "floating";
       description = ''
         Shape of the bar. `floating` sits inside the frame with an outline and rounded
-        corners. `borderless` runs flush along the top edge of the screen with no outline.
+        corners. `borderless` is transparent, with no outline, and aligns its markers with the
+        frame like the windows below it.
       '';
     };
 

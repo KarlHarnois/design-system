@@ -43,7 +43,3 @@ designSystem.waybar.colors."color.focus" = "#d79921";
 ```
 
 `designSystem.colors` holds every color token of the selected theme, by token id.
-
-## Credits
-
-The NixOS snowflake in `bar/nixos-logo.svg` comes from [NixOS/nixos-artwork](https://github.com/NixOS/nixos-artwork), licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).

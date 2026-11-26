@@ -2,21 +2,6 @@
   "$schema": "./bar.schema.json",
   "left": [
     {
-      "name": "system",
-      "styles": ["borderless"],
-      "spaceAfter": "space.cell",
-      "modules": [
-        {
-          "name": "logo",
-          "waybar": "custom/logo",
-          "format": "",
-          "image": "nixos-logo.svg",
-          "marker": false,
-          "sample": {}
-        }
-      ]
-    },
-    {
       "name": "desktop",
       "modules": [
         {

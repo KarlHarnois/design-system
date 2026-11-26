@@ -1,7 +1,9 @@
 # 0022. Start the borderless bar with the NixOS logo
 
 ## Status
-Accepted. Extends 0011.
+Accepted. Extends 0011. The logo was later removed from the bar. Image modules, a
+group's `styles` and `spaceAfter`, and `component.bar.image-height` stay in the spec for
+the next image.
 
 ## Context
 The desktop runs NixOS. The borderless bar had no mark for the system, and its first
